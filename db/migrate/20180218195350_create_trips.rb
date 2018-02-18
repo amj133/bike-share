@@ -3,11 +3,11 @@ class CreateTrips < ActiveRecord::Migration[5.1]
     create_table :trips do |t|
       t.integer :duration
       t.datetime :start_date
-      t.integer :start_station_id
+      t.references :start_station
       t.datetime :end_date
-      t.integer :end_station_id
+      t.references :end_station
       t.integer :bike_id
-      t.string :subscription_type
+      t.string :subscription
       t.integer :zipcode
     end
   end
