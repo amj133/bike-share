@@ -10,6 +10,7 @@ describe Station, type: :model do
     it {should validate_presence_of(:installation_date)}
   end
   describe "relationships" do
-    it {should have_many(:trips)}
+    it {should have_many(:started_trips)}
+    it {should have_many(:ended_trips)}
   end
 end
