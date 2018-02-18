@@ -2,6 +2,8 @@ require "rails_helper"
 
 describe "visitor sees trips index" do
   it "displays 30 trips per page" do
+    create(:station)
+    create(:station)
     31.times do
       create(:trip)
     end
