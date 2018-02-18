@@ -1,0 +1,16 @@
+Displaying Trips <%= @first_trip %>-<%= @last_trip %>
+
+<% @trips.each do |trip| %>
+  <div class="index-trip">
+    <%= trip.duration %>
+    <%= trip.start_date %>
+    <%= trip.start_station.name %>
+    <%= trip.end_date %>
+    <%= trip.end_station.name %>
+    <%= trip.bike_id %>
+    <%= trip.subscription %>
+    <%= trip.zipcode %>
+  </div>
+
+   <%= link_to "Next Page", "/trips?first=#{@first_trip+30}&last=#{@last_trip+30}"%>
+<% end %>

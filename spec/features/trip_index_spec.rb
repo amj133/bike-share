@@ -10,7 +10,7 @@ describe "visitor sees trips index" do
 
     visit trips_path
 
-    expect(page).to have_content("Diplaying Trips 1-30")
+    expect(page).to have_content("Displaying Trips 1-30")
     expect(page).to have_content(Trip.first.duration)
     expect(page).to have_content(Trip.first.start_date)
     expect(page).to have_content(Trip.first.start_station.name)
@@ -21,6 +21,6 @@ describe "visitor sees trips index" do
     expect(page).to have_content(Trip.first.zipcode)
     expect(page).to have_content(Trip.all[-2].duration)
     expect(page).to_not have_content(Trip.last.duration)
-    exepct(page).to have_link("Next Page")
+    expect(page).to have_link("Next Page")
   end
 end
