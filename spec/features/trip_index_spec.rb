@@ -23,4 +23,23 @@ describe "visitor sees trips index" do
     expect(page).to_not have_content(Trip.last.duration)
     expect(page).to have_link("Next Page")
   end
+  it "displays next 30 trips to visitor" do
+    create(:station)
+    create(:station)
+    61.times do
+      create(:trip)
+    end
+
+    visit trips_path
+    click_on "Next Page"
+
+    expect(page).to have_content("Displaying Trips 31-60")
+    expect(page).to have_content(Trip.all[30].duration)
+    expect(page).to have_content(Trip.all[59].duration)
+
+    click_on "Previous Page"
+    
+    have_content(Trip.first.duration)
+    expect(page).to have_content(Trip.all[29].duration)
+  end
 end
