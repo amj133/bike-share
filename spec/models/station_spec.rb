@@ -12,5 +12,6 @@ describe Station, type: :model do
   describe "relationships" do
     it {should have_many(:started_trips)}
     it {should have_many(:ended_trips)}
+    it {should have_many(:statuses)}
   end
 end
