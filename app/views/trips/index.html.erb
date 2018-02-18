@@ -11,6 +11,9 @@ Displaying Trips <%= @first_trip %>-<%= @last_trip %>
     <%= trip.subscription %>
     <%= trip.zipcode %>
   </div>
+<% end %>
 
-   <%= link_to "Next Page", "/trips?first=#{@first_trip+30}&last=#{@last_trip+30}"%>
+<%= link_to "Next Page", "/trips?first=#{@first_trip.to_i+30}&last=#{@last_trip.to_i+30}"%>
+<% unless @first_trip == 1 %>
+<%= link_to "Previous Page", "/trips?first=#{@first_trip.to_i-30}&last=#{@last_trip.to_i-30}"%>
 <% end %>
