@@ -8,7 +8,6 @@ describe "visitor sees trips index" do
       create(:trip)
     end
 
-
     visit trips_path
 
     expect(page).to have_content("Diplaying Trips 1-30")
