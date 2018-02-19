@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe "Visitor is able to create a account" do
+describe "visitor is able to create a account" do
   describe "visits root path" do
-    it "They answer info and they are logged in" do
+    it "they answer info and they are logged in" do
        visit root_path
 
        click_on("Login")
@@ -10,12 +10,9 @@ describe "Visitor is able to create a account" do
        expect(current_path).to eq(login_path)
 
        click_on("Create Account")
-
-
        fill_in("Username", with: "bob")
        fill_in("Password", with: "password")
        fill_in("Email", with: "email")
-
        click_on("Submit")
 
        expect(current_path).to eq("/dashboard")
@@ -28,18 +25,14 @@ describe "Visitor is able to create a account" do
       user = User.create!(username: "bob", password: "password", email: "email")
 
       visit root_path
-
       click_on("Login")
 
       expect(current_path).to eq(login_path)
 
       click_on("Create Account")
-
-
       fill_in("Username", with: "bob")
       fill_in("Password", with: "password")
       fill_in("Email", with: "email")
-
       click_on("Submit")
 
       expect(page).to have_content("#{User.last.username} already exists")
