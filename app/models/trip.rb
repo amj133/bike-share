@@ -26,7 +26,7 @@ class Trip < ApplicationRecord
   # def most_ending_station
   #
   # end
-  #
+
   # def month_breakdown
   #
   # end
