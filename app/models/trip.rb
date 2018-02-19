@@ -23,9 +23,12 @@ class Trip < ApplicationRecord
       .last.start_station
   end
 
-  # def most_ending_station
-  #
-  # end
+  def self.most_ending_station
+    select('end_station_id, COUNT(trips) AS trip_count')
+      .group(:end_station_id)
+      .order('trip_count')
+      .last.end_station
+  end
 
   # def month_breakdown
   #
