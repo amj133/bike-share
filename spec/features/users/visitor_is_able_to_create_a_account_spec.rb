@@ -21,9 +21,10 @@ describe "Visitor is able to create a account" do
        expect(current_path).to eq("/dashboard")
        expect(page).to have_content("Welcome #{User.last.username}")
        expect(page).to have_content("Logged in as #{User.last.username}")
+       expect(page).to have_link("Logout")
     end
 
-    it "User uses double username and is redirected to new path" do
+    it "User uses existing username and is redirected to new path" do
       user = User.create!(username: "bob", password: "password", email: "email")
 
       visit root_path
