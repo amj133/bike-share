@@ -18,13 +18,13 @@ describe Station, type: :model do
 
   describe "class methods" do
     it "#avg_bikes_per_station returns proper value" do
-      Station.create!(name: "blue",
+      station_1 = Station.create!(name: "blue",
                       lat: 1,
                       long: 1,
                       dock_count: 1,
                       city: "Richmond",
                       installation_date: DateTime.now)
-      Station.create!(name: "blue",
+      station_2 = Station.create!(name: "blue",
                       lat: 1,
                       long: 1,
                       dock_count: 5,
@@ -32,6 +32,23 @@ describe Station, type: :model do
                       installation_date: DateTime.now)
 
       expect(Station.avg_bikes_per_station).to eq(3)
+    end
+
+    it "#most_bikes_available returns station with most bikes available" do
+      station_1 = Station.create!(name: "blue",
+                      lat: 1,
+                      long: 1,
+                      dock_count: 1,
+                      city: "Richmond",
+                      installation_date: DateTime.now)
+      station_2 = Station.create!(name: "blue",
+                      lat: 1,
+                      long: 1,
+                      dock_count: 5,
+                      city: "Richmond",
+                      installation_date: DateTime.now)
+
+      expect(Station.most_bikes_avilable).to eq(station_2)
     end
   end
 end
