@@ -18,14 +18,19 @@ describe Trip, type: :model do
   describe "class methods" do
     it "calculates average ride duration" do
       create_list(:station, 2)
-
-      Trip.create(duration: 300, start_date: DateTime.now, end_date: DateTime.now, bike_id: 1, subscription: "x", zipcode: 80111, start_station_id: 1, end_station_id: 2)
-
-      Trip.create(duration: 400, start_date: DateTime.now, end_date: DateTime.now, bike_id: 1, subscription: "x", zipcode: 80111, start_station_id: 1, end_station_id: 2)
-
-      Trip.create(duration: 500, start_date: DateTime.now, end_date: DateTime.now, bike_id: 1, subscription: "x", zipcode: 80111, start_station_id: 1, end_station_id: 2)
+      create(:trip, duration: 300)
+      create(:trip, duration: 400)
+      create(:trip, duration: 500)
 
       expect(Trip.avg_ride_duration).to eq(400)
+    end
+    it "calculates longest ride" do
+      create_list(:station, 2)
+      create(:trip, duration: 300)
+      create(:trip, duration: 400)
+      create(:trip, duration: 500)
+
+      expect(Trip.longest_ride).to eq(500)
     end
   end
 end
