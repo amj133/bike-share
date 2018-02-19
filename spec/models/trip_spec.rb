@@ -15,4 +15,17 @@ describe Trip, type: :model do
     it {should belong_to :start_station}
     it {should belong_to :end_station}
   end
+  describe "class methods" do
+    it "calculates average ride duration" do
+      create_list(:station, 2)
+
+      Trip.create(duration: 300, start_date: DateTime.now, end_date: DateTime.now, bike_id: 1, subscription: "x", zipcode: 80111, start_station_id: 1, end_station_id: 2)
+
+      Trip.create(duration: 400, start_date: DateTime.now, end_date: DateTime.now, bike_id: 1, subscription: "x", zipcode: 80111, start_station_id: 1, end_station_id: 2)
+
+      Trip.create(duration: 500, start_date: DateTime.now, end_date: DateTime.now, bike_id: 1, subscription: "x", zipcode: 80111, start_station_id: 1, end_station_id: 2)
+
+      expect(Trip.avg_ride_duration).to eq(400)
+    end
+  end
 end
