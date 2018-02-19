@@ -16,8 +16,10 @@ describe Trip, type: :model do
     it {should belong_to :end_station}
   end
   describe "class methods" do
-    it "calculates average ride duration" do
+    before(:context) do
       create_list(:station, 2)
+    end
+    it "calculates average ride duration" do
       create(:trip, duration: 300)
       create(:trip, duration: 400)
       create(:trip, duration: 500)
@@ -25,7 +27,6 @@ describe Trip, type: :model do
       expect(Trip.avg_ride_duration).to eq(400)
     end
     it "calculates longest ride" do
-      create_list(:station, 2)
       create(:trip, duration: 300)
       create(:trip, duration: 400)
       create(:trip, duration: 500)

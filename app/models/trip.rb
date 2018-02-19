@@ -8,9 +8,9 @@ class Trip < ApplicationRecord
     average(:duration)
   end
 
-  # def self.longest_ride
-  #
-  # end
+  def self.longest_ride
+    order('duration DESC').first.duration
+  end
   #
   # def self.shortest_ride
   #
