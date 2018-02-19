@@ -15,4 +15,8 @@ class Station < ApplicationRecord
   def self.fewest_bikes_available
     order(:dock_count).limit(1).first
   end
+
+  def self.most_recently_installed
+    order("date(installation_date)").last
+  end
 end

@@ -18,54 +18,32 @@ describe Station, type: :model do
 
   describe "class methods" do
     it "#avg_bikes_per_station returns proper value" do
-      station_1 = Station.create!(name: "blue",
-                      lat: 1,
-                      long: 1,
-                      dock_count: 1,
-                      city: "Richmond",
-                      installation_date: DateTime.now)
-      station_2 = Station.create!(name: "blue",
-                      lat: 1,
-                      long: 1,
-                      dock_count: 5,
-                      city: "Richmond",
-                      installation_date: DateTime.now)
+      create(:station, dock_count: 1)
+      create(:station, dock_count: 5)
 
       expect(Station.avg_bikes_per_station).to eq(3)
     end
 
     it "#most_bikes_available returns station with most bikes available" do
-      station_1 = Station.create!(name: "blue",
-                      lat: 1,
-                      long: 1,
-                      dock_count: 1,
-                      city: "Richmond",
-                      installation_date: DateTime.now)
-      station_2 = Station.create!(name: "blue",
-                      lat: 1,
-                      long: 1,
-                      dock_count: 5,
-                      city: "Richmond",
-                      installation_date: DateTime.now)
+      station_1 = create(:station, dock_count: 1)
+      station_2 = create(:station, dock_count: 5)
 
       expect(Station.most_bikes_available).to eq(station_2)
     end
 
     it "#fewest_bikes_available returns station with fewest bikes available" do
-      station_1 = Station.create!(name: "blue",
-                      lat: 1,
-                      long: 1,
-                      dock_count: 1,
-                      city: "Richmond",
-                      installation_date: DateTime.now)
-      station_2 = Station.create!(name: "blue",
-                      lat: 1,
-                      long: 1,
-                      dock_count: 5,
-                      city: "Richmond",
-                      installation_date: DateTime.now)
+      station_1 = create(:station, dock_count: 1)
+      station_2 = create(:station, dock_count: 5)
 
       expect(Station.fewest_bikes_available).to eq(station_1)
+    end
+
+    it "#most_recently_installed returns correct station" do
+      station_1 = create(:station, installation_date: DateTime.new(2001, 10, 12))
+      station_2 = create(:station, installation_date: DateTime.new(2011, 1, 3))
+      station_3 = create(:station, installation_date: DateTime.new(2005, 10, 11))
+
+      expect(Station.most_recently_installed).to eq(station_2)
     end
   end
 end
