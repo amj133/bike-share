@@ -2,8 +2,10 @@ require 'rails_helper'
 
   describe "user visits trip show page" do
     it "user sees all atributes of trip" do
-      trip = Trip.create(duration: 73, start_date: Time.now, start_station_id: 1,
-    end_date: Time.now, end_station_id: 2, bike_id: 22, subscription: "Subscriber",
+
+    station = Station.create!(name: "Big Bikes", lat: 123456, long:223523, dock_count:22, city:"denver" ,installation_date: Time.now)
+    trip = Trip.create!(duration: 73, start_date: Time.now, start_station_id: 1,
+    end_date: Time.now, end_station_id: 1, bike_id: 22, subscription: "Subscriber",
     zipcode: 32218)
 
     visit trip_path(trip)
