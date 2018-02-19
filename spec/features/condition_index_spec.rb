@@ -9,16 +9,16 @@ describe "visitor sees conditions index" do
 
     visit conditions_path
 
-    expect_page.to have_content(condition_1.date)
-    expect_page.to have_content(condition_1.max_temp_f)
-    expect_page.to have_content(condition_1.mean_temp_f)
-    expect_page.to have_content(condition_1.min_temp_f)
-    expect_page.to have_content(condition_1.mean_humidity)
-    expect_page.to have_content(condition_1.mean_visibility_miles)
-    expect_page.to have_content(condition_1.mean_wind_speed)
-    expect_page.to have_content(condition_1.precipitation_inces)
-    expect_page.to have_content(condition_2.precipitation_inces)
-    expect_page.to have_content(condition_3.mean_wind_speed)
-    expect_page.to have_content(condition_4.min_temp_f)
+    expect(page).to have_content(condition_1.date)
+    expect(page).to have_content(condition_1.max_temp_f)
+    expect(page).to have_content(condition_1.mean_temp_f)
+    expect(page).to have_content(condition_1.min_temp_f)
+    expect(page).to have_content(condition_1.mean_humidity)
+    expect(page).to have_content(condition_1.mean_visibility_miles)
+    expect(page).to have_content(condition_1.mean_wind_speed)
+    expect(page).to have_content(condition_1.precipitation_inches)
+    expect(page).to have_content(condition_2.precipitation_inches)
+    expect(page).to have_content(condition_3.mean_wind_speed)
+    expect(page).to have_content(condition_4.min_temp_f)
   end
 end
