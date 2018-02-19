@@ -2,6 +2,8 @@ require "rails_helper"
 
 describe "user visits trip dashboard" do
   it "displays trip analytics" do
+    create(:station)
+    create(:station)
     create_list(:trip, 20)
 
     visit trips_dashboard_path
