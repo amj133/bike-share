@@ -7,4 +7,10 @@ class TripsController < ApplicationController
    end
    @trips = Trip.where('id BETWEEN ? AND ?', @first_trip, @last_trip)
   end
+
+  def show
+    @trip = Trip.find(params[:id])
+  end
+
+
 end
