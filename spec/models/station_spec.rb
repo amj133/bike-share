@@ -9,9 +9,29 @@ describe Station, type: :model do
     it {should validate_presence_of(:city)}
     it {should validate_presence_of(:installation_date)}
   end
+
   describe "relationships" do
     it {should have_many(:started_trips)}
     it {should have_many(:ended_trips)}
     it {should have_many(:statuses)}
+  end
+
+  describe "class methods" do
+    it "#avg_bikes_per_station returns proper value" do
+      Station.create!(name: "blue",
+                      lat: 1,
+                      long: 1,
+                      dock_count: 1,
+                      city: "Richmond",
+                      installation_date: DateTime.now)
+      Station.create!(name: "blue",
+                      lat: 1,
+                      long: 1,
+                      dock_count: 5,
+                      city: "Richmond",
+                      installation_date: DateTime.now)
+
+      expect(Station.avg_bikes_per_station).to eq(3)
+    end
   end
 end

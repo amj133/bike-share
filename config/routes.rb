@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   root to: "welcome#index"
 
   resources :trips, only: [:index, :show]
+
   resources :conditions, only: [:index, :show]
+
   resources :stations, only: [:index, :show]
+  get "/stations-dashboard", to: "stations#dashboard"
 
   resources :users, only: [:show, :new, :create]
   get "/dashboard", to: "users#show"
