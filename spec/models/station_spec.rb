@@ -48,7 +48,7 @@ describe Station, type: :model do
                       city: "Richmond",
                       installation_date: DateTime.now)
 
-      expect(Station.most_bikes_avilable).to eq(station_2)
+      expect(Station.most_bikes_available).to eq(station_2)
     end
   end
 end

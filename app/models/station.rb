@@ -8,7 +8,7 @@ class Station < ApplicationRecord
     average(:dock_count)
   end
 
-  def self.most_bikes_avilable
+  def self.most_bikes_available
     order(dock_count: :desc).limit(1).first
   end
 end
