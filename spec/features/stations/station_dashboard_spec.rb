@@ -9,5 +9,6 @@ describe "user or admin visits stations dashboard" do
     expect(page).to have_content("Total station count: 3")
     expect(page).to have_content("Average bikes per station: #{Station.avg_bikes_per_station}")
     expect(page).to have_content("Most bikes available at a station: #{Station.most_bikes_available.dock_count}")
+    expect(page).to have_content("Station with most bikes available: #{Station.most_bikes_available.name}")
   end
 end
