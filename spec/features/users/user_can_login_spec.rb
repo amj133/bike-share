@@ -38,6 +38,7 @@ describe "Existing user can logout" do
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Login")
       expect(page).to have_content("Create Account")
+      expect(page).to_not have_link("Logout")
     end
   end
 end
