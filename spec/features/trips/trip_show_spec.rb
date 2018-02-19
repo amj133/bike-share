@@ -39,5 +39,5 @@ describe "user visits trip show page" do
   expect(page).to have_content(trip.bike_id)
   expect(page).to have_content(trip.subscription)
   expect(page).to have_content(trip.zipcode)
-  end 
+  end
 end
