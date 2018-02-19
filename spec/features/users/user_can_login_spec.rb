@@ -26,7 +26,11 @@ describe "Existing user can logout" do
       bob = User.create!(username: "bobrocks",
                          password: "test")
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
+      visit root_path
+      click_on("Login")
+      fill_in("Username", with: "bobrocks")
+      fill_in("Password", with: "test")
+      click_on("Log in")
 
       visit root_path
       click_on('Logout')

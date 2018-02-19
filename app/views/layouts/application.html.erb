@@ -14,6 +14,7 @@
         <%= content_tag :div, msg, class: name %>
       <% end %>
     </div>
+
     <% unless current_user.nil? %>
       <div class="current-user-bar">
         <div class="logged-in-as">
@@ -22,6 +23,7 @@
         <%= link_to "Logout", logout_path, method: :delete %>
       </div>
     <% end %>
+    
     <%= yield %>
   </body>
 </html>
