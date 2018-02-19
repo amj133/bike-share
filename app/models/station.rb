@@ -11,4 +11,8 @@ class Station < ApplicationRecord
   def self.most_bikes_available
     order(dock_count: :desc).limit(1).first
   end
+
+  def self.fewest_bikes_available
+    order(:dock_count).limit(1).first
+  end
 end

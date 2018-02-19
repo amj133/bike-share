@@ -50,5 +50,22 @@ describe Station, type: :model do
 
       expect(Station.most_bikes_available).to eq(station_2)
     end
+
+    it "#fewest_bikes_available returns station with fewest bikes available" do
+      station_1 = Station.create!(name: "blue",
+                      lat: 1,
+                      long: 1,
+                      dock_count: 1,
+                      city: "Richmond",
+                      installation_date: DateTime.now)
+      station_2 = Station.create!(name: "blue",
+                      lat: 1,
+                      long: 1,
+                      dock_count: 5,
+                      city: "Richmond",
+                      installation_date: DateTime.now)
+
+      expect(Station.fewest_bikes_available).to eq(station_1)
+    end
   end
 end
