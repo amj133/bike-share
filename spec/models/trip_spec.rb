@@ -40,5 +40,12 @@ describe Trip, type: :model do
 
       expect(Trip.shortest_ride).to eq(300)
     end
+    it "calculates the station with most starting rides" do
+      create(:trip, start_station_id: 1)
+      create(:trip, start_station_id: 1)
+      create(:trip, start_station_id: 2)
+
+      expect(Trip.most_starting_station).to eq(1)
+    end
   end
 end
