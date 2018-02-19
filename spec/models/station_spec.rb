@@ -45,5 +45,13 @@ describe Station, type: :model do
 
       expect(Station.most_recently_installed).to eq(station_2)
     end
+
+    it "#oldest_station returns correct station" do
+      station_1 = create(:station, installation_date: DateTime.new(2011, 1, 3))
+      station_2 = create(:station, installation_date: DateTime.new(2001, 10, 12))
+      station_3 = create(:station, installation_date: DateTime.new(2005, 10, 11))
+
+      expect(Station.oldest_station).to eq(station_2)
+    end
   end
 end
