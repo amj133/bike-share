@@ -33,5 +33,12 @@ describe Trip, type: :model do
 
       expect(Trip.longest_ride).to eq(500)
     end
+    it "calculates longest ride" do
+      create(:trip, duration: 300)
+      create(:trip, duration: 400)
+      create(:trip, duration: 500)
+
+      expect(Trip.shortest_ride).to eq(300)
+    end
   end
 end
