@@ -12,5 +12,6 @@ describe "user or admin visits stations dashboard" do
     expect(page).to have_content("Station with most bikes available: #{Station.most_bikes_available.name}")
     expect(page).to have_content("Fewest bikes available at a station: #{Station.fewest_bikes_available.dock_count}")
     expect(page).to have_content("Station with fewest bikes available: #{Station.fewest_bikes_available.name}")
+    expect(page).to have_content("Most recently installed station: #{Station.most_recently_installed.name}")
   end
 end
