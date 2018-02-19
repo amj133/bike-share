@@ -45,7 +45,7 @@ describe Trip, type: :model do
       create(:trip, start_station_id: 1)
       create(:trip, start_station_id: 2)
 
-      expect(Trip.most_starting_station).to eq(1)
+      expect(Trip.most_starting_station.id).to eq(1)
     end
   end
 end

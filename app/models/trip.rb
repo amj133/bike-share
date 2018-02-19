@@ -15,11 +15,14 @@ class Trip < ApplicationRecord
   def self.shortest_ride
     order(:duration).first.duration
   end
-  #
-  # def most_starting_station
-  #
-  # end
-  #
+
+  def self.most_starting_station
+    select('start_station_id, COUNT(trips) AS trip_count')
+      .group(:start_station_id)
+      .order('trip_count')
+      .last.start_station
+  end
+
   # def most_ending_station
   #
   # end
