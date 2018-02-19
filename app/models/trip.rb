@@ -11,10 +11,10 @@ class Trip < ApplicationRecord
   def self.longest_ride
     order('duration DESC').first.duration
   end
-  #
-  # def self.shortest_ride
-  #
-  # end
+
+  def self.shortest_ride
+    order(:duration).first.duration
+  end
   #
   # def most_starting_station
   #
