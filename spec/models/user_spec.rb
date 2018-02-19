@@ -5,7 +5,7 @@ require "rails_helper"
       it {should validate_presence_of(:username)}
       it {should validate_uniqueness_of(:username)}
     end
-  end 
+  end
 
     describe "roles" do
       it "can be created as admin" do
@@ -14,15 +14,15 @@ require "rails_helper"
                              role:  1)
 
           expect(kyle.role).to eq("admin")
-          expect(bob.admin?).to be_truthy
+          expect(kyle.admin?).to be_truthy
       end
     end
 
       describe "roles" do
         it "can be created as registered" do
           bob = User.create!(username: "bob",
-                              password: "password",
-                              role:  0)
+                              password: "password"
+                              )
 
           expect(bob.role).to eq("default")
           expect(bob.admin?).to_not be_truthy
