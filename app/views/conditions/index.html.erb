@@ -1,0 +1,12 @@
+<h1>Displaying <%= @conditions.count %> conditions</h1>
+
+<% @conditions.each do |condition| %>
+  <%= condition.date %>
+  <%= condition.max_temp_f %>
+  <%= condition.mean_temp_f %>
+  <%= condition.min_temp_f %>
+  <%= condition.mean_humidity %>
+  <%= condition.mean_visibility_miles %>
+  <%= condition.mean_wind_speed %>
+  <%= condition.precipitation_inches %>
+<% end %>
