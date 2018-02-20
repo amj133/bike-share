@@ -12,5 +12,7 @@
   <li>Bike-id :<%= @trip.bike_id %></li>
   <li>Subscription: <%= @trip.subscription %></li>
   <li>Zipcode: <%= @trip.zipcode %></li></ul>
+  <%= link_to "Delete",   admin_trip_path(@trip), method: "delete"  if current_admin? %>
+  <%= link_to "Edit", edit_admin_trip_path(@trip) if current_admin? %>
   </body>
 </html>
