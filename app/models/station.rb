@@ -51,4 +51,12 @@ class Station < ApplicationRecord
            .order("COUNT(trips) DESC")
            .count.keys.first
   end
+
+  def most_frequent_zipcode
+    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
+           .where("stations.id = #{self.id}")
+           .group("trips.zipcode")
+           .order("COUNT(trips) DESC")
+           .count.keys.first
+  end
 end
