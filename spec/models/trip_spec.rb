@@ -91,7 +91,7 @@ describe Trip, type: :model do
 
       expect(Trip.most_popular_date).to eq("2011-04-05")
     end
-    xit "calculates least popular date to start trip" do
+    it "calculates least popular date to start trip" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 3, 4))

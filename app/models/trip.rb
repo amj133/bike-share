@@ -65,8 +65,13 @@ class Trip < ApplicationRecord
       .first
       .start_date
   end
-  #
-  # def self.least_popular_date
-  #
-  # end
+
+  def self.least_popular_date
+    select('start_date, COUNT(*) as rides_per_date')
+      .group(:start_date)
+      .order('rides_per_date')
+      .first
+      .start_date
+  end
+
 end
