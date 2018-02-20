@@ -6,5 +6,6 @@
     <%= station.dock_count %><br>
     <%= station.city %><br>
     <%= station.installation_date %><br>
+    <%= link_to "Delete",   admin_station_path(station), method: "delete"  if current_admin? %>
   </div>
 <% end %>
