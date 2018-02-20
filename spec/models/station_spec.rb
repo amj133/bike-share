@@ -71,6 +71,17 @@ describe Station, type: :model do
 
       expect(station_1.most_frequent_zipcode).to eq(11311)
     end
+
+    it "#most_frequent_bike_id" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, bike_id: 45, end_station_id: 2, zipcode: 11112, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, bike_id: 32, end_station_id: 2, zipcode: 11311, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, bike_id: 45, end_station_id: 2, zipcode: 11311, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.most_frequent_bike_id).to eq(45)
+    end
   end
 
   describe "class methods" do
