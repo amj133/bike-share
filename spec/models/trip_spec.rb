@@ -70,5 +70,12 @@ describe Trip, type: :model do
       expect(Trip.least_ridden_bike.bike_id).to eq(2)
       expect(Trip.least_ridden_bike.trip_count).to eq(1)
     end
+    it "calculates user subscription type with count" do
+      create(:trip, subscription: "customer")
+      create(:trip, subscription: "customer")
+      create(:trip, subscription: "subscriber")
+
+      expect(Trip.user_subscrip_count).to eq({'customer' => 2, 'subcriber' => 1})
+    end
   end
 end
