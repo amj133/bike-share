@@ -13,6 +13,7 @@ describe "visitor goes to station show page" do
     expect(page).to have_content(station.dock_count)
     expect(page).to have_content(station.city)
     expect(page).to have_content(station.installation_date)
+    expect(page).to_not have_content("Station Analytics")
   end
 end
 
