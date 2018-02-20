@@ -75,7 +75,7 @@ describe Trip, type: :model do
       create(:trip, subscription: "customer")
       create(:trip, subscription: "subscriber")
 
-      expect(Trip.user_subscrip_count).to eq({'customer' => 2, 'subcriber' => 1})
+      expect(Trip.user_subscrip_count).to eq({'customer' => 2, 'subscriber' => 1})
     end
   end
 end

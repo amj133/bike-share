@@ -48,10 +48,10 @@ class Trip < ApplicationRecord
       .first
   end
 
-  # def self.user_subscrip_count
-  #
-  # end
-  #
+  def self.user_subscrip_count
+    group(:subscription).count
+  end
+
   # def self.user_subscrip_percentage
   #
   # end
