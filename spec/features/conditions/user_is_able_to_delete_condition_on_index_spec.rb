@@ -69,5 +69,6 @@ require 'rails_helper'
         click_link("Delete")
 
         expect(page).to_not have_content(condition.date)
+        expect(page).to have_content("Condition deleted.")
       end
     end
