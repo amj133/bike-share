@@ -23,4 +23,10 @@ class Station < ApplicationRecord
   def self.oldest_station
     order("date(installation_date)").first
   end
+
+  def rides_started_count
+    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
+           .where("stations.id = #{self.id}")
+           .count
+  end
 end
