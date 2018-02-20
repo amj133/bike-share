@@ -79,9 +79,13 @@ require 'rails_helper'
         expect(page).to have_content("Edit Trips")
 
         fill_in('Duration', with: '666')
+        fill_in('Zipcode', with: '32218')
+        fill_in('Subscription', with: 'Subscriber')
 
         click_button("Update Trip")
 
         expect(page).to have_content(666)
+        expect(page).to have_content(32218)
+        expect(page).to have_content("Subscriber")
     end
   end
