@@ -54,5 +54,13 @@ describe Trip, type: :model do
 
       expect(Trip.most_ending_station.id).to eq(1)
     end
+    it "calculates the most ridden bike & that bike's trip count" do
+      create(:trip, bike_id: 1)
+      create(:trip, bike_id: 1)
+      create(:trip, bike_id: 2)
+
+      expect(Trip.most_ridden_bike.bike_id).to eq(1)
+      expect(Trip.most_ridden_bike.trip_count).to eq(2)
+    end
   end
 end

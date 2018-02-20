@@ -33,11 +33,14 @@ class Trip < ApplicationRecord
   # def month_breakdown
   #
   # end
-  #
-  # def self.most_ridden_bike
-  #
-  # end
-  #
+
+  def self.most_ridden_bike
+    select('bike_id, COUNT(trips) AS trip_count')
+      .group(:bike_id)
+      .order('trip_count')
+      .last
+  end
+
   # def self.least_ridden_bike
   #
   # end
