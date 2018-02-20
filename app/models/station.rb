@@ -43,4 +43,12 @@ class Station < ApplicationRecord
            .order("COUNT(trips) DESC")
            .count.keys.first
   end
+
+  def most_popular_origination_station_id
+    Station.joins("INNER JOIN trips ON stations.id = trips.end_station_id")
+           .where("stations.id = #{self.id}")
+           .group("trips.start_station_id")
+           .order("COUNT(trips) DESC")
+           .count.keys.first
+  end
 end

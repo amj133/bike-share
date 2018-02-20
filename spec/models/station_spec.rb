@@ -46,7 +46,19 @@ describe Station, type: :model do
       create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
       create(:trip, start_station_id: 1, end_station_id: 3, start_date: DateTime.new(2001, 9, 1))
 
-      expect(station_1.most_popular_destination_station).to eq(station_2.id)
+      expect(station_1.most_popular_destination_station_id).to eq(station_2.id)
+    end
+
+    it "#most_popular_origination_station_id" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      station_3 = create(:station, id: 3)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 3, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_2.most_popular_origination_station_id).to eq(station_1.id)
     end
   end
 
