@@ -30,7 +30,7 @@ describe "visitor sees trips index" do
     expect(page).to have_content("Displaying Trips 31-60")
     expect(page).to have_content(Trip.all[30].zipcode)
     expect(page).to have_content(Trip.all[59].zipcode)
-    expect(page).to_not have_content(Trip.all[29].zipcode)
+    expect(page).to_not have_content(Trip.all[29].subscription)
 
     click_on "Previous Page"
 
