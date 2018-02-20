@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :condition do
-    date(DateTime.now)
+    sequence(:date) { |n| DateTime.new(2001, 9, n) }
     sequence(:max_temp_f) { |n| n.to_f}
     sequence(:mean_temp_f) { |n| n.to_f}
     sequence(:min_temp_f) { |n| n.to_f}
@@ -10,3 +10,4 @@ FactoryBot.define do
     sequence(:precipitation_inches) { |n| n.to_f}
   end
 end
+  
