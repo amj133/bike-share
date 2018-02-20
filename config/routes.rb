@@ -19,5 +19,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :conditions, only: [:index, :show, :destroy]
+     resources :stations, only: [:index ,:show, :destroy]
   end
 end
