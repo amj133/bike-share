@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :trip do
     sequence(:duration) { |n| n}
-    start_date(DateTime.now)
-    end_date(DateTime.now)
+    start_date(DateTime.new(2001, 9, 11))
+    end_date(DateTime.new(2001, 9, 12))
     sequence(:bike_id) { |n| n}
     sequence(:subscription) { |n| "subscription#{n}"}
     sequence(:zipcode) { |n| n}
