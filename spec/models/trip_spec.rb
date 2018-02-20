@@ -77,5 +77,12 @@ describe Trip, type: :model do
 
       expect(Trip.user_subscrip_count).to eq({'customer' => 2, 'subscriber' => 1})
     end
+    it "calculates user subscription type with percentage" do
+      create(:trip, subscription: "customer")
+      create(:trip, subscription: "customer")
+      create(:trip, subscription: "subscriber")
+
+      expect(Trip.user_subscrip_count).to eq({'customer' => (2/3), 'subscriber' => (1/3)})
+    end
   end
 end
