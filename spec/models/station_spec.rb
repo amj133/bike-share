@@ -20,7 +20,7 @@ describe Station, type: :model do
     it "#rides_started_count" do
       station_1 = create(:station)
       station_2 = create(:station)
-      create(:condition)
+      create(:condition, date: DateTime.new(2001, 9, 1))
       create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
       create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
 
@@ -59,6 +59,18 @@ describe Station, type: :model do
       create(:trip, start_station_id: 3, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
 
       expect(station_2.most_popular_origination_station_id).to eq(station_1.id)
+    end
+
+    it "#date_with_highest_trips_started" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:condition, date: DateTime.new(2001, 9, 2))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 2))
+      create(:trip, start_station_id: 1, end_station_id: 1, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.date_with_highest_trips_started).to eq(DateTime.new(2001, 9, 1))
     end
 
     it "#most_frequent_zipcode" do
