@@ -17,19 +17,28 @@ describe "visitor goes to station show page" do
 end
 
 describe "user goes to station show page" do
-  xit "displays number of rides started at station" do
+  it "displays analytics specific to that station" do
     bob = User.create!(username: "bobrocks",
                        password: "test")
-    create(:station)
-    create(:station)
-    create(:condition)
-    create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
-    create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+    station_1 = create(:station, id: 1)
+    station_2 = create(:station, id: 2)
+    station_3 = create(:station, id: 3)
+    create(:condition, date: DateTime.new(2001, 9, 1))
+    create(:condition, date: DateTime.new(2001, 9, 2))
+    create(:trip, start_station_id: 1, bike_id: 31, zipcode: 113111, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+    create(:trip, start_station_id: 1, bike_id: 29, zipcode: 115111, end_station_id: 2, start_date: DateTime.new(2001, 9, 2))
+    create(:trip, start_station_id: 1, bike_id: 31, zipcode: 113111, end_station_id: 1, start_date: DateTime.new(2001, 9, 1))
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
 
-    visit station_path(Station.last)
+    visit station_path(Station.first)
 
-    expect(page).to have_content("Number of rides started here: 2")
+    expect(page).to have_content("Number of rides started here: 3")
+    expect(page).to have_content("Number of rides ended here: 1")
+    expect(page).to have_content("Most frequent destination station: 2")
+    expect(page).to have_content("Most frequent origination station: 1")
+    expect(page).to have_content("Date with highest trips started: 9/1/2001")
+    expect(page).to have_content("Most frequent zipcode of bikers: 11311")
+    expect(page).to have_content("Bike ID that starts here most: 31")
   end
 end

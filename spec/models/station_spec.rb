@@ -70,7 +70,7 @@ describe Station, type: :model do
       create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 2))
       create(:trip, start_station_id: 1, end_station_id: 1, start_date: DateTime.new(2001, 9, 1))
 
-      expect(station_1.date_with_highest_trips_started).to eq(DateTime.new(2001, 9, 1))
+      expect(station_1.date_with_highest_trips_started).to eq("9/1/2001")
     end
 
     it "#most_frequent_zipcode" do

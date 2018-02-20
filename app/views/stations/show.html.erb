@@ -6,4 +6,16 @@
   Dock Count: <%= @station.dock_count %><br>
   City: <%= @station.city %><br>
   Installation Date: <%= @station.installation_date %>
+
+  <% if current_user %>
+    <div class="show-station-analytics">
+      Number of rides started here: <%= @station.rides_started_count %>
+      Number of rides ended here: <%= @station.rides_ended_count %>
+      Most frequent destination station: <%= @station.most_popular_destination_station_id %>
+      Most frequent origination station: <%= @station.most_popular_origination_station_id %>
+      Date with highest trips started: <%= @station.date_with_highest_trips_started %>
+      Most frequent zipcode of bikers: <%= @station.most_frequent_zipcode %>
+      Bike ID that starts here most: <%= @station.most_frequent_bike_id %>
+    </div>
+  <% end %>
 </div>

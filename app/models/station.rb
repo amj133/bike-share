@@ -57,7 +57,7 @@ class Station < ApplicationRecord
            .where("stations.id = #{self.id}")
            .group("trips.start_date")
            .order("COUNT(trips) DESC")
-           .count.keys.first
+           .count.keys.first.strftime("%-m/%-d/%Y")
   end
 
   def most_frequent_zipcode
