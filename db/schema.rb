@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20180219175949) do
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
-    t.datetime "start_date"
+    t.bigint "start_date_id"
     t.bigint "start_station_id"
     t.datetime "end_date"
     t.bigint "end_station_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180219175949) do
     t.string "subscription"
     t.integer "zipcode"
     t.index ["end_station_id"], name: "index_trips_on_end_station_id"
+    t.index ["start_date_id"], name: "index_trips_on_start_date_id"
     t.index ["start_station_id"], name: "index_trips_on_start_station_id"
   end
 
