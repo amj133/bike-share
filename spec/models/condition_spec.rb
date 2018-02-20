@@ -18,9 +18,11 @@ describe Condition, type: :model do
 
   describe "class methods" do
     xit "#group_by_10_degree_intervals" do
-      create_list(:trips, 8)
-      create_list(:condition, 15)
-
+      create(:station, id: 1)
+      create(:station, id: 2)
+      create_list(:condition, 15, max_temp_f: 8)
+      create_list(:trip, 8, start_station_id: 1, end_station_id: 2)
+      
       expect(Condition.group_by_10_degree_intervals).to eq()
     end
   end
