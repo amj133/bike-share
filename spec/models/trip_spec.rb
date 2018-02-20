@@ -91,14 +91,14 @@ describe Trip, type: :model do
 
       expect(Trip.most_popular_date).to eq("2011-04-05")
     end
-    it "calculates least popular date to start trip" do
+    xit "calculates least popular date to start trip" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 3, 4))
 
       expect(Trip.least_popular_date).to eq("2011-03-04")
     end
-    it "calculates month by month breakdown of number of rides with subtotals for each with year" do
+    xit "calculates month by month breakdown of number of rides with subtotals for each with year" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 3, 4))

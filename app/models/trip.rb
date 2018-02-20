@@ -52,13 +52,19 @@ class Trip < ApplicationRecord
     group(:subscription).count
   end
 
-  # def self.user_subscrip_percentage
-  #
-  # end
-  #
-  # def self.most_popular_date
-  #
-  # end
+  def self.user_subscrip_percentage
+    user_subscrip_count.transform_values do |count|
+      count / Trip.count.to_f
+    end
+  end
+
+  def self.most_popular_date
+    select('start_date, COUNT(*) as rides_per_date')
+      .group(:start_date)
+      .order('rides_per_date DESC')
+      .first
+      .start_date
+  end
   #
   # def self.least_popular_date
   #
