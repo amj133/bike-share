@@ -41,10 +41,13 @@ class Trip < ApplicationRecord
       .last
   end
 
-  # def self.least_ridden_bike
-  #
-  # end
-  #
+  def self.least_ridden_bike
+    select('bike_id, COUNT(trips) AS trip_count')
+      .group(:bike_id)
+      .order('trip_count')
+      .first
+  end
+
   # def self.user_subscrip_count
   #
   # end
