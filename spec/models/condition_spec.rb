@@ -15,4 +15,13 @@ describe Condition, type: :model do
   describe "relationships" do
     it {should have_many :trips}
   end
+
+  describe "class methods" do
+    xit "#group_by_10_degree_intervals" do
+      create_list(:trips, 8)
+      create_list(:condition, 15)
+
+      expect(Condition.group_by_10_degree_intervals).to eq()
+    end
+  end
 end
