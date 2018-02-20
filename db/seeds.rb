@@ -38,7 +38,7 @@ trips.each do |row|
               end_station_id: row[:end_station_id].to_i,
               bike_id: row[:bike_id].to_i,
               subscription: row[:subscription_type])
-              # zipcode: row[:zip_code].to_i)
+              zipcode: row[:zip_code].to_i)
 end
 
 conditions = CSV.open('db/csv/weather.csv', headers: true, header_converters: :symbol)
