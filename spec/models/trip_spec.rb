@@ -98,12 +98,13 @@ describe Trip, type: :model do
 
       expect(Trip.least_popular_date).to eq("2011-03-04")
     end
-    xit "calculates month by month breakdown of number of rides with subtotals for each with year" do
+    it "calculates month by month breakdown of number of rides with subtotals for each with year" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))
-      create(:trip, start_date: DateTime.new(2011, 4, 5))
+      create(:trip, start_date: DateTime.new(2011, 4, 6))
       create(:trip, start_date: DateTime.new(2011, 3, 4))
+      create(:trip, start_date: DateTime.new(2012, 3, 4))
 
-      expect(Trip.month_breakdown).to eq("2011-03-04")
+      expect(Trip.month_breakdown).to eq({"03/2011" => 1, "04/2011" => 2, "03/2012" => 1})
     end
   end
 end

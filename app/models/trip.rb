@@ -30,9 +30,12 @@ class Trip < ApplicationRecord
       .last.end_station
   end
 
-  # def month_breakdown
-  #
-  # end
+  def self.month_breakdown
+    order("DATE_TRUNC('month', start_date)")
+      .group("DATE_TRUNC('month', start_date)")
+      .count
+      .transform_keys {|time| time.strftime("%m/%Y")}
+  end
 
   def self.most_ridden_bike
     select('bike_id, COUNT(trips) AS trip_count')
