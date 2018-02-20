@@ -1,4 +1,5 @@
 class StationsController < ApplicationController
+  before_action :require_current_user, only: [:dashboard]
 
   def index
     @stations = Station.all
@@ -6,6 +7,16 @@ class StationsController < ApplicationController
 
   def show
     @station = Station.find(params[:id])
+  end
+
+  def dashboard
+    @stations = Station.all
+  end
+
+  private
+
+  def require_current_user
+    render file: '/public/404' unless current_user
   end
 
 end
