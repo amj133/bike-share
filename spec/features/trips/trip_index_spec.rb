@@ -28,13 +28,13 @@ describe "visitor sees trips index" do
     click_on "Next Page"
 
     expect(page).to have_content("Displaying Trips 31-60")
-    expect(page).to have_content(Trip.all[30].duration)
-    expect(page).to have_content(Trip.all[59].duration)
-    expect(page).to_not have_content(Trip.all[29].duration)
+    expect(page).to have_content(Trip.all[30].zipcode)
+    expect(page).to have_content(Trip.all[59].zipcode)
+    expect(page).to_not have_content(Trip.all[29].zipcode)
 
     click_on "Previous Page"
 
     have_content(Trip.first.duration)
-    expect(page).to have_content(Trip.all[29].duration)
+    expect(page).to have_content(Trip.all[29].zipcode)
   end
 end

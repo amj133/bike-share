@@ -10,6 +10,8 @@ Displaying Trips <%= @first_trip %>-<%= @last_trip %>
     <%= trip.bike_id %>
     <%= trip.subscription %>
     <%= trip.zipcode %>
+    <%= link_to "Delete",   admin_trip_path(trip), method: "delete"  if current_admin? %>
+    <%= link_to "Edit", edit_admin_trip_path(trip) if current_admin? %>
   </div>
 <% end %>
 
