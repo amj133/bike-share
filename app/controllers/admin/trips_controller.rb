@@ -17,7 +17,7 @@ class Admin::TripsController < Admin::BaseController
    @trip = Trip.find(params[:id])
    @trip.update(trip_params)
     if @trip.save
-      redirect_to admin_trips_path
+      redirect_to trips_path
     else
      render :edit
     end
@@ -29,5 +29,4 @@ class Admin::TripsController < Admin::BaseController
     params.require(:trip).permit(:duration, :start_date, :start_station_id, :end_date,
                                 :end_station_id, :bike_id, :subscription, :zipcode )
   end
-
 end
