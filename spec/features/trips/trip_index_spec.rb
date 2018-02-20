@@ -4,9 +4,10 @@ describe "visitor sees trips index" do
   before(:context) do
     create(:station)
     create(:station)
-    create(:condition)
-    create_list(:trip, 61)
+    create(:condition, date: DateTime.new(2001, 9, 1))
+    create_list(:trip, 61, start_date: DateTime.new(2001, 9, 1))
   end
+
   it "displays first 30 trips per page" do
     visit trips_path
 
@@ -23,6 +24,7 @@ describe "visitor sees trips index" do
     expect(page).to_not have_content(Trip.last.duration)
     expect(page).to have_link("Next Page")
   end
+
   it "displays next 30 trips to visitor" do
     visit trips_path
 

@@ -3,9 +3,9 @@ require 'rails_helper'
   describe "user visits trip show page" do
     it "user sees all atributes of trip" do
 
-    create(:condition)
+    create(:condition, date: DateTime.new(2001, 9 ,1))
     station = Station.create!(name: "Big Bikes", lat: 123456, long:223523, dock_count:22, city:"denver" ,installation_date: Time.now)
-    trip = Trip.create!(duration: 73, start_date: DateTime.new(2001, 9 ,11), start_station_id: 1,
+    trip = Trip.create!(duration: 73, start_date: DateTime.new(2001, 9 ,1), start_station_id: 1,
     end_date: DateTime.new(2001, 9, 12), end_station_id: 1, bike_id: 22, subscription: "Subscriber",
     zipcode: 32218)
 
@@ -25,9 +25,9 @@ end
 describe "user visits trip show page" do
   it "user sees all atributes of trip" do
 
-  create(:condition)
+  create(:condition, date: DateTime.new(2001, 9 ,1))
   station = Station.create!(name: "Super Bikes", lat: 12342342, long:2342342, dock_count:22, city:"Jacksonville" ,installation_date: Time.now)
-  trip = Trip.create!(duration: 23, start_date: DateTime.new(2001, 9, 11), start_station_id: 1,
+  trip = Trip.create!(duration: 23, start_date: DateTime.new(2001, 9, 1), start_station_id: 1,
   end_date: DateTime.new(2001, 9, 12), end_station_id: 1, bike_id: 23, subscription: "Subscriber",
   zipcode: 80205)
 
