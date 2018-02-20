@@ -16,6 +16,18 @@ describe Station, type: :model do
     it {should have_many(:statuses)}
   end
 
+  describe "instance methods" do
+    it "#rides_started_count" do
+      station_1 = create(:station)
+      station_2 = create(:station)
+      create(:condition)
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.rides_started_count).to eq(2)
+    end
+  end
+
   describe "class methods" do
     it "#avg_bikes_per_station returns proper value" do
       create(:station, dock_count: 1)

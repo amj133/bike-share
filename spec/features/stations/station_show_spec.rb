@@ -17,7 +17,7 @@ describe "visitor goes to station show page" do
 end
 
 describe "user goes to station show page" do
-  it "displays number of rides started at station" do
+  xit "displays number of rides started at station" do
     bob = User.create!(username: "bobrocks",
                        password: "test")
     create(:station)
