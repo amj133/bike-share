@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
-  resources :conditions, only: [:index, :show]
+  resources :conditions, only: [:index, :show, :destroy]
 
   resources :stations, only: [:index, :show]
   get "/stations-dashboard", to: "stations#dashboard"
