@@ -20,8 +20,6 @@ require 'rails_helper'
 
         visit trips_path
 
-
-
-        expect(page).to have_link("Delete")
+       expect(page).to have_link("Delete")
     end
   end
