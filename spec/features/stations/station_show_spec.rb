@@ -15,3 +15,21 @@ describe "visitor goes to station show page" do
     expect(page).to have_content(station.installation_date)
   end
 end
+
+describe "user goes to station show page" do
+  it "displays number of rides started at station" do
+    bob = User.create!(username: "bobrocks",
+                       password: "test")
+    create(:station)
+    create(:station)
+    create(:condition)
+    create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+    create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
+
+    visit station_path(Station.last)
+
+    expect(page).to have_content("Number of rides started here: 2")
+  end
+end
