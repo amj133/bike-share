@@ -9,5 +9,5 @@
   <%= condition.mean_visibility_miles %>
   <%= condition.mean_wind_speed %>
   <%= condition.precipitation_inches %>
-  <%= link_to "Delete",   condition_path(condition), method: "delete" %>
+  <%= link_to "Delete",   admin_condition_path(condition), method: "delete"  if current_admin? %>
 <% end %>

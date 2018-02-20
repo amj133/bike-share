@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :trips, only: [:index, :show]
 
-  resources :conditions, only: [:index, :show, :destroy]
+  resources :conditions, only: [:index, :show]
 
   resources :stations, only: [:index, :show]
   get "/stations-dashboard", to: "stations#dashboard"
@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  namespace :admin do
+    resources :conditions, only: [:index, :show, :destroy]
+  end
 end
