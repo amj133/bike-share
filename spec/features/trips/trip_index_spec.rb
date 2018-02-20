@@ -4,6 +4,7 @@ describe "visitor sees trips index" do
   before(:context) do
     create(:station)
     create(:station)
+    create(:condition)
     create_list(:trip, 61)
   end
   it "displays first 30 trips per page" do
