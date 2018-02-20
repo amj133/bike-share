@@ -29,4 +29,10 @@ class Station < ApplicationRecord
            .where("stations.id = #{self.id}")
            .count
   end
+
+  def rides_ended_count
+    Station.joins("INNER JOIN trips ON stations.id = trips.end_station_id")
+           .where("stations.id = #{self.id}")
+           .count
+  end
 end

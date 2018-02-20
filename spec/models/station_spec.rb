@@ -26,6 +26,16 @@ describe Station, type: :model do
 
       expect(station_1.rides_started_count).to eq(2)
     end
+
+    it "#rides_ended_count" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 2, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_2.rides_ended_count).to eq(2)
+    end
   end
 
   describe "class methods" do
