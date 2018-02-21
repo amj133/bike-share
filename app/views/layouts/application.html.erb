@@ -15,6 +15,10 @@
       <% end %>
     </div>
 
+    <div class="cart-count">
+      <%= @cart.total_count %>
+    </div>
+
     <% unless current_user.nil? %>
       <div class="current-user-bar">
         <div class="logged-in-as">
@@ -23,7 +27,7 @@
         <%= link_to "Logout", logout_path, method: :delete %>
       </div>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>
