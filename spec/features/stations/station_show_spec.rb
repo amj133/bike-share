@@ -6,7 +6,7 @@ describe "visitor goes to station show page" do
 
     visit station_path(station.slug)
 
-    expect(current_path).to eq('/name1')
+    expect(current_path).to eq(station_path(station.slug))
     expect(page).to have_content("Station #{station.name}")
     expect(page).to have_content(station.lat)
     expect(page).to have_content(station.long)
@@ -18,7 +18,7 @@ describe "visitor goes to station show page" do
 end
 
 describe "user goes to station show page" do
-  xit "displays analytics specific to that station" do
+  it "displays analytics specific to that station" do
     bob = User.create!(username: "bobrocks",
                        password: "test")
     station_1 = create(:station, id: 1, name: 'station1')
@@ -31,7 +31,7 @@ describe "user goes to station show page" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
 
-    visit station_path(Station.first)
+    visit station_path(Station.first.slug)
 
     expect(page).to have_content("Number of rides started here: 3")
     expect(page).to have_content("Number of rides ended here: 1")
