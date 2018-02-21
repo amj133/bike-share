@@ -2,9 +2,11 @@ require "rails_helper"
 
 describe "user visits trip dashboard" do
   it "displays trip analytics" do
+    user = User.new(username: "Guy Fieri", password: "donkey$auce")
     create(:station)
     create(:station)
     create_list(:trip, 20)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit trips_dashboard_path
 

@@ -5,8 +5,8 @@ class Trip < ApplicationRecord
   belongs_to :start_station, class_name: 'Station', foreign_key: 'start_station_id'
 
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
-  
-  belongs_to :condition, class_name: 'Condition', foreign_key: 'start_date', primary_key: 'date'
+
+  has_one :condition, class_name: 'Condition', foreign_key: 'date'
 
   def self.avg_ride_duration
     average(:duration)
