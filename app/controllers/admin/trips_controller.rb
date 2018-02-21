@@ -16,7 +16,7 @@ class Admin::TripsController < Admin::BaseController
   end
 
   def create
-    @trip = Trip.create!(trip_params)
+    @trip = Trip.new(trip_params)
     if @trip.save
      flash.notice = "New trip created."
       redirect_to trip_path(@trip)
