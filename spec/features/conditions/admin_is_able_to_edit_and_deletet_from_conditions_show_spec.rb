@@ -21,7 +21,6 @@ require 'rails_helper'
         expect(page).to have_content(condition.date)
         expect(page).to have_link("Edit")
         expect(page).to have_link("Delete")
-        save_and_open_page
     end
   end
 
