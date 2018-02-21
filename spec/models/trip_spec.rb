@@ -34,6 +34,16 @@ describe Trip, type: :model do
 
       expect(Trip.longest_ride).to eq(500)
     end
+    it "finds weather of longest ride" do
+      date = DateTime.new(2001, 9, 1)
+      other = DateTime.new(2001, 12, 1)
+      create(:condtion, date: date)
+      create(:trip, duration: 300, start_date: other)
+      create(:trip, duration: 400, start_date: date)
+      create(:trip, duration: 500, start_date: date)
+
+      expect(Trip.longest_ride_date).to eq(date)
+    end
     it "calculates longest ride" do
       create(:trip, duration: 300)
       create(:trip, duration: 400)
