@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :conditions, only: [:index, :show]
 
-  resources :stations, only: [:index, :show]
+  resources :stations, only: [:index, :show], param: :slug
   get "/stations-dashboard", to: "stations#dashboard"
 
   resources :users, only: [:show, :new, :create]
