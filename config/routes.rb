@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   get "/dashboard", to: "users#show"
 
+  resources :carts, only: [:create]
+
+  get "/bike-shop", to: "accessories#index"
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

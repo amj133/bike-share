@@ -7,7 +7,7 @@ describe "visitor can add accessories to cart" do
                                  description: "awesome blue helmet",
                                  price: 3450)
 
-      visit accessories_path
+      visit bike_shop_path
       click_on("Add to cart")
 
       expect(page).to have_content("You now have 1 #{helmet.name} in your cart.")
