@@ -7,10 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-stations = CSV.open('db/csv/station.csv', headers: true, header_converters: :symbol)
+stations = CSV.open('db/fixtures/station_fixture.csv', headers: true, header_converters: :symbol)
 stations.each do |row|
   date_split = row[:installation_date].split("/")
-  Station.create(name: row[:name],
+  Station.create(id: row[:id],
+                 name: row[:name],
                  lat: row[:lat].to_f,
                  long: row[:long].to_f,
                  dock_count: row[:dock_count].to_i,
@@ -18,30 +19,7 @@ stations.each do |row|
                  installation_date: DateTime.new(date_split[2].to_i, date_split[0].to_i, date_split[1].to_i))
 end
 
-statuses = CSV.open('db/csv/status.csv', headers: true, header_converters: :symbol)
-statuses.each do |row|
-  date_time_split = row[:time].split(/[\/: ]/)
-  Status.create(station_id: row[:station_id].to_i,
-                bikes_available: row[:bikes_available].to_i,
-                docks_available: row[:docks_available].to_i,
-                time: DateTime.new(date_time_split[0].to_i, date_time_split[1].to_i, date_time_split[2].to_i, date_time_split[3].to_i, date_time_split[4].to_i, date_time_split[5].to_i))
-end
-
-trips = CSV.open('db/csv/trip.csv', headers: true, header_converters: :symbol)
-trips.each do |row|
-  start_date_split = row[:start_date].split[0].split("/")
-  end_date_split = row[:end_date].split[0].split("/")
-  Trip.create(duration: row[:duration].to_i,
-              start_date: DateTime.new(start_date_split[2].to_i, start_date_split[0].to_i, start_date_split[1].to_i),
-              start_station_id: row[:start_station_id].to_i,
-              end_date: DateTime.new(end_date_split[2].to_i, end_date_split[0].to_i, end_date_split[1].to_i),
-              end_station_id: row[:end_station_id].to_i,
-              bike_id: row[:bike_id].to_i,
-              subscription: row[:subscription_type])
-              zipcode: row[:zip_code].to_i)
-end
-
-conditions = CSV.open('db/csv/weather.csv', headers: true, header_converters: :symbol)
+conditions = CSV.open('db/fixtures/weather_fixture.csv', headers: true, header_converters: :symbol)
 conditions.each do |row|
   date_split = row[:date].split("/")
   Condition.create(date: DateTime.new(date_split[2].to_i, date_split[0].to_i, date_split[1].to_i),
@@ -68,4 +46,28 @@ conditions.each do |row|
                    events: row[:events].to_f,
                    wind_dir_degrees: row[:wind_dir_degrees].to_f,
                    zipcode: row[:zip_code].to_i)
+end
+
+# statuses = CSV.open('db/csv/status.csv', headers: true, header_converters: :symbol)
+# statuses.each do |row|
+#   date_time_split = row[:time].split(/[\/: ]/)
+#   Status.create(station_id: row[:station_id].to_i,
+#                 bikes_available: row[:bikes_available].to_i,
+#                 docks_available: row[:docks_available].to_i,
+#                 time: DateTime.new(date_time_split[0].to_i, date_time_split[1].to_i, date_time_split[2].to_i, date_time_split[3].to_i, date_time_split[4].to_i, date_time_split[5].to_i))
+# end
+
+trips = CSV.open('db/fixtures/trip_fixture.csv', headers: true, header_converters: :symbol)
+trips.each do |row|
+  start_date_split = row[:start_date].split[0].split("/")
+  end_date_split = row[:end_date].split[0].split("/")
+  Trip.create(id: row[:id],
+              duration: row[:duration].to_i,
+              start_date: DateTime.new(start_date_split[2].to_i, start_date_split[0].to_i, start_date_split[1].to_i),
+              start_station_id: row[:start_station_id].to_i,
+              end_date: DateTime.new(end_date_split[2].to_i, end_date_split[0].to_i, end_date_split[1].to_i),
+              end_station_id: row[:end_station_id].to_i,
+              bike_id: row[:bike_id].to_i,
+              subscription: row[:subscription_type],
+              zipcode: row[:zip_code].to_i)
 end
