@@ -1,8 +1,23 @@
 <h1>Trips Dashboard</h1>
 
 <%= Trip.avg_ride_duration %>
-<%= Trip.longest_ride %>
-<%= Trip.shortest_ride %>
+The longest ride lasted: <%= Trip.longest_ride.duration %> minutes.
+
+Weather during the longest ride:
+
+<li>Mean Temp: <%=
+Trip.longest_ride.condition.mean_temp_f %></li>
+<li>Mean Wind Speed: <%= Trip.longest_ride.condition.mean_wind_speed %></li>
+<li>Mean Humidity: <%= Trip.longest_ride.condition.mean_humidity %></li>
+<li>Cloud Cover: <%= Trip.longest_ride.condition.cloud_cover%></li>
+
+The shortest ride lasted <%= Trip.shortest_ride.duration %> minutes.
+
+Weather during the shortest ride:
+<li>Mean Temp: <%= Trip.shortest_ride.condition.mean_temp_f %></li>
+<li>Mean Wind Speed: <%= Trip.shortest_ride.condition.mean_wind_speed %></li>
+<li>Mean Humidity: <%= Trip.shortest_ride.condition.mean_humidity %></li>
+<li>Cloud Cover: <%= Trip.shortest_ride.condition.cloud_cover%></li>
 
 <%= Trip.most_starting_station.name %>
 <%= Trip.most_starting_station.city %>

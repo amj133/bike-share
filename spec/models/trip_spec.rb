@@ -14,7 +14,7 @@ describe Trip, type: :model do
   describe "relationships" do
     it {should belong_to :start_station}
     it {should belong_to :end_station}
-    it {should belong_to :condition}
+    it {should have_one :condition}
   end
   describe "class methods" do
     before(:context) do
@@ -32,14 +32,32 @@ describe Trip, type: :model do
       create(:trip, duration: 400)
       create(:trip, duration: 500)
 
-      expect(Trip.longest_ride).to eq(500)
+      expect(Trip.longest_ride.duration).to eq(500)
+    end
+    it "finds weather of longest ride" do
+      date = DateTime.new(2001, 9, 1)
+      date_2 = DateTime.new(2001, 8, 1)
+      condition = create(:condition, date: date)
+      create(:trip, duration: 300, start_date: date_2)
+      create(:trip, duration: 500, start_date: date)
+
+      expect(Trip.longest_ride.condition).to eq(condition)
     end
     it "calculates longest ride" do
       create(:trip, duration: 300)
       create(:trip, duration: 400)
       create(:trip, duration: 500)
 
-      expect(Trip.shortest_ride).to eq(300)
+      expect(Trip.shortest_ride.duration).to eq(300)
+    end
+    it "finds weather of shortest ride" do
+      date = DateTime.new(2001, 9, 1)
+      date_2 = DateTime.new(2001, 8, 1)
+      condition = create(:condition, date: date)
+      create(:trip, duration: 400, start_date: date)
+      create(:trip, duration: 500, start_date: date_2)
+
+      expect(Trip.shortest_ride.condition).to eq(condition)
     end
     it "calculates the station with most starting rides" do
       create(:trip, start_station_id: 1)
