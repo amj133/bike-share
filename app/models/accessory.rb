@@ -1,0 +1,4 @@
+class Accessory < ApplicationRecord
+
+
+end 
