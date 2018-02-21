@@ -10,4 +10,5 @@
   <%= condition.mean_wind_speed %>
   <%= condition.precipitation_inches %>
   <%= link_to "Delete",   admin_condition_path(condition), method: "delete"  if current_admin? %>
+  <%= link_to "Edit", edit_admin_condition_path(condition) if current_admin? %>
 <% end %>
