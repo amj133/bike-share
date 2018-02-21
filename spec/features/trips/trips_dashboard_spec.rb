@@ -3,9 +3,12 @@ require "rails_helper"
 describe "user visits trip dashboard" do
   it "displays trip analytics" do
     user = User.new(username: "Guy Fieri", password: "donkey$auce")
-    create(:station)
-    create(:station)
-    create_list(:trip, 20)
+    date = DateTime.new(2001, 9, 1)
+    create(:condition, date: date)
+    create(:station, id: 1)
+    create(:station, id: 2)
+    create(:trip, duration: 300, start_date: date)
+    create(:trip, duration: 500, start_date: date)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit trips_dashboard_path
@@ -28,9 +31,12 @@ describe "user visits trip dashboard" do
   end
   it "displays weather stats for longest and shortest rides" do
     user = User.new(username: "Guy Fieri", password: "donkey$auce")
-    create(:station)
-    create(:station)
-    create_list(:trip, 20)
+    date = DateTime.new(2001, 9, 1)
+    create(:condition, date: date)
+    create(:station, id: 1)
+    create(:station, id: 2)
+    create(:trip, duration: 300, start_date: date)
+    create(:trip, duration: 500, start_date: date)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit trips_dashboard_path
