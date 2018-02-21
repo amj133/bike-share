@@ -6,18 +6,18 @@ class Trip < ApplicationRecord
 
   belongs_to :end_station, class_name: 'Station', foreign_key: 'end_station_id'
 
-  has_one :condition, class_name: 'Condition', foreign_key: 'date'
+  has_one :condition, class_name: 'Condition', foreign_key: 'date', primary_key: 'start_date'
 
   def self.avg_ride_duration
     average(:duration)
   end
 
   def self.longest_ride
-    order('duration DESC').first.duration
+    order('duration DESC').first
   end
 
   def self.shortest_ride
-    order(:duration).first.duration
+    order(:duration).first
   end
 
   def self.most_starting_station
