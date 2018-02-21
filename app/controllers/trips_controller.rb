@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_action :require_current_user, only: [:dashboard]
+  
   def index
    if !params.include?('first')
      @first_trip, @last_trip = 1, 30
@@ -12,5 +14,14 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
+  def dashboard
+
+  end
+  
+  private
+
+  def require_current_user
+    render file: '/public/404' unless current_user
+  end
 
 end

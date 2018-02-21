@@ -1,0 +1,35 @@
+<h1>Trips Dashboard</h1>
+
+<%= Trip.avg_ride_duration %>
+<%= Trip.longest_ride %>
+<%= Trip.shortest_ride %>
+
+<%= Trip.most_starting_station.name %>
+<%= Trip.most_starting_station.city %>
+
+<%= Trip.most_ending_station.name %>
+<%= Trip.most_ending_station.city %>
+
+<%= Trip.most_ridden_bike.bike_id %>
+<%= Trip.most_ridden_bike.trip_count %>
+<%= Trip.least_ridden_bike.bike_id %>
+<%= Trip.least_ridden_bike.trip_count %>
+
+<%= Trip.most_popular_date %>
+<%= Trip.least_popular_date %>
+
+<% Trip.month_breakdown.each do |my, ride_number| %>
+   <% if ride_number != 1 %>
+     <li> <%= ride_number %> rides in <%= my %> </li>
+   <% else %>
+      <li> <%= ride_number %> ride in <%= my %> </li>
+   <% end %>
+<% end %>
+
+<% Trip.user_subscrip_count.each do |type, number_of| %>
+  <li>There are <%= number_of %> "<%= type %>" subcriptions</li>
+<% end %>
+
+<% Trip.user_subscrip_percentage.each do |type, percent| %>
+   <li>"<%= type %>" makes up %<%= percent %> of all subscriptions  </li>
+<% end %>
