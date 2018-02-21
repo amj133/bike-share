@@ -115,5 +115,6 @@ require 'rails_helper'
         expect(page).to have_content("Displaying 1 conditions")
         expect(page).to have_content("Delete")
         expect(page).to have_content("Edit")
+
       end
     end
