@@ -4,9 +4,9 @@ describe "visitor goes to station show page" do
   it "displays all attributes for that station" do
     station = create(:station)
 
-    visit station_path(station)
+    visit station_path(station.slug)
 
-    expect(current_path).to eq('/stations/1')
+    expect(current_path).to eq(station_path(station.slug))
     expect(page).to have_content("Station #{station.name}")
     expect(page).to have_content(station.lat)
     expect(page).to have_content(station.long)
@@ -31,7 +31,7 @@ describe "user goes to station show page" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
 
-    visit station_path(Station.first)
+    visit station_path(Station.first.slug)
 
     expect(page).to have_content("Number of rides started here: 3")
     expect(page).to have_content("Number of rides ended here: 1")
