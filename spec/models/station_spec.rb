@@ -16,6 +16,86 @@ describe Station, type: :model do
     it {should have_many(:statuses)}
   end
 
+  describe "instance methods" do
+    it "#rides_started_count" do
+      station_1 = create(:station)
+      station_2 = create(:station)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.rides_started_count).to eq(2)
+    end
+
+    it "#rides_ended_count" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 2, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_2.rides_ended_count).to eq(2)
+    end
+
+    it "#most_popular_destination_station_id" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      station_3 = create(:station, id: 3)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 3, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.most_popular_destination_station_id).to eq(station_2.id)
+    end
+
+    it "#most_popular_origination_station_id" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      station_3 = create(:station, id: 3)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 3, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_2.most_popular_origination_station_id).to eq(station_1.id)
+    end
+
+    it "#date_with_highest_trips_started" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:condition, date: DateTime.new(2001, 9, 2))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, start_date: DateTime.new(2001, 9, 2))
+      create(:trip, start_station_id: 1, end_station_id: 1, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.date_with_highest_trips_started).to eq("9/1/2001")
+    end
+
+    it "#most_frequent_zipcode" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, zipcode: 11112, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, zipcode: 11311, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, end_station_id: 2, zipcode: 11311, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.most_frequent_zipcode).to eq(11311)
+    end
+
+    it "#most_frequent_bike_id" do
+      station_1 = create(:station, id: 1)
+      station_2 = create(:station, id: 2)
+      create(:condition, date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, bike_id: 45, end_station_id: 2, zipcode: 11112, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, bike_id: 32, end_station_id: 2, zipcode: 11311, start_date: DateTime.new(2001, 9, 1))
+      create(:trip, start_station_id: 1, bike_id: 45, end_station_id: 2, zipcode: 11311, start_date: DateTime.new(2001, 9, 1))
+
+      expect(station_1.most_frequent_bike_id).to eq(45)
+    end
+  end
+
   describe "class methods" do
     it "#avg_bikes_per_station returns proper value" do
       create(:station, dock_count: 1)
