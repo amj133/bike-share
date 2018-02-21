@@ -3,5 +3,5 @@
 <% @accessories.each do |accessory| %>
   <%= accessory.name %>
   <%= accessory.price %>
-  <%= button_to "Add to cart", carts_path %>
+  <%= button_to "Add to cart", carts_path(accessory_id: accessory.id) %>
 <% end %>

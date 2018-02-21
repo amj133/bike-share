@@ -11,10 +11,25 @@ describe "visitor can add accessories to cart" do
       click_on("Add to cart")
 
       expect(page).to have_content("You now have 1 #{helmet.name} in your cart.")
+      #
+      # visit conditions_path
+      #
+      # expect(page).to have_content("1 item in cart")
+    end
 
-      visit conditions_path
+    it "shows correct message when multiple accessories added" do
+      helmet = Accessory.create!(name: "helmet",
+                                 description: "awesome blue helmet",
+                                 price: 3450)
 
-      expect(page).to have_content("1 item in cart")
+      visit bike_shop_path
+      click_on("Add to cart")
+
+      expect(page).to have_content("You now have 1 #{helmet.name} in your cart.")
+
+      click_on("Add to cart")
+
+      expect(page).to have_content("You now have 2 #{helmet.name}s in your cart.")
     end
   end
 end
