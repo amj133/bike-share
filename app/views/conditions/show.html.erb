@@ -1,9 +1,18 @@
-
-<%= @condition.date %>
-<%= @condition.max_temp_f %>
-<%= @condition.mean_temp_f %>
-<%= @condition.min_temp_f %>
-<%= @condition.mean_humidity %>
-<%= @condition.mean_visibility_miles %>
-<%= @condition.mean_wind_speed %>
-<%= @condition.precipitation_inches %>
+<html>
+  <head>
+  </head>
+  <body>
+  <h2> Condition details </h2>
+  <ul>
+  <li>Date:  <%= @condition.date %></li>
+  <li>Max-temp-f:  <%= @condition.max_temp_f %></li>
+  <li>Mean-temp-f:  <%= @condition.mean_temp_f %></li>
+  <li>Min-temp-f:  <%= @condition.min_temp_f %></li>
+  <li>Mean-humidity:  <%= @condition.mean_humidity %></li>
+  <li>Mean-visibility-miles:  <%= @condition.mean_visibility_miles %></li>
+  <li>Mean-wind-speed:  <%= @condition.mean_wind_speed %></li>
+  <li>Precipitation-inches:  <%= @condition.precipitation_inches %></li></ul>
+  <%= link_to "Delete",   admin_condition_path(@condition), method: "delete"  if current_admin? %>
+  <%= link_to "Edit", edit_admin_condition_path(@condition) if current_admin? %>
+</body>
+</html>
