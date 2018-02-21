@@ -1,8 +1,13 @@
 class Station < ApplicationRecord
+  before_save :generate_slug
   validates_presence_of :name, :lat, :long, :dock_count, :city, :installation_date
   has_many :started_trips, class_name: 'Trip', foreign_key: 'start_station_id'
   has_many :ended_trips, class_name: 'Trip', foreign_key: 'end_station_id'
   has_many :statuses
+
+  def generate_slug
+    self.slug = name.parameterize
+  end
 
   def self.avg_bikes_per_station
     average(:dock_count)
