@@ -13,6 +13,10 @@ class Cart
     @contents[accessory_id.to_s] += 1
   end
 
+  def remove_accessory(accessory_id)
+    @contents[accessory_id.to_s] -= 1
+  end
+
   def count_of(accessory_id)
     @contents[accessory_id.to_s]
   end

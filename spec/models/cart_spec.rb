@@ -17,11 +17,21 @@ describe Cart, type: :model do
       expect(cart.contents).to eq({"1" => 2, "2" => 4})
     end
 
+    it "#remove_accessory changes content count" do
+      cart = Cart.new({"1" => 1, "2" => 3})
+
+      cart.remove_accessory(1)
+      cart.remove_accessory(2)
+
+      expect(cart.contents).to eq({"1" => 0, "2" => 2})
+    end
+
     it "#count_of returns count of specific accessory" do
       cart = Cart.new({"1" => 1, "2" => 3})
 
       expect(cart.count_of(1)).to eq(1)
       expect(cart.count_of(2)).to eq(3)
     end
+
   end
 end
