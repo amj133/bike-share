@@ -9,7 +9,7 @@ class Admin::ConditionsController < Admin::BaseController
    @condition = Condition.find(params[:id])
    @condition.update(condition_params)
     if @condition.save
-      redirect_to conditions_path
+      redirect_to condition_path(@condition)
     else
      render :edit
     end
