@@ -1,6 +1,13 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
+  def show
+    accessory_ids = @cart.contents.keys
+    @accessories = accessory_ids.map  do |accessory_id|
+      Accessory.find(accessory_id)
+    end 
+  end
+
   def create
     accessory = Accessory.find(params[:accessory_id])
 

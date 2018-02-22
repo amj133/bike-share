@@ -4,11 +4,10 @@ describe "visitor can view items in cart" do
   describe "visits /cart" do
     it "shows all items in cart" do
       accessory_1 = create(:accessory)
-      accessory_2 = create(:accessory)
 
       visit bike_shop_path
 
-      click_on("Add to cart", matches: :first)
+      click_on("Add to cart")
 
       visit cart_path
 

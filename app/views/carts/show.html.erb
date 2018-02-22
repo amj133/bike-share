@@ -1,0 +1,8 @@
+<h3>Accessories in your cart</h3>
+
+<div class="show-accessories">
+  <% @accessories.each do |accessory| %>
+    <%= accessory.name %>
+    <%= accessory.price %>
+  <% end %>
+</div>
