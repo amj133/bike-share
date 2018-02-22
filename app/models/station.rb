@@ -9,6 +9,10 @@ class Station < ApplicationRecord
     self.slug = name.parameterize
   end
 
+  def readable_install_date
+    installation_date.strftime("%b %d, %Y")
+  end
+
   def self.avg_bikes_per_station
     average(:dock_count)
   end
