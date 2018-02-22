@@ -104,12 +104,14 @@ require 'rails_helper'
           click_link("Edit")
 
           expect(page).to have_content("Edit Conditions")
-          fill_in("Max temp f", with: "300")
+          fill_in("Max temp f", with: 300)
+
+
 
           click_button("Update Condition")
 
-          expect(page).to have_content("Displaying 1 conditions")
           expect(page).to have_content(300)
-          expect(current_path).to eq conditions_path
+          expect(current_path).to eq condition_path(condition)
+          expect(page).to have_content("Condition details")
       end
     end
