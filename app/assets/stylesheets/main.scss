@@ -1,19 +1,19 @@
 @import 'font-awesome';
+$citrus-pulp: #edffa5;
+$cloudy-blue: #a6bfe0;
+$teal-fridge: #6beadb;
+$princes-collar: #dcbeea;
 
 * {
   font-family: 'PT Sans', sans-serif;
   margin: 0px;
+  text-decoration: none;
 }
 
-.site-banner {
-  height: 175px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  background: gray;
-  h1, h3 {margin: 15px;}
-}g
+a {
+  color: black;
+  &:hover {color: $teal-fridge;}
+}
 
 .flash {
   position: absolute;
@@ -23,4 +23,31 @@
   animation-name: fade;
   animation-duration: 5s;
   &:hover {cursor: default;}
+}
+
+.site-banner {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  background: gray;
+  h1, h3 {margin: 15px;}
+}
+
+nav {
+  width: 100vw;
+  height: 30px;
+  background-color: $citrus-pulp;
+}
+
+.access-bar {
+  width: 100vw;
+  height: 30px;
+  background-color: $cloudy-blue;
+  opacity: .9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {margin: 0px 10px}
 }
