@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   </head>
 
   <body>
@@ -15,9 +15,27 @@
       <% end %>
     </div>
     <header class="site-banner">
-      <h1>Bike Share</h1>
-      <h3>A Bike Sharing Service</h3>
+      <div class="logo">
+        <%= fa_icon "bicycle", class: 'bike-icon' %>
+        <h1> Bike Share</h1>
+      </div>
+
+      <div class="access-options">
+        <% if current_user.nil? %>
+          <%= link_to "Login", login_path %>
+          <%= link_to "Create Account", new_user_path %>
+        <% else %>
+          <div class="logged-in-as">
+            Logged in as <%= current_user.username %>
+          </div>
+          <%= link_to "Logout", logout_path, method: :delete %>
+        <% end %>
+        <a href="#" class="cart-count">
+          Cart: <%= @cart.total_count %>
+        </a>
+      </div>
     </header>
+
     <% if current_user.nil? %>
       <%= render partial: "layouts/visitor_nav" %>
     <% elsif current_admin? %>
@@ -25,20 +43,6 @@
     <% else %>
       <%= render partial: "layouts/user_nav" %>
     <% end %>
-    <div class="access-bar">
-      <% if current_user.nil? %>
-        <%= link_to "Login", login_path %>
-        <%= link_to "Create Account", new_user_path %>
-      <% else %>
-        <div class="logged-in-as">
-          Logged in as <%= current_user.username %>
-        </div>
-        <%= link_to "Logout", logout_path, method: :delete %>
-      <% end %>
-      <div class="cart-count">
-        Cart: <%= @cart.total_count %>
-      </div>
-    </div>
 
     <%= yield %>
   </body>
