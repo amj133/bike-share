@@ -1,5 +1,8 @@
 class Admin::ConditionsController < Admin::BaseController
 
+  def new
+    @condition = Condition.new
+  end
 
   def edit
     @condition = Condition.find(params[:id])
@@ -12,6 +15,16 @@ class Admin::ConditionsController < Admin::BaseController
       redirect_to conditions_path
     else
      render :edit
+    end
+  end
+
+  def create
+    @condition = Condition.new(condition_params)
+    if @condition.save
+     flash.notice = "New condition created."
+      redirect_to condition_path(@condition)
+    else
+      render :new
     end
   end
 
