@@ -28,8 +28,11 @@ describe "visitor can view items in cart" do
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Cart: 0")
-      expect(page).to_not have_content(accessory_1.name)
+      expect(page).to have_content("Successfully removed")
       expect(page).to_not have_content(accessory_1.price)
+      click_on("#{accessory_1.name}")
+
+      expect(current_path).to eq(accessory_path(accessory_1))
     end
   end
 end

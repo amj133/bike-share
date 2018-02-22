@@ -2,10 +2,10 @@ class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def show
-    accessory_ids = @cart.contents.keys
+    accessory_ids = @cart.contents.select {|k, v| v > 0}.keys
     @accessories = accessory_ids.map  do |accessory_id|
       Accessory.find(accessory_id)
-    end 
+    end
   end
 
   def create
@@ -16,6 +16,14 @@ class CartsController < ApplicationController
     flash[:notice] = "You now have #{pluralize(session[:cart][accessory.id.to_s], accessory.name)} in your cart."
 
     redirect_to bike_shop_path
+  end
+
+  def remove
+    accessory = Accessory.find(params[:accessory_id])
+    @cart.remove_accessory(params[:accessory_id])
+    flash[:notice] = "Successfully removed #{view_context.link_to(accessory.name, accessory_path(accessory))} from your cart.".html_safe
+
+    redirect_to '/cart'
   end
 
 end

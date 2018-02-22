@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :carts, only: [:create]
   get "/cart", to: "carts#show"
+  patch "/remove-accessory", to: "carts#remove"
 
+  resources :accessories, only: [:show]
   get "/bike-shop", to: "accessories#index"
 
   get "/login", to: "sessions#new"
