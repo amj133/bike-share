@@ -2,7 +2,7 @@
 
 <% @stations.each do |station| %>
   <div class="index-station">
-    <%= station.name %><br>
+    <%= link_to station.name, station_path(station.slug) %><br>
     <%= station.dock_count %><br>
     <%= station.city %><br>
     <%= station.installation_date %><br>
