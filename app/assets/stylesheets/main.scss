@@ -1,0 +1,63 @@
+@import 'font-awesome';
+$citrus-pulp: #edffa5;
+$cloudy-blue: #a6bfe0;
+$teal-fridge: #6beadb;
+$princes-collar: #dcbeea;
+
+* {
+  font-family: 'PT Sans', sans-serif;
+  margin: 0px;
+  text-decoration: none;
+}
+
+a {
+  color: black;
+  &:hover {color: $teal-fridge;}
+}
+
+.flash {
+  position: absolute;
+  margin-left: 15px;
+  padding: 15px;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 5s;
+  &:hover {cursor: default;}
+}
+
+.site-banner {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  background: gray;
+  h1, h3 {margin: 15px;}
+}
+
+nav {
+  width: 100vw;
+  height: 45px;
+  background-color: $citrus-pulp;
+}
+
+.access-bar {
+  font-size: 16px;
+  width: 100vw;
+  height: 30px;
+  background-color: $cloudy-blue;
+  opacity: .9;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {margin: 0px 10px}
+}
+
+.welcome {
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,5 +1,13 @@
 Displaying Trips <%= @first_trip %>-<%= @last_trip %>
 
+<% @first, @last = @first_trip.to_i, @last_trip.to_i %>
+<% if @first < 0 || @last <= Trip.count %>
+<%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
+<% end %>
+<% if @first > 1 %>
+<%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
+<% end %>
+
 <% @trips.each do |trip| %>
   <div class="index-trip">
     Duration: <%= Time.at(trip.duration * 60).utc.strftime("%k hrs %M min") %>
@@ -13,12 +21,4 @@ Displaying Trips <%= @first_trip %>-<%= @last_trip %>
     <%= link_to "Delete", admin_trip_path(trip), method: "delete"  if current_admin? %>
     <%= link_to "Edit", edit_admin_trip_path(trip) if current_admin? %>
   </div>
-<% end %>
-
-<% @first, @last = @first_trip.to_i, @last_trip.to_i %>
-<% if @first < 0 || @last <= Trip.count %>
-<%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
-<% end %>
-<% if @first > 1 %>
-<%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
 <% end %>

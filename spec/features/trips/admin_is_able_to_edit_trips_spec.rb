@@ -84,7 +84,7 @@ require 'rails_helper'
 
         click_button("Update Trip")
 
-        expect(page).to have_content(666)
+        expect(page).to have_content(Time.at(666 * 60).utc.strftime("%k hrs %M min"))
         expect(page).to have_content(32218)
         expect(page).to have_content("Subscriber")
     end

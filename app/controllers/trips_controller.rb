@@ -3,7 +3,7 @@ class TripsController < ApplicationController
 
   def index
    @first_trip, @last_trip = 1, 30
-   if params[:first].to_i <= 0 || params[:last].to_i <= 0
+   if params[:first].to_i < 0 || params[:last].to_i < 0
      render file: '/public/404'
    elsif params.include?('first') && params[:first].to_i > 0
      @first_trip, @last_trip = params[:first], params[:last]

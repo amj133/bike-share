@@ -12,15 +12,15 @@ describe "visitor sees trips index" do
     visit trips_path
 
     expect(page).to have_content("Displaying Trips 1-30")
-    expect(page).to have_content(Trip.first.duration)
-    expect(page).to have_content(Trip.first.start_date)
+    expect(page).to have_content(Time.at(Trip.first.duration * 60).utc.strftime("%k hrs %M min"))
+    expect(page).to have_content(Trip.first.start_date.strftime("%b %d, %Y"))
     expect(page).to have_content(Trip.first.start_station.name)
-    expect(page).to have_content(Trip.first.end_date)
+    expect(page).to have_content(Trip.first.end_date.strftime("%b %d, %Y"))
     expect(page).to have_content(Trip.first.end_station.name)
     expect(page).to have_content(Trip.first.bike_id)
     expect(page).to have_content(Trip.first.subscription)
     expect(page).to have_content(Trip.first.zipcode)
-    expect(page).to have_content(Trip.all[29].duration)
+    expect(page).to have_content(Time.at(Trip.all[29].duration * 60).utc.strftime("%k hrs %M min"))
     expect(page).to_not have_content(Trip.last.duration)
     expect(page).to have_link("Next Page")
   end
