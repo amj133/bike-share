@@ -44,7 +44,7 @@ require 'rails_helper'
         click_button("Log in")
 
         visit trip_path(trip)
-      
+
        expect(page).to_not have_link("Delete")
        expect(page).to_not have_link("Edit")
     end
@@ -111,7 +111,7 @@ require 'rails_helper'
 
         click_button("Update Trip")
 
-        expect(page).to have_content(666)
+        expect(page).to have_content(Time.at(666 * 60).utc.strftime("%k hrs %M min"))
         expect(page).to have_content(32218)
         expect(page).to have_content("Subscriber")
     end
