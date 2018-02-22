@@ -8,10 +8,26 @@
   <li>Max-temp-f:  <%= @condition.max_temp_f %></li>
   <li>Mean-temp-f:  <%= @condition.mean_temp_f %></li>
   <li>Min-temp-f:  <%= @condition.min_temp_f %></li>
+  <li>Max-dewpoint f:  <%= @condition.max_dewpoint_f %></li>
+  <li>Mean-dewpoint-f:  <%= @condition.mean_dewpoint_f %></li>
+  <li>Min-dewpoint-f:  <%= @condition.min_dewpoint_f %></li>
+  <li>Max-humidity:  <%= @condition.max_humidity %></li>
   <li>Mean-humidity:  <%= @condition.mean_humidity %></li>
+  <li>Min-humidity:  <%= @condition.min_humidity %></li>
+  <li>Max-sea-level-pressure-inches:  <%= @condition.max_sea_level_pressure_inches %></li>
+  <li>Mean-sea-level-pressure-inches:  <%= @condition.mean_sea_level_pressure_inches %></li>
+  <li>Min-sea-level-pressure-inches:  <%= @condition.min_sea_level_pressure_inches %></li>
+  <li>Max-visibility-miles:  <%= @condition.max_visibility_miles %></li>
   <li>Mean-visibility-miles:  <%= @condition.mean_visibility_miles %></li>
+  <li>Min-visibility-miles:  <%= @condition.min_visibility_miles %></li>
+  <li>Max-wind-speed:  <%= @condition.max_wind_speed %></li>
   <li>Mean-wind-speed:  <%= @condition.mean_wind_speed %></li>
-  <li>Precipitation-inches:  <%= @condition.precipitation_inches %></li></ul>
+  <li>Max-gust-speed:  <%= @condition.max_gust_speed %></li>
+  <li>Precipitation-inches:  <%= @condition.precipitation_inches %></li>
+  <li>Cloud-cover:  <%= @condition.cloud_cover %></li>
+  <li>Events:  <%= @condition.events %></li>
+  <li>Wind-dir-degrees:  <%= @condition.wind_dir_degrees %></li>
+  <li>Zipcode:  <%= @condition.zipcode %></li></ul>
   <%= link_to "Delete",   admin_condition_path(@condition), method: "delete"  if current_admin? %>
   <%= link_to "Edit", edit_admin_condition_path(@condition) if current_admin? %>
 </body>
