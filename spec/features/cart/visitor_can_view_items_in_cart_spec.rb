@@ -35,4 +35,21 @@ describe "visitor can view items in cart" do
       expect(current_path).to eq(accessory_path(accessory_1))
     end
   end
+
+  context "can increase quantity of existing items" do
+    it "clicks on increase quantity and quantity increases" do
+      accessory_1 = create(:accessory)
+
+      visit bike_shop_path
+      click_on("Add to cart")
+      visit cart_path
+      click_on("Increase Quantity")
+
+      expect(current_path). to eq('/cart')
+      expect(page).to have_content("Cart: 2")
+      expect(page).to have_content(accessory_1.name)
+      expect(page).to have_content(accessory_1.price)
+      expect(page).to have_content("Quantity: 2")
+    end
+  end
 end
