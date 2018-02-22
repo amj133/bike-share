@@ -1,1 +1,26 @@
-@import "font-awesome";
+@import 'font-awesome';
+
+* {
+  font-family: 'PT Sans', sans-serif;
+  margin: 0px;
+}
+
+.site-banner {
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  background: gray;
+  h1, h3 {margin: 15px;}
+}g
+
+.flash {
+  position: absolute;
+  margin-left: 15px;
+  padding: 15px;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 5s;
+  &:hover {cursor: default;}
+}
