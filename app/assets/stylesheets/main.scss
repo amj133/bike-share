@@ -3,14 +3,16 @@ $citrus-pulp: #edffa5;
 $cloudy-blue: #a6bfe0;
 $teal-fridge: #6beadb;
 
-* {
+body {
   font-family: 'Raleway', sans-serif;  margin: 0px;
   text-decoration: none;
 }
 
 a {
   color: black;
+  font-weight: bold;
   &:hover {color: $teal-fridge;}
+  text-decoration: none;
 }
 
 .flash {
@@ -72,6 +74,13 @@ nav {
     display: block;
     z-index: 1;
   }
+}
+
+.application-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcome {
