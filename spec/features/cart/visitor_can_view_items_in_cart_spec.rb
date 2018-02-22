@@ -11,9 +11,10 @@ describe "visitor can view items in cart" do
 
       visit cart_path
 
+      expect(current_path).to eq('/cart')
       expect(page).to have_content(accessory_1.name)
       expect(page).to have_content(accessory_1.price)
-      expect(page).to have_content("remove")
+      expect(page).to have_button("remove")
     end
   end
 end

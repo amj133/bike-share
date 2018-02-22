@@ -4,5 +4,6 @@
   <% @accessories.each do |accessory| %>
     <%= accessory.name %>
     <%= accessory.price %>
+    <%= button_to "remove", carts_path(accessory_id: accessory.id), method: :delete %>
   <% end %>
 </div>
