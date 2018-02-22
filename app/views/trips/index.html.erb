@@ -1,22 +1,24 @@
 Displaying Trips <%= @first_trip %>-<%= @last_trip %>
 
-<%= link_to "Next Page", "/trips?first=#{@first_trip.to_i+30}&last=#{@last_trip.to_i+30}"%>
-<% unless @first_trip == 1 %>
-<%= link_to "Previous Page", "/trips?first=#{@first_trip.to_i-30}&last=#{@last_trip.to_i-30}"%>
+<% @first, @last = @first_trip.to_i, @last_trip.to_i %>
+<% if @first < 0 || @last <= Trip.count %>
+<%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
 <% end %>
-
+<% if @first > 1 %>
+<%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
+<% end %>
 
 <% @trips.each do |trip| %>
   <div class="index-trip">
-    <%= trip.duration %>
-    <%= trip.start_date %>
-    <%= trip.start_station.name %>
-    <%= trip.end_date %>
-    <%= trip.end_station.name %>
-    <%= trip.bike_id %>
-    <%= trip.subscription %>
-    <%= trip.zipcode %>
-    <%= link_to "Delete",   admin_trip_path(trip), method: "delete"  if current_admin? %>
+    Duration: <%= Time.at(trip.duration * 60).utc.strftime("%k hrs %M min") %>
+    Start Date: <%= trip.start_date.strftime("%b %d, %Y") %>
+    Starting Station: <%= trip.start_station.name %>
+    End Date: <%= trip.end_date.strftime("%b %d, %Y") %>
+    Ending Station: <%= trip.end_station.name %>
+    Bike Id: <%= trip.bike_id %>
+    Subscription Type: <%= trip.subscription %>
+    Zipcode: <%= trip.zipcode %>
+    <%= link_to "Delete", admin_trip_path(trip), method: "delete"  if current_admin? %>
     <%= link_to "Edit", edit_admin_trip_path(trip) if current_admin? %>
   </div>
 <% end %>
