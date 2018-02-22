@@ -5,7 +5,7 @@
       <%= link_to station.name, station_path(station.slug) %>
       <div><%= station.city %></div>
       <div class="station-stats">Dock Count: <%= station.dock_count %></div>
-      <div class="station-stats">Installed On: <%= station.installation_date %></div>
+      <div class="station-stats">Installed On: <%= station.readable_install_date %></div>
       <%= link_to "Delete",   admin_station_path(station), method: "delete"  if current_admin? %>
     </div>
   <% end %>
