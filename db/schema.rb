@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180221224029) do
     t.integer "dock_count"
     t.string "city"
     t.datetime "installation_date"
+    t.string "slug"
   end
 
   create_table "statuses", force: :cascade do |t|
