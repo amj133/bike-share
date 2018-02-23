@@ -67,13 +67,14 @@ require 'rails_helper'
 
         click_link("Edit")
 
-        expect(page).to_not have_content(condition.date)
+
+        expect(page).to have_content("Date")
         expect(page).to have_content("Edit Conditions")
       end
     end
 
     describe "Admin see conditions edit page"  do
-      it "Admin clicks update and sees edited condition in index"  do
+      it "Admin clicks update and sees edited condition in show"  do
         condition = create(:condition)
         user = User.create(username: "Kyle", email: "email",
         password: "password", role: 1)
@@ -89,7 +90,7 @@ require 'rails_helper'
 
         visit conditions_path
 
-        expect(page).to have_content(condition.date)
+        expect(page).to have_content("Displaying 1 conditions")
 
         click_link("Edit")
 
@@ -109,10 +110,10 @@ require 'rails_helper'
         fill_in("Zipcode", with: "32218")
 
         click_button("Update Condition")
-
+        save_and_open_page
         expect(page).to have_content(200)
         expect(page).to have_content(10)
-        expect(page).to have_content("Displaying 1 conditions")
+        expect(page).to have_content("Condition details")
         expect(page).to have_content("Delete")
         expect(page).to have_content("Edit")
 
