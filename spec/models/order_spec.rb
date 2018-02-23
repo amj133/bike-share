@@ -9,5 +9,6 @@ describe Order, type: :model do
 
   describe "relationships" do
     it {should belong_to(:user)}
+    it {should have_many(:accessories).through(:order_accessories)}
   end
 end
