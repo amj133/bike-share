@@ -11,7 +11,7 @@ require 'rails_helper'
 
     visit trip_path(trip)
 
-    expect(page).to have_content(trip.duration)
+    expect(page).to have_content(Time.at(73 * 60).utc.strftime("%k hrs %M min"))
     expect(page).to have_content(trip.start_date)
     expect(page).to have_content(trip.start_station_id)
     expect(page).to have_content(trip.end_date)

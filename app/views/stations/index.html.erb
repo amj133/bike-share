@@ -1,12 +1,14 @@
 <h3>List of all stations</h3>
+
 <div class="stations-index">
-  <% @stations.each do |station| %>
-    <div class="index-station">
-      <%= link_to station.name, station_path(station.slug) %>
-      <div><%= station.city %></div>
-      <div class="station-stats">Dock Count: <%= station.dock_count %></div>
-      <div class="station-stats">Installed On: <%= station.readable_install_date %></div>
-      <%= link_to "Delete",   admin_station_path(station), method: "delete"  if current_admin? %>
-    </div>
-  <% end %>
+<% @stations.each do |station| %>
+  <div class="index-station">
+    <%= link_to station.name, station_path(station.slug) %>
+    <div><%= station.city %></div>
+    <div class="station-stats">Dock Count: <%= station.dock_count %></div>
+    <div class="station-stats">Installed On: <%= station.readable_install_date %></div>
+    <%= link_to "Delete",   admin_station_path(station.slug), method: "delete"  if current_admin? %>
+    <%= link_to "Edit", edit_admin_station_path(station.slug) if current_admin? %>
+  </div>
+<% end %>
 </div>
