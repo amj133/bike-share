@@ -1,6 +1,7 @@
 @import 'font-awesome';
 $citrus-pulp: #edffa5;
 $cloudy-blue: #a6bfe0;
+$foggy-tears: #ddeaff;
 $teal-fridge: #6beadb;
 
 body {
@@ -57,23 +58,47 @@ a {
 nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  .navlinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   width: 100vw;
   height: 45px;
   background-color: $citrus-pulp;
   .dropdown {
     margin: 0px 15px;
+    .dashboard-icon {
+      font-size: 36px;
+    }
   }
   .dropdown-content {
     display: none;
+    border-radius: 5px;
   }
   .dropdown:hover .dropdown-content {
     position: absolute;
-    background-color: white;
-    padding: 10px;
-    display: block;
     z-index: 1;
+    background-color: white;
+    font-size: 18px;
+    display: block;
+    div {
+      padding: 10px;
+      margin-bottom: 5px;
+      &:hover {
+        border-radius: 5px;
+        background-color: $foggy-tears;
+        a:hover {color: black;}
+      }
+    }
   }
+  .dashboard-drop:hover .dropdown-content {
+       left:auto;
+       right:0;
+       margin-right:-10px;
+       font-size: 16px;
+   }
 }
 
 .application-section {
