@@ -1,0 +1,9 @@
+<h3>Accessories in your cart</h3>
+
+<div class="show-accessories">
+  <% @accessories.each do |accessory| %>
+    <%= accessory.name %>
+    <%= accessory.price %>
+    <%= button_to "remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
+  <% end %>
+</div>
