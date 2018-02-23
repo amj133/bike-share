@@ -11,7 +11,7 @@ describe "visitor goes to trip index" do
     expect(page).to have_content(Station.first.name)
     expect(page).to have_content(Station.first.dock_count)
     expect(page).to have_content(Station.first.city)
-    expect(page).to have_content(Station.first.installation_date)
+    expect(page).to have_content(Station.first.readable_install_date)
     expect(page).to have_content(Station.last.name)
   end
 end

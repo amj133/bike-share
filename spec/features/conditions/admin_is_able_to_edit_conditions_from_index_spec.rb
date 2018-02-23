@@ -109,10 +109,8 @@ require 'rails_helper'
         fill_in("Zipcode", with: "32218")
 
         click_button("Update Condition")
-
         expect(page).to have_content(200)
         expect(page).to have_content(10)
-        expect(page).to have_content("Displaying 1 conditions")
         expect(page).to have_content("Delete")
         expect(page).to have_content("Edit")
 
