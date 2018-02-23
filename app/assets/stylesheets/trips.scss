@@ -1,0 +1,24 @@
+.ti-header {
+  margin: 15px 0px;
+}
+.trip-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .trip-id {
+    margin-bottom: 10px;
+  }
+  .index-trip {
+    height: 150px;
+    width: 260px;
+    font-size: 14px;
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    div {
+      height: 15px;
+      overflow: hidden;
+    }
+  }
+}

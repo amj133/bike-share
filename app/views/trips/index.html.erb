@@ -1,24 +1,30 @@
-Displaying Trips <%= @first_trip %>-<%= @last_trip %>
+<div class="ti-header">
+  Displaying Trips <%= @first_trip %>-<%= @last_trip %>
+</div>
 
+<section class='trip-index'>
+<% @trips.each do |trip| %>
+    <div class="index-trip">
+      <%= link_to trip_path(trip) do %>
+      <div><%= trip.id %></div>
+      <div>Duration: <%= Time.at(trip.duration * 60).utc.strftime("%k hrs %M min") %></div>
+      <div>Start Date: <%= trip.start_date.strftime("%b %d, %Y") %></div>
+      <div>Starting Station: <%= trip.start_station.name %></div>
+      <div>End Date: <%= trip.end_date.strftime("%b %d, %Y") %></div>
+      <div>Ending Station: <%= trip.end_station.name %></div>
+      <div>Bike Id: <%= trip.bike_id %></div>
+      <div>Subscription Type: <%= trip.subscription %></div>
+      <div>Zipcode: <%= trip.zipcode %></div>
+      <%= link_to "Delete", admin_trip_path(trip), method: "delete"  if current_admin? %>
+      <%= link_to "Edit", edit_admin_trip_path(trip) if current_admin? %>
+      <% end %>
+    </div>
+<% end %>
+</section>
 <% @first, @last = @first_trip.to_i, @last_trip.to_i %>
 <% if @first < 0 || @last <= Trip.count %>
 <%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
 <% end %>
 <% if @first > 1 %>
 <%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
-<% end %>
-
-<% @trips.each do |trip| %>
-  <div class="index-trip">
-    Duration: <%= Time.at(trip.duration * 60).utc.strftime("%k hrs %M min") %>
-    Start Date: <%= trip.start_date.strftime("%b %d, %Y") %>
-    Starting Station: <%= trip.start_station.name %>
-    End Date: <%= trip.end_date.strftime("%b %d, %Y") %>
-    Ending Station: <%= trip.end_station.name %>
-    Bike Id: <%= trip.bike_id %>
-    Subscription Type: <%= trip.subscription %>
-    Zipcode: <%= trip.zipcode %>
-    <%= link_to "Delete", admin_trip_path(trip), method: "delete"  if current_admin? %>
-    <%= link_to "Edit", edit_admin_trip_path(trip) if current_admin? %>
-  </div>
 <% end %>
