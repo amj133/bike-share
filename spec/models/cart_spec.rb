@@ -33,5 +33,13 @@ describe Cart, type: :model do
       expect(cart.count_of(2)).to eq(3)
     end
 
+    it "#total_cost returns total cost" do
+      create(:accessory, id: 1, price: 2)
+      create(:accessory, id: 2, price: 5)
+      cart = Cart.new({"1" => 2, "2" => 3})
+
+      expect(cart.total_cost).to eq(19)
+    end
+
   end
 end

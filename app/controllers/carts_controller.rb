@@ -6,6 +6,7 @@ class CartsController < ApplicationController
     @accessories = accessory_ids.map  do |accessory_id|
       Accessory.find(accessory_id)
     end
+    @cart_total = @cart.total_cost
   end
 
   def create
@@ -18,12 +19,24 @@ class CartsController < ApplicationController
     redirect_to bike_shop_path
   end
 
+  def increase
+    @cart.add_accessory(params[:accessory_id])
+
+    redirect_to cart_path
+  end
+
+  def decrease
+    @cart.remove_accessory(params[:accessory_id])
+
+    redirect_to cart_path
+  end
+
   def remove
     accessory = Accessory.find(params[:accessory_id])
     @cart.remove_accessory(params[:accessory_id])
     flash[:notice] = "Successfully removed #{view_context.link_to(accessory.name, accessory_path(accessory))} from your cart.".html_safe
 
-    redirect_to '/cart'
+    redirect_to cart_path
   end
 
 end
