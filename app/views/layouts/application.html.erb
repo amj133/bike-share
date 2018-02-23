@@ -35,15 +35,18 @@
         </a>
       </div>
     </header>
+    <nav>
+      <% if current_user.nil? %>
+        <%= render partial: "layouts/visitor_nav" %>
+      <% elsif current_admin? %>
+        <%= render partial: "layouts/admin_nav"  %>
+      <% else %>
+        <%= render partial: "layouts/user_nav" %>
+      <% end %>
+    </nav>
 
-    <% if current_user.nil? %>
-      <%= render partial: "layouts/visitor_nav" %>
-    <% elsif current_admin? %>
-      <%= render partial: "layouts/admin_nav"  %>
-    <% else %>
-      <%= render partial: "layouts/user_nav" %>
-    <% end %>
-
-    <%= yield %>
+    <section class="application-section">
+      <%= yield %>
+    </section>
   </body>
 </html>
