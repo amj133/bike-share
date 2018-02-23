@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
   get "/cart", to: "carts#show"
   patch "/increase-quantity", to: "carts#increase"
+  patch "/decrease-quantity", to: "carts#decrease"
   patch "/remove-accessory", to: "carts#remove"
 
   resources :accessories, only: [:show]

@@ -85,7 +85,7 @@ describe "visitor can view items in cart" do
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Quantity: 1")
-      expect(page).to have_content("Cart Total: 1")
+      expect(page).to have_content("Cart Total: 2050")
       expect(page).to have_content("Subtotal: 2050")
     end
   end
