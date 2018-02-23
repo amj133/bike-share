@@ -3,7 +3,7 @@
   </head>
   <body>
    <h2>Trip Details</h2>
-  <ul>
+  <ul> 
   <li>Duration: <%= (Time.at( @trip.duration * 60).utc.strftime("%k hrs %M min")) %></li>
   <li>Start-date: <%= @trip.start_date %></li>
   <li>Start-station-id: :<%= @trip.start_station_id %></li>
