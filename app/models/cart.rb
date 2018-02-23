@@ -29,4 +29,11 @@ class Cart
     end
   end
 
+  def accessories
+    accessory_ids = contents.select {|k, v| v > 0}.keys
+    accessories = accessory_ids.map  do |accessory_id|
+      Accessory.find(accessory_id)
+    end
+  end
+
 end
