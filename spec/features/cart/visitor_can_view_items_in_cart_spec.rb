@@ -52,5 +52,19 @@ describe "visitor can view items in cart" do
       expect(page).to have_content("Quantity: 2")
       expect(page).to have_content("Subtotal: 4100")
     end
+
+    it "cart total will increase" do
+      accessory_1 = create(:accessory, price: 2050)
+      accessory_2 = create(:accessory, price: 1125)
+
+      visit bike_shop_path
+      click_on("Add to cart", match: :first)
+      all('#add-to-cart')[1].click
+      visit cart_path
+      click_on("Increase quantity", match: :first)
+
+      expect(current_path). to eq('/cart')
+      expect(page).to have_content('Cart Total: 5225')
+    end
   end
 end

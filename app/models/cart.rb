@@ -23,7 +23,6 @@ class Cart
 
   def total_cost
     @contents.reduce(0) do |result, (key, value)|
-      binding.pry
       accessory = Accessory.find(key.to_i)
       result += accessory.price * value
       result

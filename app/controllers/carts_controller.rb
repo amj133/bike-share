@@ -6,6 +6,7 @@ class CartsController < ApplicationController
     @accessories = accessory_ids.map  do |accessory_id|
       Accessory.find(accessory_id)
     end
+    @cart_total = @cart.total_cost
   end
 
   def create
