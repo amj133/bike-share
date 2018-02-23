@@ -7,15 +7,21 @@ describe "user can view order breakdown" do
       accessory_2 = create(:accessory, price: 225)
       bob = User.create(username: "bob", password: "test", email:"bob@gmail.com")
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
+      visit root_path
+      click_link("Login")
+      fill_in("Username", with: "bob")
+      fill_in("Password", with: "test")
+      click_button("Log in")
 
       visit bike_shop_path
       click_on("Add to cart", match: :first)
       all('#add-to-cart')[1].click
+
+      visit cart_path
       click_on("Checkout")
       click_on("Order 1")
 
-      expect(current_path).to eq(dashboard_path)
+      expect(current_path).to eq(order_path(1))
       expect(page).to have_content(accessory_1.name)
       expect(page).to have_content("Quantity: 1")
       expect(page).to have_content("Subtotal: 110")
@@ -23,7 +29,7 @@ describe "user can view order breakdown" do
       expect(page).to have_content("Subtotal: 225")
       expect(page).to have_content("Order Total: 335")
       expect(page).to have_content("Status: Ordered")
-      expect(page).to have_content("Submitted: #{DateTime.now.strftime("%l:%M %P, %-m/%-d/%Y")}")
+      expect(page).to have_content("Submitted: #{DateTime.now.utc.strftime("%l:%M %P, %-m/%-d/%Y")}")
     end
   end
 end

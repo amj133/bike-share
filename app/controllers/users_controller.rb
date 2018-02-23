@@ -2,9 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    unless session[:cart].nil?
-      flash.notice = "You have successfully submitted your order."
-    end
+    # unless session[:cart].nil?
+    #   flash.notice = "You have successfully submitted your order."
+    # end
   end
 
   def new

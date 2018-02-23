@@ -1,0 +1,11 @@
+<h3>Order <%= @order.id %></h3>
+
+Order Total: <%= @order.total %>
+Status: <%= @order.status %>
+Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %>
+
+<% @order.accessories.each do |accessory| %>
+  Name: <%= accessory.name %>
+  Quantity: <%= session[:cart][accessory.id.to_s] %>
+  Subtotal: <%= session[:cart][accessory.id.to_s] * accessory.price %>
+<% end %>
