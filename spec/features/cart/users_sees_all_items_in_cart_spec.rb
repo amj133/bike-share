@@ -27,5 +27,22 @@ describe "user can view all items in cart" do
       expect(page).to have_content("Cart Total: 335")
       expect(page).to have_button("Checkout")
     end
+
+    it "after clicking checkout, displays message and directs to user dashboard" do
+      accessory_1 = create(:accessory, price: 110)
+      accessory_2 = create(:accessory, price: 225)
+      bob = User.create(username: "bob", password: "test", email:"bob@gmail.com")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
+
+      visit bike_shop_path
+      click_on("Add to cart", match: :first)
+      all('#add-to-cart')[1].click
+      visit cart_path
+      click_on("Checkout")
+
+      expect(current_path).to eq(user_dashboard_path(bob))
+      expect(page).to have_content("You have successfully submitted your oder.")
+    end
   end
 end
