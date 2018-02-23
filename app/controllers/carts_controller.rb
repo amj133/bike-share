@@ -18,12 +18,18 @@ class CartsController < ApplicationController
     redirect_to bike_shop_path
   end
 
+  def increase
+    @cart.add_accessory(params[:accessory_id])
+
+    redirect_to cart_path
+  end
+
   def remove
     accessory = Accessory.find(params[:accessory_id])
     @cart.remove_accessory(params[:accessory_id])
     flash[:notice] = "Successfully removed #{view_context.link_to(accessory.name, accessory_path(accessory))} from your cart.".html_safe
 
-    redirect_to '/cart'
+    redirect_to cart_path
   end
 
 end
