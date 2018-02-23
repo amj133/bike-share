@@ -1,0 +1,19 @@
+.ci-header {
+  margin: 15px;
+  font-weight: bold;
+}
+
+.conditions-index   {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+  .index-condition {
+    margin: 15px;
+    height: 100px;
+    width: 100px;
+    border: 1px black solid;
+    font-size: 15px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+}
