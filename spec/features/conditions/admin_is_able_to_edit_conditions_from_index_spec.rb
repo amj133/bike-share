@@ -110,7 +110,7 @@ require 'rails_helper'
         fill_in("Zipcode", with: "32218")
 
         click_button("Update Condition")
-        save_and_open_page
+  
         expect(page).to have_content(200)
         expect(page).to have_content(10)
         expect(page).to have_content("Condition details")
