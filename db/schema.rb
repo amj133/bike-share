@@ -54,8 +54,6 @@ ActiveRecord::Schema.define(version: 20180223135507) do
     t.string "status"
     t.datetime "submitted"
     t.bigint "user_id"
-    t.bigint "accessory_id"
-    t.index ["accessory_id"], name: "index_orders_on_accessory_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -97,7 +95,6 @@ ActiveRecord::Schema.define(version: 20180223135507) do
     t.integer "role", default: 0
   end
 
-  add_foreign_key "orders", "accessories"
   add_foreign_key "orders", "users"
   add_foreign_key "statuses", "stations"
 end
