@@ -1,32 +1,11 @@
-<nav>
-  <div class="navlinks">
-    <div class="dropdown">
-      <div>Stations</div>
-        <div class="dropdown-content">
-          <div><%= link_to "All Stations", stations_path %></div>
-        </div>
-    </div>
-    <div class="dropdown">
-      <div>Trips</div>
-        <div class="dropdown-content">
-          <div><%= link_to "All Trips", trips_path %></div>
-        </div>
-    </div>
-    <div class="dropdown">
-      <div>Conditions</div>
-        <div class="dropdown-content">
-          <div><%= link_to "All Conditions", conditions_path %></div>
-        </div>
-    </div>
-  </div>
+<%= render partial: "layouts/visitor_nav" %>
 
-  <div class="dropdown dashboard-drop">
-    <%= fa_icon "tachometer", class: 'dashboard-icon' %>
-      <div class="dropdown-content">
-        <div><%= link_to "Personal Dashboard", dashboard_path %></div>
-        <div><%= link_to "Stations Dashboard", stations_dashboard_path %></div>
-        <div><%= link_to "Trips Dashboard", trips_dashboard_path %></div>
-        <div><%= link_to "Conditions Dashboard (n/c)", dashboard_path %></div>
-      </div>
-  </div>
-</nav>
+<div class="dropdown dashboard-drop">
+  <%= fa_icon "tachometer", class: 'dashboard-icon' %>
+    <div class="dropdown-content">
+      <div><%= link_to "Personal Dashboard", dashboard_path %></div>
+      <div><%= link_to "Stations Dashboard", stations_dashboard_path %></div>
+      <div><%= link_to "Trips Dashboard", trips_dashboard_path %></div>
+      <div><%= link_to "Conditions Dashboard (n/c)", dashboard_path %></div>
+    </div>
+</div>
