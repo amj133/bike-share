@@ -37,7 +37,7 @@ describe "visitor can view items in cart" do
   end
 
   context "can increase quantity of existing items" do
-    it "clicks on increase quantity and quantity increases" do
+    it "clicks on increase quantity, quantity & subtotal increases" do
       accessory_1 = create(:accessory, price: 2050)
 
       visit bike_shop_path
@@ -50,7 +50,7 @@ describe "visitor can view items in cart" do
       expect(page).to have_content(accessory_1.name)
       expect(page).to have_content(accessory_1.price)
       expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Subtotal: 4100")      
+      expect(page).to have_content("Subtotal: 4100")
     end
   end
 end
