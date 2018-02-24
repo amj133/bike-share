@@ -4,7 +4,8 @@ describe "visitor can add accessories to cart" do
   before(:each) do
     @helmet = Accessory.create!(name: "helmet",
                                description: "awesome blue helmet",
-                               price: 3450)
+                               price: 3450,
+                               image_path: 'bike.png')
   end
   describe "goes to bike-shop path" do
     it "allows visitor to add accessory to cart" do

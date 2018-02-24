@@ -41,5 +41,13 @@ describe Cart, type: :model do
       expect(cart.total_cost).to eq(19)
     end
 
+    it "#accessories returns accessories with quantity > 0" do
+      accessory_1 = create(:accessory, id: 1, price: 2)
+      accessory_2 = create(:accessory, id: 2, price: 5)
+      accessory_3 = create(:accessory, id: 3, price: 10)
+      cart = Cart.new({"1" => 2, "2" => 3, "3" => 0})
+
+      expect(cart.accessories).to eq([accessory_1, accessory_2])
+    end
   end
 end
