@@ -13,4 +13,10 @@ class Condition < ApplicationRecord
       .group('conditions.date')
       .count
   end
+
+  def self.average_rides_per_day(attr, min, max)
+    rides = rides_by_date(attr, min, max).values
+    rides.sum / rides.count
+  end
+
 end
