@@ -1,4 +1,4 @@
-<div class="ti-header">
+<div class="index-header">
   Displaying Trips <%= @first_trip %>-<%= @last_trip %>
 </div>
 
@@ -23,10 +23,14 @@
 </section>
 <div class="pagination">
   <% @first, @last = @first_trip.to_i, @last_trip.to_i %>
-  <% if @first > 1 %>
-  <%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
-  <% end %>
-  <% if @first < 0 || @last <= Trip.count %>
-  <%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
-  <% end %>
+  <div class="previous">
+    <% if @first > 1 %>
+    <%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
+    <% end %>
+  </div>
+  <div class="next">
+    <% if @first < 0 || @last <= Trip.count %>
+    <%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
+    <% end %>
+  </div>
 </div>

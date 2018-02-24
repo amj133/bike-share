@@ -1,5 +1,5 @@
 
-<div class="ci-header">
+<div class="index-header">
   Displaying <%= @conditions.count %> conditions
 </div>
 <div class="conditions-index">
@@ -7,14 +7,17 @@
     <div>
       <%= link_to condition_path(condition) do%>
       <div class="index-condition">
-        <%= condition.readable_date %>
-        <%= condition.max_temp_f %>
-        <%= condition.mean_temp_f %>
-        <%= condition.min_temp_f %>
-        <%= condition.mean_humidity %>
-        <%= condition.mean_visibility_miles %>
-        <%= condition.mean_wind_speed %>
-        <%= condition.precipitation_inches %>
+        <div><%= condition.readable_date %></div>
+        <ul>
+          <li>Highest Temperature: <div><%= condition.max_temp_f %>° F</div></li>
+          <li>Average Temperature: <div><%= condition.mean_temp_f %>° F</div></li>
+          <li>Lowest Temperature: <div><%= condition.min_temp_f %>° F</div></li>
+          <li>Average Humidity: <div><%= condition.mean_humidity.to_i %>%</div></li>
+          <li>Visibility: <div><%= condition.mean_visibility_miles %> mi</div></li>
+          <li>Average Wind Speed: <div><%= condition.mean_wind_speed.to_i %></div>mph</li>
+          <li>Precipitation: <div><%= condition.precipitation_inches %> in</div></li>
+        </ul>
+
         <%= link_to "Delete",   admin_condition_path(condition), method: "delete"  if current_admin? %>
         <%= link_to "Edit", edit_admin_condition_path(condition) if current_admin? %>
       </div>

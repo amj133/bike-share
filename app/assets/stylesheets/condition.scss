@@ -1,6 +1,10 @@
-.ci-header {
+.index-header {
   margin: 15px;
   font-weight: bold;
+  background-color: rgba(237, 241, 247, .75);
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.5px solid gray;
 }
 
 .conditions-index   {
@@ -9,11 +13,20 @@
    justify-content: center;
   .index-condition {
     margin: 15px;
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 200px;
+    background-color: rgba(237, 241, 247, .85);
     border: 1px black solid;
-    font-size: 15px;
+    font-size: 14px;
     padding: 15px;
     border-radius: 10px;
+    ul {
+
+      padding-left: 15px;
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
   }
 }
