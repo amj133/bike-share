@@ -60,7 +60,7 @@ require 'rails_helper'
           click_button("Update Station")
 
           expect(current_path).to eq station_path("big-bike")
-          expect(page).to have_content("Station Big Bike")
+        
           expect(page).to have_content("Big Bike")
           expect(page).to have_content(12345)
           expect(page).to have_content(54321)

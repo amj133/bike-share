@@ -7,7 +7,7 @@ describe "visitor goes to station show page" do
     visit station_path(station.slug)
 
     expect(current_path).to eq(station_path(station.slug))
-    expect(page).to have_content("Station at #{station.name}")
+    expect(page).to have_content("Station at #{station.slug}")
     expect(page).to have_content(station.lat)
     expect(page).to have_content(station.long)
     expect(page).to have_content(station.dock_count)
