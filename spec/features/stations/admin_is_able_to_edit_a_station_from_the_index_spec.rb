@@ -41,7 +41,7 @@ require 'rails_helper'
           trip = create(:trip, start_station_id: 1, end_station_id: 1)
 
           user = User.create(username: "Kyle", email: "email",
-          password: "password" ,role: 1)
+          password: "password", role: 1)
 
           visit root_path
 
@@ -60,7 +60,7 @@ require 'rails_helper'
           click_button("Update Station")
 
           expect(current_path).to eq station_path("big-bike")
-        
+
           expect(page).to have_content("Big Bike")
           expect(page).to have_content(12345)
           expect(page).to have_content(54321)
