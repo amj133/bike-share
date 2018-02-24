@@ -25,7 +25,7 @@ describe "user can view all items in cart" do
       expect(page).to have_content("Quantity: 1")
       expect(page).to have_content("Subtotal: 225")
       expect(page).to have_content("Cart Total: 335")
-      expect(page).to have_link("Checkout")
+      expect(page).to have_button("Checkout")
     end
 
     it "after clicking checkout, displays message and directs to user dashboard" do

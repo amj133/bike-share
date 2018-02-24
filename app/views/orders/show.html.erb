@@ -6,6 +6,6 @@ Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %>
 
 <% @order.accessories.each do |accessory| %>
   Name: <%= accessory.name %>
-  Quantity: <%= session[:cart][accessory.id.to_s] %>
-  Subtotal: <%= session[:cart][accessory.id.to_s] * accessory.price %>
+  Quantity: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity %>
+  Subtotal: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price %>
 <% end %>
