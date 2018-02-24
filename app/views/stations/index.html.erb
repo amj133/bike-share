@@ -4,6 +4,7 @@
     <div>
       <%= link_to station_path(station.slug) do %>
       <div class="index-station">
+        <div><%= station.name %></div>
         <div><%= station.city %></div>
         <div class="station-stats">Dock Count: <%= station.dock_count %></div>
         <div class="station-stats">Installed On: <%= station.readable_install_date %></div>
