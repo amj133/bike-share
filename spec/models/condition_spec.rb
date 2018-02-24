@@ -43,5 +43,18 @@ describe Condition, type: :model do
 
       expect(Condition.average_rides_per_day("max_temp_f", 3, 9)).to eq(9)
     end
+
+    xit "#most_rides_per_day" do
+      date = Time.new(2001,2,3)
+      date_2 = Time.new(2009,2,3)
+      create(:station, id: 1)
+      create(:station, id: 2)
+      create(:condition, max_temp_f: 8, date: date)
+      create(:condition, max_temp_f: 4, date: date_2)
+      create_list(:trip, 8, start_station_id: 1, end_station_id: 2, start_date: date)
+      create_list(:trip, 10, start_station_id: 1, end_station_id: 2, start_date: date_2)
+
+      expect(Condition.average_rides_per_day("max_temp_f", 3, 9)).to eq({date_2 => 10})
+    end
   end
 end
