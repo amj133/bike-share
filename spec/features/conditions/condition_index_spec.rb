@@ -9,7 +9,7 @@ describe "visitor sees conditions index" do
 
     visit conditions_path
 
-    expect(page).to have_content(condition_1.date)
+    expect(page).to have_content(condition_1.readable_date)
     expect(page).to have_content(condition_1.max_temp_f)
     expect(page).to have_content(condition_1.mean_temp_f)
     expect(page).to have_content(condition_1.min_temp_f)

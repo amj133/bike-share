@@ -1,0 +1,75 @@
+.index-header {
+  margin: 15px;
+  font-weight: bold;
+  background-color: rgba(237, 241, 247, .75);
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.5px solid gray;
+}
+
+.conditions-index   {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+  .index-condition {
+    margin: 15px;
+    height: 150px;
+    width: 200px;
+    background-color: rgba(237, 241, 247, .85);
+    border: 1px black solid;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 10px;
+    ul {
+
+      padding-left: 15px;
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.condition-show {
+  display: flex;
+  justify-content: center;
+  min-height: 90vh;
+  width: 100vw;
+  background-image: url("bikes/9.jpg");
+  background-size: 100vw 100vh;
+  .condition {
+    text-align: center;
+    h3 {margin-top: 10px;}
+    background-color: rgba(237, 241, 247, .85);
+    width: 80vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 30px;
+    .condition-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 15px;
+    }
+    ul{
+      div {font-weight: bold;}
+      margin: 15px;
+      width: 300px;
+      text-align: center;
+      padding: 10px;
+      border: 1px dotted black;
+      background-color: rgba(237, 241, 247, .5);
+      border-radius: 10px;
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.admin-option {
+  margin: 30px;
+}

@@ -18,7 +18,7 @@ require 'rails_helper'
         visit conditions_path
 
 
-        expect(page).to have_content(condition.date)
+        expect(page).to have_content(condition.readable_date)
         expect(page).to have_link("Edit")
     end
   end
@@ -41,7 +41,7 @@ require 'rails_helper'
         visit conditions_path
 
 
-        expect(page).to have_content(condition.date)
+        expect(page).to have_content(condition.readable_date)
         expect(page).to_not have_link("Edit")
       end
     end
@@ -63,12 +63,14 @@ require 'rails_helper'
 
         visit conditions_path
 
-        expect(page).to have_content(condition.date)
+        expect(page).to have_content(condition.readable_date)
 
         click_link("Edit")
 
+        expect(page).to_not have_content(condition.readable_date)
 
         expect(page).to have_content("Date")
+        
         expect(page).to have_content("Edit Conditions")
       end
     end
@@ -90,6 +92,7 @@ require 'rails_helper'
 
         visit conditions_path
 
+        expect(page).to have_content(condition.readable_date)
         expect(page).to have_content("Displaying 1 conditions")
 
         click_link("Edit")

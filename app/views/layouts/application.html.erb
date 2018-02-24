@@ -15,10 +15,12 @@
       <% end %>
     </div>
     <header class="site-banner">
-      <div class="logo">
-        <%= fa_icon "bicycle", class: 'bike-icon' %>
-        <h1> Bike Share</h1>
-      </div>
+      <%= link_to root_path do %>
+        <div class="logo">
+          <%= fa_icon "bicycle", class: 'bike-icon' %>
+          <h1> Bike Share</h1>
+        </div>
+      <% end %>
 
       <div class="access-options">
         <% if current_user.nil? %>
@@ -44,7 +46,6 @@
         <%= render partial: "layouts/user_nav" %>
       <% end %>
     </nav>
-
     <section class="application-section">
       <%= yield %>
     </section>

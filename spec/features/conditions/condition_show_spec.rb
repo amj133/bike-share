@@ -6,7 +6,7 @@ describe "user sees one condition" do
 
     visit condition_path(condition)
 
-    expect(page).to have_content(condition.date)
+    expect(page).to have_content(condition.readable_date)
     expect(page).to have_content(condition.max_temp_f)
     expect(page).to have_content(condition.mean_temp_f)
     expect(page).to have_content(condition.min_temp_f)

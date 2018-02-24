@@ -2,17 +2,19 @@
 $citrus-pulp: #edffa5;
 $cloudy-blue: #a6bfe0;
 $foggy-tears: #ddeaff;
-$teal-fridge: #6beadb;
+$ll-bean-sea: #687fa5;
+$text-background: rgba(237, 241, 247, .85);
 
 body {
   font-family: 'Raleway', sans-serif;  margin: 0px;
   text-decoration: none;
 }
 
+
 a {
   color: black;
   font-weight: bold;
-  &:hover {color: $teal-fridge;}
+  &:hover {color: $ll-bean-sea;}
   text-decoration: none;
 }
 
@@ -59,6 +61,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 2px black solid;
   .navlinks{
     display: flex;
     align-items: center;
@@ -101,18 +104,48 @@ nav {
    }
 }
 
-.application-section {
+.welcome-background {
+  min-height: 90vh;
+  width: 100vw;
+  background-image: url("bikes/1.jpg");
+  background-size: 100vw 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.welcome {
+.application-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 90vh;
   width: 100vw;
-  height: 50vh;
+  background-image: url("bikes/5.jpg");
+  background-size: 100vw 100vh;
+}
+
+.text-box {
+  margin: 20vh auto;
+  font-weight: bold;
+  width: 500px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: $text-background;
+  border-radius: 10px;
+  border: 1px black solid;
+}
+
+.form {
+  text-align: center;
+  .form-field {
+    margin: 25px 0px;
+    input {margin: 0px 10px;}
+    display: flex;
+    justify-content: space-between;
+  }
 }

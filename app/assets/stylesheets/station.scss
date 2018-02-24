@@ -1,25 +1,19 @@
 .stations-index {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   .index-station {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px gray solid;
+    border: 1px black solid;
     border-radius: 10px;
+    background-color: rgba(237, 241, 247, .85);
     width: 350px;
     height: 100px;
     margin: 15px 30px;
     padding: 15px;
-    a {
-      white-space: nowrap;
-      max-width: 300px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 20px;
-    }
     .station-stats {
       font-size: 16px;
       margin: 2px;
