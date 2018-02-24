@@ -75,7 +75,30 @@ describe "admin can view all orders" do
 
       expect(page).to have_link(order_3.id)
       expect(page).to_not have_link(order_1.id)
+      expect(page).to_not have_link(order_2.id)
+      expect(page).to_not have_link(order_4.id)
       expect(page).to_not have_link(order_5.id)
+
+      click_on('Ordered')
+      expect(page).to have_link(order_1.id)
+      expect(page).to have_link(order_2.id)
+      expect(page).to_not have_link(order_3.id)
+      expect(page).to_not have_link(order_4.id)
+      expect(page).to_not have_link(order_5.id)
+
+      click_on('Cancelled')
+      expect(page).to have_link(order_4.id)
+      expect(page).to_not have_link(order_1.id)
+      expect(page).to_not have_link(order_2.id)
+      expect(page).to_not have_link(order_3.id)
+      expect(page).to_not have_link(order_5.id)
+
+      click_on('Completed')
+      expect(page).to have_link(order_5.id)
+      expect(page).to_not have_link(order_1.id)
+      expect(page).to_not have_link(order_2.id)
+      expect(page).to_not have_link(order_3.id)
+      expect(page).to_not have_link(order_4.id)
     end
   end
 end
