@@ -39,10 +39,12 @@ describe "admin visits dashboard and clicks accessories link" do
     visit admin_dashboard_path
     click_on('View all accessories')
     click_on('edit')
-    fill_in('name', with: 'helmet')
+    fill_in('Name', with: 'helmet')
+    select('inactive', :from => 'Status')
     click_on('Update Accessory')
 
     expect(current_path).to eq('/admin/bike-shop')
     expect(page).to have_content('helmet')
+    expect(page).to have_content('inactive')
   end
 end
