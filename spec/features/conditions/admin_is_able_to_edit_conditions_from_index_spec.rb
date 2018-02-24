@@ -70,7 +70,7 @@ require 'rails_helper'
         expect(page).to_not have_content(condition.readable_date)
 
         expect(page).to have_content("Date")
-        
+
         expect(page).to have_content("Edit Conditions")
       end
     end
@@ -114,10 +114,10 @@ require 'rails_helper'
 
         click_button("Update Condition")
 
-  
+
         expect(page).to have_content(200)
         expect(page).to have_content(10)
-        expect(page).to have_content("Condition details")
+        expect(page).to have_content("Condition Details")
 
         expect(page).to have_content("Delete")
         expect(page).to have_content("Edit")

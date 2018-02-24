@@ -41,7 +41,6 @@ require 'rails_helper'
 
         visit stations_path
 
-
         expect(page).to have_content(station.name)
         expect(page).to_not have_link("Deleted")
       end
