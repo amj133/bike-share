@@ -30,3 +30,46 @@
     }
   }
 }
+
+.condition-show {
+  display: flex;
+  justify-content: center;
+  min-height: 90vh;
+  width: 100vw;
+  background-image: url("bikes/9.jpg");
+  background-size: 100vw 100vh;
+  .condition {
+    text-align: center;
+    h3 {margin-top: 10px;}
+    background-color: rgba(237, 241, 247, .85);
+    width: 80vw;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 30px;
+    .condition-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 15px;
+    }
+    ul{
+      div {font-weight: bold;}
+      margin: 15px;
+      width: 300px;
+      text-align: center;
+      padding: 10px;
+      border: 1px dotted black;
+      background-color: rgba(237, 241, 247, .5);
+      border-radius: 10px;
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.admin-option {
+  margin: 30px;
+}
