@@ -1,4 +1,4 @@
-``<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
 <!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
 <sql>
@@ -63,15 +63,15 @@
 <part>id</part>
 </key>
 </table>
-<table x="511" y="68" name="trips">
+<table x="451" y="49" name="trips">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <row name="duration" null="1" autoincrement="0">
-<datatype>TIME</datatype>
+<datatype>INT</datatype>
 <default>NULL</default></row>
 <row name="start_date" null="1" autoincrement="0">
-<datatype>DATE</datatype>
+<datatype>DATETIME</datatype>
 <default>NULL</default></row>
 <row name="start_station_name" null="1" autoincrement="0">
 <datatype>CHAR</datatype>
@@ -103,7 +103,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="826" y="58" name="conditions">
+<table x="655" y="21" name="conditions">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -183,7 +183,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="452" y="412" name="status">
+<table x="564" y="312" name="status">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -200,6 +200,80 @@
 <row name="time" null="1" autoincrement="0">
 <datatype>TIME</datatype>
 <default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="122" y="627" name="users">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="username" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="password" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="email" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="423" y="659" name="orders">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="status" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="total" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="date submitted" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1009" y="651" name="accessories">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="price" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="image_path" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="670" y="672" name="order_accessories">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="order_ids" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="orders" row="id" />
+</row>
+<row name="accessory_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="accessories" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

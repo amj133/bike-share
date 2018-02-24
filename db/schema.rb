@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221224029) do
+ActiveRecord::Schema.define(version: 20180224001613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180221224029) do
     t.string "name"
     t.text "description"
     t.integer "price"
+    t.string "image_path"
   end
 
   create_table "conditions", force: :cascade do |t|
@@ -46,6 +47,22 @@ ActiveRecord::Schema.define(version: 20180221224029) do
     t.float "events"
     t.float "wind_dir_degrees"
     t.integer "zipcode"
+  end
+
+  create_table "order_accessories", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "accessory_id"
+    t.integer "quantity"
+    t.index ["accessory_id"], name: "index_order_accessories_on_accessory_id"
+    t.index ["order_id"], name: "index_order_accessories_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float "total"
+    t.string "status"
+    t.datetime "submitted"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "stations", force: :cascade do |t|
@@ -86,5 +103,8 @@ ActiveRecord::Schema.define(version: 20180221224029) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "order_accessories", "accessories"
+  add_foreign_key "order_accessories", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "statuses", "stations"
 end

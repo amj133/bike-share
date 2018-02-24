@@ -1,5 +1,5 @@
 class Cart
-  attr_reader :contents
+  attr_accessor :contents
 
   def initialize(initial_contents)
     @contents = initial_contents ||= Hash.new(0)
@@ -26,6 +26,13 @@ class Cart
       accessory = Accessory.find(key.to_i)
       result += accessory.price * value
       result
+    end
+  end
+
+  def accessories
+    accessory_ids = contents.select {|k, v| v > 0}.keys
+    accessories = accessory_ids.map  do |accessory_id|
+      Accessory.find(accessory_id)
     end
   end
 

@@ -29,7 +29,7 @@ class Admin::TripsController < Admin::BaseController
    @trip = Trip.find(params[:id])
    @trip.update(trip_params)
     if @trip.save
-      redirect_to trips_path
+      redirect_to trip_path(@trip)
     else
      render :edit
     end

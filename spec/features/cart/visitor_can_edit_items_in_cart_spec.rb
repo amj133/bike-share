@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "visitor can view items in cart" do
+describe "visitor can edit items in cart" do
   context "visits /cart" do
     it "shows all items in cart" do
       accessory_1 = create(:accessory)

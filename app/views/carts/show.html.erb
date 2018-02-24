@@ -4,11 +4,15 @@
 <div class="show-cart">
   <% @accessories.each do |accessory| %>
     <%= accessory.name %>
-    Subtotal: <%= @cart.count_of(accessory.id) * accessory.price %>
+    <%= accessory.description %>
+    <%= image_tag(accessory.image_path) %>
     Unit Price: <%= accessory.price %>
     Quantity: <%= @cart.count_of(accessory.id) %>
+    Subtotal: <%= @cart.count_of(accessory.id) * accessory.price %>
     <%= button_to "Increase quantity", increase_quantity_path(accessory_id: accessory.id), method: :patch %>
     <%= button_to "Decrease quantity", decrease_quantity_path(accessory_id: accessory.id), method: :patch %>
     <%= button_to "remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
   <% end %>
 </div>
+
+<%= button_to "Checkout", orders_path %>

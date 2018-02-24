@@ -23,13 +23,15 @@ Rails.application.routes.draw do
   resources :accessories, only: [:show]
   get "/bike-shop", to: "accessories#index"
 
+  resources :orders, only: [:create, :show]
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
   namespace :admin do
     resources :conditions, only: [:index, :show, :destroy, :edit, :update, :new, :create]
-    resources :stations, only: [:index ,:show, :destroy]
+    resources :stations, only: [:index ,:show, :destroy, :edit, :update], param: :slug
     resources :trips, only: [:index ,:show, :destroy, :edit, :update, :new, :create]
   end
 end

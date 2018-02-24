@@ -4,4 +4,10 @@
   <p>Profile Information</p>
   <p>Username: <%= @user.username %></p>
   <p>Email: <%= @user.email %></p>
+
+  <% unless @user.orders.nil? %>
+    <% @user.orders.each do |order| %>
+      <p><%= link_to "Order #{order.id}", order_path(order) %></p>
+    <% end %>
+  <% end  %>
 </div>
