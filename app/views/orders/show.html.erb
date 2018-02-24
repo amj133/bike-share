@@ -1,11 +1,17 @@
 <h3>Order <%= @order.id %></h3>
 
+<% if current_admin? %>
+  Customer: <%= @order.user.username %>
+<% end %>
+
+
 Order Total: <%= @order.total %>
+Quantity in Order: <%= @order.order_accessories.sum('quantity') %>
 Status: <%= @order.status %>
 Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %>
 
 <% @order.accessories.each do |accessory| %>
-  Name: <%= accessory.name %>
+  Name: <%= link_to accessory.name, accessory_path(accessory) %>
   Quantity: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity %>
   Subtotal: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price %>
 <% end %>

@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
+User.create(username: "admin", email: "admin@gmail.com", password: "admin", role: 1)
+
 Accessory.create(name: "helmet", description: "awesome lightning blue helmet - makes ya look cool!", price: 3450, image_path: 'bike.png')
 Accessory.create(name: "tights", description: "aerodynamic tights - make ya go fast!", price: 5599, image_path: 'bike.png')
 Accessory.create(name: "clip in shoes", description: "lock in to your pedals and leave your competitors in the dust!", price: 11099, image_path: 'bike.png')

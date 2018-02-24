@@ -1,0 +1,10 @@
+<h3>All Accessories</h3>
+
+<% @accessories.each do |accessory| %>
+  <%= accessory.name %>
+  <%= accessory.description %>
+  <%= accessory.image_path %>
+  <%= accessory.price %>
+  <%= accessory.status %>
+  <%= link_to "edit", edit_admin_accessory_path(accessory) %>
+<% end %>
