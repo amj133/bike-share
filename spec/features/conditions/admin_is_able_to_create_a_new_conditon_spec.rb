@@ -63,7 +63,7 @@ require 'rails_helper'
 
 
         expect(current_path).to eq condition_path(Condition.last)
-        expect(page).to have_content("Condition details")
+        expect(page).to have_content("Condition Details")
         expect(page).to have_content(200)
         expect(page).to have_content(10)
         expect(page).to have_content("New condition created")

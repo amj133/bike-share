@@ -18,7 +18,7 @@ require 'rails_helper'
         visit condition_path(condition)
 
 
-        expect(page).to have_content(condition.date)
+        expect(page).to have_content(condition.readable_date)
         expect(page).to have_link("Edit")
         expect(page).to have_link("Delete")
     end
@@ -42,7 +42,7 @@ require 'rails_helper'
         visit condition_path(condition)
 
 
-        expect(page).to have_content(condition.date)
+        expect(page).to have_content(condition.readable_date)
         expect(page).to_not have_link("Edit")
         expect(page).to_not have_link("Delete")
     end
@@ -68,9 +68,9 @@ require 'rails_helper'
           visit condition_path(condition)
 
 
-          expect(page).to have_content(condition.date)
+          expect(page).to have_content(condition.readable_date)
 
-          expect(page).to have_content(condition.date)
+          expect(page).to have_content(condition.readable_date)
 
           click_link("Delete")
 
@@ -97,9 +97,9 @@ require 'rails_helper'
           visit condition_path(condition)
 
 
-          expect(page).to have_content(condition.date)
+          expect(page).to have_content(condition.readable_date)
 
-          expect(page).to have_content(condition.date)
+          expect(page).to have_content(condition.readable_date)
 
           click_link("Edit")
 
@@ -112,6 +112,6 @@ require 'rails_helper'
 
           expect(page).to have_content(300)
           expect(current_path).to eq condition_path(condition)
-          expect(page).to have_content("Condition details")
+          expect(page).to have_content("Condition Details")
       end
     end
