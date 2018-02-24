@@ -16,7 +16,7 @@ describe "admin visits order show page" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
     allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
-    visit admin_order_path(order)
+    visit order_path(order)
 
     expect(current_path).to eq(order_path(order))
     expect(page).to have_content("Order Total: 335")
