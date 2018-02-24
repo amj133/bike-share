@@ -6,8 +6,8 @@ describe "admin visits dashboard and clicks accessories link" do
                       password: "test",
                       email:"bob@gmail.com",
                       role: 1)
-    accessory_1 = create(:accessory)
-    accessory_2 = create(:accessory)
+    accessory_1 = create(:accessory, status: "active")
+    accessory_2 = create(:accessory, status: "inactive")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
     allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)

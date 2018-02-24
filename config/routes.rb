@@ -34,5 +34,6 @@ Rails.application.routes.draw do
     resources :stations, only: [:index ,:show, :destroy, :edit, :update], param: :slug
     resources :trips, only: [:index ,:show, :destroy, :edit, :update, :new, :create]
     get "/dashboard", to: "orders#index"
+    get "/bike-shop", to: "accessories#index"
   end
 end
