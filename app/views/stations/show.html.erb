@@ -2,7 +2,7 @@
 
 
 
-<h3>Station at <%= @station.name %></h3>
+<h3>Station at <%= @station.slug %></h3>
 
 
 <div class="station-show">
@@ -11,18 +11,20 @@
   <p>Longitude: <%= @station.long %></p>
   <p>Dock Count: <%= @station.dock_count %></p>
   <p>Installed On: <%= @station.readable_install_date %></p>
-
   <% if current_user %>
     <div class="station-show-analytics">
       Station Analytics:
       Number of rides started here: <%= @station.rides_started_count %>
       Number of rides ended here: <%= @station.rides_ended_count %>
-  
+
       Most frequent destination station: <%= Station.find(@station.most_popular_destination_station_id).name %>
       Most frequent origination station: <%= Station.find(@station.most_popular_origination_station_id).name %>
       Date with highest trips started: <%= @station.date_with_highest_trips_started %>
       Most frequent zipcode of bikers: <%= @station.most_frequent_zipcode %>
       Bike ID that starts here most: <%= @station.most_frequent_bike_id %>
+      <br>
+      <%= link_to "Delete",   admin_station_path(@station.slug), method: "delete"  if current_admin? %>
+      <%= link_to "Edit", edit_admin_station_path(@station.slug) if current_admin? %>
     </div>
   <% end %>
 </div>
