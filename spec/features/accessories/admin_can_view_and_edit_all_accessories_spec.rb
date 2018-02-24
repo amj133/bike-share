@@ -47,4 +47,5 @@ describe "admin visits dashboard and clicks accessories link" do
     expect(page).to have_content('helmet')
     expect(page).to have_content('inactive')
   end
+
 end
