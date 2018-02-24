@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe "admin visits order show page" do
   it "displays purchaser and order info" do
-    accessory_1 = create(:accessory, price: 110)
-    accessory_2 = create(:accessory, price: 225)
     bob = User.create(username: "bob",
                       password: "test",
                       email:"bob@gmail.com",
@@ -11,21 +9,24 @@ describe "admin visits order show page" do
     order = bob.orders.create(status: "Ordered",
                          total: 335,
                          submitted: DateTime.now)
+    order.accessories.create(name: 'helmet', description: "blue", price: 110)
+    order.accessories.create(name: 'shoe', description: "red", price: 225)
+    order.order_accessories.find(1).update(quantity: 1)
+    order.order_accessories.find(2).update(quantity: 1)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
     allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
     visit admin_order_path(order)
 
     expect(current_path).to eq(order_path(order))
-    expect(current_path).to eq('/admin/orders/1')
     expect(page).to have_content("Order Total: 335")
     expect(page).to have_content("Submitted: #{DateTime.now.utc.strftime("%l:%M %P, %-m/%-d/%Y")}")
-    expect(page).to have_content("Purchaser: #{bob.name}")
+    expect(page).to have_content("Customer: #{bob.username}")
     # expect(page).to have_content("Purchaser: #{bob.address???}")
-    expect(page).to have_link(accessory_1.name)
-    expect(page).to have_link("Subtotal: 110")
-    expect(page).to have_link(accessory_2.name)
-    expect(page).to have_link("Subtotal: 225")
-    expect(page).to have_link("Quantity: 2")
+    expect(page).to have_link('helmet')
+    expect(page).to have_content("Subtotal: 110")
+    expect(page).to have_link('shoe')
+    expect(page).to have_content('Subtotal: 225')
+    expect(page).to have_content("Quantity  in Order: 2")
   end
 end
