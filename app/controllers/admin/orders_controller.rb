@@ -1,7 +1,7 @@
 class Admin::OrdersController < Admin::BaseController
 
   def index
-    @orders = Order.all
+    @orders = Order.where(params[:status])
   end
 
 end

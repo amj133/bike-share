@@ -42,5 +42,40 @@ describe "admin can view all orders" do
       expect(page).to have_content("Cancelled: 1")
       expect(page).to have_content("Completed: 1")
     end
+
+    it "admin can filter displayed orders by status" do
+      jane = User.create(username: "jane",
+                        password: "test",
+                        email:"jane@gmail.com")
+      bob = User.create(username: "bob",
+                        password: "test",
+                        email:"bob@gmail.com",
+                        role: 1)
+      order_1 = jane.orders.create(status: "Ordered",
+                                   total: 1111,
+                                   submitted: DateTime.now)
+      order_2 = jane.orders.create(status: "Ordered",
+                                   total: 2222,
+                                   submitted: DateTime.now)
+      order_3 = jane.orders.create(status: "Paid",
+                                   total: 3333,
+                                   submitted: DateTime.now)
+      order_4 = jane.orders.create(status: "Cancelled",
+                                   total: 44444,
+                                   submitted: DateTime.now)
+      order_5 = jane.orders.create(status: "Completed",
+                                   total: 5555,
+                                   submitted: DateTime.now)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
+      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
+
+      visit admin_dashboard_path
+      click_on('Paid')
+
+      expect(page).to have_link(order_3.id)
+      expect(page).to_not have_link(order_1.id)
+      expect(page).to_not have_link(order_5.id)
+    end
   end
 end
