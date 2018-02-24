@@ -25,5 +25,10 @@ class Condition < ApplicationRecord
     date_rides.select { |date, count| count == ride_count}
   end
 
+  def self.date_with_least_rides(attr, min, max)
+    date_rides = rides_by_date(attr, min, max)
+    ride_count = date_rides.values.min_by {|count| count}
+    date_rides.select { |date, count| count == ride_count}
+  end
 
 end
