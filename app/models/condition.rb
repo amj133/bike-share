@@ -6,4 +6,11 @@ class Condition < ApplicationRecord
   def readable_date
     date.strftime("%b %d, %Y")
   end
+
+  def self.rides_by_date(attr, min, max)
+    where("#{attr} BETWEEN ? AND ?", min, max)
+      .joins(:trips)
+      .group('conditions.date')
+      .count
+  end
 end
