@@ -16,7 +16,7 @@ describe Order, type: :model do
     it "#by_status returns all orders for given status" do
       bob = User.create(username: "bob",
                         password: "test",
-                        email:"bob@gmail.com",
+                        email:"bob@gmail.com")
       order_1 = bob.orders.create(status: "Ordered",
                                   total: 1111,
                                   submitted: DateTime.now)
@@ -34,6 +34,7 @@ describe Order, type: :model do
                                   submitted: DateTime.now)
 
       expect(Order.by_status("Ordered")).to eq([order_1, order_2])
+      expect(Order.by_status("Completed")).to eq([order_5])
     end
   end
 end
