@@ -22,9 +22,9 @@
       <%= link_to "Edit", edit_admin_station_path(@station.slug) if current_admin? %>
       <br>
     <% elsif current_user %>
-      <p> No trips for this station <p>
-  <% end %>
-  <%= link_to "Delete", admin_station_path(@station.slug), method: "delete"  if current_admin? %>
-  <%= link_to "Edit", edit_admin_station_path(@station.slug) if current_admin? %>
+      <p> No analytics available for this station <p>
+      <%= link_to "Delete", admin_station_path(@station.slug), method: "delete"  if current_admin? %>
+      <%= link_to "Edit", edit_admin_station_path(@station.slug) if current_admin? %>
+    <% end %>
 </div>
 </div>
