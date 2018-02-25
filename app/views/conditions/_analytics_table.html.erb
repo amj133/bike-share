@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th><%= table_header %></th>
+    <th>Average Rides per Day</th>
+    <th>Most Rides in a Day</th>
+    <th>Least Rides in a Day</th>
+  </tr>
+  <% until range_min.ceil >= range_max %>
+    <% avg = Condition.average_rides_per_day(attr, range_min, range_min + increment) %>
+    <% most = Condition.date_with_most_rides(attr, range_min, range_min + increment) %>
+    <% least = Condition.date_with_least_rides(attr, range_min, range_min + increment) %>
+    <% unless avg == 0 %>
+      <tr>
+        <td><%= "#{range_min.ceil}" %> - <%= "#{(range_min + increment).ceil} #{unit}"%></td>
+        <td><%= "#{avg}" %> </td>
+        <td><%= "#{most.values.first}" %> </td>
+        <td><%= "#{least.values.first}" %> </td>
+      </tr>
+    <% end %>
+    <% range_min += increment %>
+  <% end %>
+</table>
