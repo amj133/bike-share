@@ -1,0 +1,38 @@
+.ti-header {
+  margin: 15px 0px;
+}
+.trip-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .trip-id {
+    margin-bottom: 10px;
+  }
+  .index-trip {
+    background-color: rgba(244, 248, 255, 0.85);
+    height: 150px;
+    width: 200px;
+    font-size: 14px;
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 15px;
+    div {
+      height: 15px;
+      overflow: hidden;
+    }
+  }
+}
+.pagination {
+  margin: 15px auto;
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  .next {justify-content: flex-end;}
+  div {
+    background-color: rgba(244, 248, 255, 0.85);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px black solid;
+  }
+}
