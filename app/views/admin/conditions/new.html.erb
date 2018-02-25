@@ -1,54 +1,104 @@
-<h2> New Condition </h2>
+<div class="form new-form">
+  <h2> New Condition </h2>
   <%= form_for [:admin, @condition] do |f| %>
-  <%= f.label :date %>
-  <%= f.text_field :date, placeholder: "*" %><br><br>
-  <%= f.label :max_temp_f %>
-  <%= f.text_field :max_temp_f, placeholder: "*" %><br><br>
-  <%= f.label :mean_temp_f %>
-  <%= f.text_field :mean_temp_f, placeholder: "*" %><br><br>
-  <%= f.label :min_temp_f %>
-  <%= f.text_field :min_temp_f, placeholder: "*" %><br><br>
-  <%= f.label :max_dewpoint_f %>
-  <%= f.text_field :max_dewpoint_f, placeholder: "*" %><br><br>
-  <%= f.label :mean_dewpoint_f %>
-  <%= f.text_field :mean_dewpoint_f, placeholder: "*" %><br><br>
-  <%= f.label :min_dewpoint_f %>
-  <%= f.text_field :min_dewpoint_f, placeholder: "*" %><br><br>
-  <%= f.label :max_humidity %>
-  <%= f.text_field :max_humidity, placeholder: "*" %><br><br>
-  <%= f.label :mean_humidity %>
-  <%= f.text_field :mean_humidity, placeholder: "*" %><br><br>
-  <%= f.label :min_humidity %>
-  <%= f.text_field :min_humidity, placeholder: "*" %><br><br>
-  <%= f.label :max_sea_level_pressure_inches %>
-  <%= f.text_field :max_sea_level_pressure_inches, placeholder: "*" %><br><br>
-  <%= f.label :mean_sea_level_pressure_inches %>
-  <%= f.text_field :mean_sea_level_pressure_inches, placeholder: "*" %><br><br>
-  <%= f.label :min_sea_level_pressure_inches %>
-  <%= f.text_field :min_sea_level_pressure_inches, placeholder: "*" %><br><br>
-  <%= f.label :max_visibility_miles %>
-  <%= f.text_field :max_visibility_miles, placeholder: "*" %><br><br>
-  <%= f.label :mean_visibility_miles %>
-  <%= f.text_field :mean_visibility_miles, placeholder: "*" %><br><br>
-  <%= f.label :min_visibility_miles %>
-  <%= f.text_field :min_visibility_miles, placeholder: "*" %><br><br>
-  <%= f.label :max_wind_speed %>
-  <%= f.text_field :max_wind_speed, placeholder: "*" %><br><br>
-  <%= f.label :mean_wind_speed %>
-  <%= f.text_field :mean_wind_speed, placeholder: "*" %><br><br>
-  <%= f.label :max_gust_speed %>
-  <%= f.text_field :max_gust_speed, placeholder: "*" %><br><br>
-  <%= f.label :precipitation_inches %>
-  <%= f.text_field :precipitation_inches, placeholder: "*" %><br><br>
-  <%= f.label :cloud_cover %>
-  <%= f.text_field :cloud_cover, placeholder: "*" %><br><br>
-  <%= f.label :events %>
-  <%= f.text_field :events, placeholder: "*" %><br><br>
-  <%= f.label :wind_dir_degrees %>
-  <%= f.text_field :wind_dir_degrees, placeholder: "*" %><br><br>
-  <%= f.label :zipcode %>
-  <%= f.text_field :zipcode, placeholder: "*" %><br><br>
+  <div class="form-field">
+    <%= f.label :date %>
+    <%= f.text_field :date, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_temp_f %>
+    <%= f.text_field :max_temp_f, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :mean_temp_f %>
+    <%= f.text_field :mean_temp_f, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :min_temp_f %>
+    <%= f.text_field :min_temp_f, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_dewpoint_f %>
+    <%= f.text_field :max_dewpoint_f, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :mean_dewpoint_f %>
+    <%= f.text_field :mean_dewpoint_f, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :min_dewpoint_f %>
+    <%= f.text_field :min_dewpoint_f, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_humidity %>
+    <%= f.text_field :max_humidity, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :mean_humidity %>
+    <%= f.text_field :mean_humidity, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :min_humidity %>
+    <%= f.text_field :min_humidity, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_sea_level_pressure_inches %>
+    <%= f.text_field :max_sea_level_pressure_inches, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :mean_sea_level_pressure_inches %>
+    <%= f.text_field :mean_sea_level_pressure_inches, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :min_sea_level_pressure_inches %>
+    <%= f.text_field :min_sea_level_pressure_inches, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_visibility_miles %>
+    <%= f.text_field :max_visibility_miles, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :mean_visibility_miles %>
+    <%= f.text_field :mean_visibility_miles, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :min_visibility_miles %>
+    <%= f.text_field :min_visibility_miles, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_wind_speed %>
+    <%= f.text_field :max_wind_speed, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :mean_wind_speed %>
+    <%= f.text_field :mean_wind_speed, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :events %>
+    <%= f.text_field :events, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :max_gust_speed %>
+    <%= f.text_field :max_gust_speed, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :precipitation_inches %>
+    <%= f.text_field :precipitation_inches, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :cloud_cover %>
+    <%= f.text_field :cloud_cover, placeholder: "*" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :wind_dir_degrees %>
+    <%= f.text_field :wind_dir_degrees, placeholder: "*" %>
+  </div>
 
   <%= f.submit class: "sub-btn" %>
 
   <% end %>
+</div>

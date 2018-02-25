@@ -153,3 +153,47 @@ nav {
     justify-content: space-between;
   }
 }
+
+.new-form {
+  margin: 50px;
+  min-width: 400px;
+  padding: 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $text-background;
+  border-radius: 10px;
+  border: 1px black solid;
+  form {
+    min-width: 300px;
+  }
+  h2 {
+    margin: 0px;
+  }
+  select {
+    width: 140px;
+  }
+}
+
+.dashboard {
+  margin: 10vh auto;
+  padding: 50px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(237, 241, 247, .85);
+  border-radius: 10px;
+  border: 1px black solid;
+  div {
+    margin: 15px;
+  }
+}
+
+.modify {
+  text-align: center;
+  font-size: 12px;
+}

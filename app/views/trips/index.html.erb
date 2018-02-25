@@ -23,14 +23,19 @@
 </section>
 <div class="pagination">
   <% @first, @last = @first_trip.to_i, @last_trip.to_i %>
-  <div class="previous">
+  <section>
     <% if @first > 1 %>
-    <%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
+      <div class="previous">
+        <%= link_to "Previous Page", "/trips?first=#{@first-30}&last=#{@last-30}"%>
+      </div>
     <% end %>
-  </div>
-  <div class="next">
+  </section>
+
+  <section>
     <% if @first < 0 || @last <= Trip.count %>
-    <%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
+      <div class="next">
+      <%= link_to "Next Page", "/trips?first=#{@first+30}&last=#{@last+30}"%>
+      </div>
     <% end %>
-  </div>
+  </section>
 </div>
