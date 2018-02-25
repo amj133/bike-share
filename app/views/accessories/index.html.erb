@@ -2,7 +2,7 @@
 
 <% @accessories.each do |accessory| %>
   <%= accessory.name %>
-  <%= accessory.price %>
+  <%= number_to_currency(accessory.price, unit: "$") %>
   <%= image_tag(accessory.image_path, class: "accessory-image") %>
   <%= button_to "Add to cart", carts_path(accessory_id: accessory.id), id: 'add-to-cart' %>
 <% end %>
