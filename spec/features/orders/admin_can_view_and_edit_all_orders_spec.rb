@@ -27,7 +27,6 @@ describe "admin can view all orders" do
                                    submitted: DateTime.now)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
-      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
 
       visit admin_dashboard_path
 
@@ -68,7 +67,6 @@ describe "admin can view all orders" do
                                    submitted: DateTime.now)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
-      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
 
       visit admin_dashboard_path
       click_on('Paid')
@@ -123,7 +121,6 @@ describe "admin can view all orders" do
                                    submitted: DateTime.now)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
-      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
 
       visit admin_dashboard_path
       click_on('cancel', match: :first)
