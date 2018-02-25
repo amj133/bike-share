@@ -4,7 +4,7 @@
   <%= accessory.name %>
   <%= accessory.description %>
   <%= accessory.image_path %>
-  <%= accessory.price %>
+  <%= number_to_currency(accessory.price, unit: "$") %>
   <%= accessory.status %>
   <%= link_to "edit", edit_admin_accessory_path(accessory) %>
 <% end %>

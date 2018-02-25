@@ -18,13 +18,13 @@ describe "user can view all items in cart" do
       expect(page).to have_content(accessory_1.description)
       expect(page).to have_content(accessory_1.price)
       expect(page).to have_content("Quantity: 1")
-      expect(page).to have_content("Subtotal: 110")
+      expect(page).to have_content("Subtotal: $110.00")
       expect(page).to have_content(accessory_2.name)
       expect(page).to have_content(accessory_2.description)
       expect(page).to have_content(accessory_2.price)
       expect(page).to have_content("Quantity: 1")
-      expect(page).to have_content("Subtotal: 225")
-      expect(page).to have_content("Cart Total: 335")
+      expect(page).to have_content("Subtotal: $225.00")
+      expect(page).to have_content("Cart Total: $335.00")
       expect(page).to have_button("Checkout")
     end
 

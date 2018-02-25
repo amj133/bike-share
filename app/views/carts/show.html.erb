@@ -1,7 +1,7 @@
 <div class="cart-show">
   <div class="">
     <h3>Accessories in your cart</h3>
-    <h3>Cart Total: <%= @cart.total_cost %></h3>
+    <h3>Cart Total: <%= number_to_currency(@cart.total_cost, unit: "$") %></h3>
   </div>
 
   <div class="show-cart">
@@ -9,9 +9,9 @@
       <%= accessory.name %><br>
       <%= accessory.description %><br>
       <%= image_tag(accessory.image_path, class: 'accessory-image') %>
-      <p>Unit Price: <%= accessory.price %></p>
+      <p>Unit Price: <%= number_to_currency(accessory.price, unit: "$") %></p>
       <p>Quantity: <%= @cart.count_of(accessory.id) %></p>
-      <p>Subtotal: <%= @cart.count_of(accessory.id) * accessory.price %></p>
+      <p>Subtotal: <%= number_to_currency(@cart.count_of(accessory.id) * accessory.price, unit: "$") %></p>
       <%= button_to "Increase quantity", increase_quantity_path(accessory_id: accessory.id), method: :patch %>
       <%= button_to "Decrease quantity", decrease_quantity_path(accessory_id: accessory.id), method: :patch %>
       <%= button_to "remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
