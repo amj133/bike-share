@@ -101,21 +101,21 @@ describe Trip, type: :model do
       create(:trip, subscription: "customer")
       create(:trip, subscription: "subscriber")
 
-      expect(Trip.user_subscrip_percentage).to eq({'customer' => (2/3.0), 'subscriber' => (1/3.0)})
+      expect(Trip.user_subscrip_percentage).to eq({'customer' => 67, 'subscriber' => 33})
     end
     it "calculates most popular date to start trip" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 3, 4))
 
-      expect(Trip.most_popular_date).to eq("2011-04-05")
+      expect(Trip.most_popular_date).to eq("Apr 05, 2011")
     end
     it "calculates least popular date to start trip" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 4, 5))
       create(:trip, start_date: DateTime.new(2011, 3, 4))
 
-      expect(Trip.least_popular_date).to eq("2011-03-04")
+      expect(Trip.least_popular_date).to eq("Mar 04, 2011")
     end
     it "calculates month by month breakdown of number of rides with subtotals for each with year" do
       create(:trip, start_date: DateTime.new(2011, 4, 5))

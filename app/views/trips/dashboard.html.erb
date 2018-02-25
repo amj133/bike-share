@@ -25,8 +25,8 @@
   <div><%= Trip.least_ridden_bike.bike_id %></div>
   <div><%= Trip.least_ridden_bike.trip_count %>
 </div>
-  <div>Most Popular Date: <%= Trip.most_popular_date.strftime("%b %d, %Y") %></div>
-  <div>Least Popular Date: <%= Trip.least_popular_date.strftime("%b %d, %Y") %></div>
+  <div>Most Popular Date: <%= Trip.most_popular_date %></div>
+  <div>Least Popular Date: <%= Trip.least_popular_date %></div>
   <% Trip.month_breakdown.each do |my, ride_number| %>
      <% if ride_number != 1 %>
        <div> <%= ride_number %> rides in <%= my %> </div>

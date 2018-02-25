@@ -71,6 +71,7 @@ class Trip < ApplicationRecord
       .order('rides_per_date DESC')
       .first
       .start_date
+      .strftime("%b %d, %Y")
   end
 
   def self.least_popular_date
@@ -79,6 +80,7 @@ class Trip < ApplicationRecord
       .order('rides_per_date')
       .first
       .start_date
+      .strftime("%b %d, %Y")
   end
 
 end

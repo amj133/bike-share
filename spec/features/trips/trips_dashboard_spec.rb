@@ -13,9 +13,9 @@ describe "user visits trip dashboard" do
 
     visit trips_dashboard_path
 
-    expect(page).to have_content(Trip.avg_ride_duration)
-    expect(page).to have_content(Trip.longest_ride.duration)
-    expect(page).to have_content(Trip.shortest_ride.duration)
+    expect(page).to have_content(Trip.avg_ride_duration.round)
+    expect(page).to have_content(Trip.longest_ride.duration.round)
+    expect(page).to have_content(Trip.shortest_ride.duration.round)
     expect(page).to have_content(Trip.most_starting_station.name)
     expect(page).to have_content(Trip.most_starting_station.city)
     expect(page).to have_content(Trip.most_ending_station.name)
