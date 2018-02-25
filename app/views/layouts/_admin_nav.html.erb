@@ -14,4 +14,11 @@
   <div><%= link_to "New Station", new_admin_station_path %></div>
 <% end %>
 
+<% content_for :bikeshop_dropdown do %>
+  <div class="dropdown-content">
+    <div><%= link_to "Manage Shop", admin_bike_shop_path %></div>
+    <div><%= link_to "New Accessory", bike_shop_new_path %></div>
+  </div>
+<% end %>
+
 <%= render partial: "layouts/user_nav" %>
