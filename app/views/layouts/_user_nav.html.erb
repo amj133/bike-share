@@ -4,8 +4,9 @@
   <%= fa_icon "tachometer", class: 'dashboard-icon' %>
     <div class="dropdown-content">
       <div><%= link_to "Personal Dashboard", dashboard_path %></div>
+      <%= yield :admin_dashboard %>
       <div><%= link_to "Stations Dashboard", stations_dashboard_path %></div>
       <div><%= link_to "Trips Dashboard", trips_dashboard_path %></div>
-      <div><%= link_to "Conditions Dashboard (n/c)", dashboard_path %></div>
+      <div><%= link_to "Weather Dashboard", dashboard_path %></div>
     </div>
 </div>
