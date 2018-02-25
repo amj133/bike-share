@@ -3,11 +3,11 @@
   <%= form_for [:admin, @trip] do |f| %>
   <div class="form-field">
     <%= f.label :duration %>
-    <%= f.text_field :duration, placeholder: "e.g. '60'" %>
+    <%= f.text_field :duration, placeholder: "in minutes, e.g. '60'" %>
   </div>
   <div class="form-field">
     <%= f.label :start_date %>
-    <%= f.text_field :start_date, placeholder: "e.g. 'yyyy/mm/dd'" %>
+    <%= f.date_field :start_date %>
   </div>
   <div class="form-field">
     <%= f.label :start_station_id %>
@@ -15,14 +15,14 @@
   </div>
   <div class="form-field">
     <%= f.label :end_date %>
-    <%= f.text_field :end_date, placeholder: "e.g. 'yyyy/mm/dd'" %>
+    <%= f.date_field :end_date %>
   </div>
   <div class="form-field">
     <%= f.label :end_station_id %>
     <%= f.select :end_station_id, Station.all.map {|s| [s.name, s.id]}, { prompt: true } %>
   </div>
   <div class="form-field">
-    <%= f.label :bike_id %>
+    <%= f.label "Bike id" %>
     <%= f.text_field :bike_id, placeholder: "e.g. '10'" %>
   </div>
   <div class="form-field">
