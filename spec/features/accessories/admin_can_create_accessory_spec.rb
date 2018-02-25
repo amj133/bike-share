@@ -19,7 +19,7 @@ describe "admin can create an accessory" do
       expect(current_path).to eq(admin_bike_shop_path)
       expect(page).to have_content(Accessory.last.name)
       expect(page).to have_content(Accessory.last.description)
-      expect(page).to have_content(Accessory.last.price)
+      expect(page).to have_content("1,234.00")
     end
 
     it "cannot create accessory with duplicate name" do

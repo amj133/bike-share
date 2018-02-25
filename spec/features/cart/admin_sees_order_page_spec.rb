@@ -18,15 +18,14 @@ describe "admin visits order show page" do
     allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
     visit order_path(order)
 
-    expect(current_path).to eq(order_path(order))
-    expect(page).to have_content("Order Total: 335")
+    expect(page).to have_content("Order Total: $335.00")
     expect(page).to have_content("Submitted: #{DateTime.now.utc.strftime("%l:%M %P, %-m/%-d/%Y")}")
     expect(page).to have_content("Customer: #{bob.username}")
-    # expect(page).to have_content("Purchaser: #{bob.address???}")
+    expect(page).to have_content("Email: #{bob.email}")
     expect(page).to have_link('helmet')
-    expect(page).to have_content("Subtotal: 110")
+    expect(page).to have_content("Subtotal: $110.00")
     expect(page).to have_link('shoe')
-    expect(page).to have_content('Subtotal: 225')
+    expect(page).to have_content('Subtotal: $225.00')
     expect(page).to have_content("Quantity  in Order: 2")
   end
 end

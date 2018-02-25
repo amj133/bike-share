@@ -2,10 +2,11 @@
 
 <% if current_admin? %>
   Customer: <%= @order.user.username %>
+  Email: <%= @order.user.email %>
 <% end %>
 
 
-Order Total: <%= @order.total %>
+Order Total: <%= number_to_currency(@order.total, unit: "$") %>
 Quantity in Order: <%= @order.order_accessories.sum('quantity') %>
 Status: <%= @order.status %>
 Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %>
@@ -13,5 +14,5 @@ Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %>
 <% @order.accessories.each do |accessory| %>
   Name: <%= link_to accessory.name, accessory_path(accessory) %>
   Quantity: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity %>
-  Subtotal: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price %>
+  Subtotal: <%= number_to_currency(@order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price, unit: "$") %>
 <% end %>

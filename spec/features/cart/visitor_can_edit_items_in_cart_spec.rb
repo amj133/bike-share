@@ -48,9 +48,9 @@ describe "visitor can edit items in cart" do
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Cart: 2")
       expect(page).to have_content(accessory_1.name)
-      expect(page).to have_content(accessory_1.price)
+      expect(page).to have_content("Unit Price: $2,050")
       expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Subtotal: 4100")
+      expect(page).to have_content("Subtotal: $4,100.00")
     end
 
     it "cart total will increase" do
@@ -64,7 +64,7 @@ describe "visitor can edit items in cart" do
       click_on("Increase quantity", match: :first)
 
       expect(current_path). to eq('/cart')
-      expect(page).to have_content('Cart Total: 5225')
+      expect(page).to have_content('Cart Total: $5,225.00')
     end
   end
 
@@ -78,15 +78,15 @@ describe "visitor can edit items in cart" do
       click_on("Increase quantity")
 
       expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Cart Total: 4100")
-      expect(page).to have_content("Subtotal: 4100")
+      expect(page).to have_content("Cart Total: $4,100.00")
+      expect(page).to have_content("Subtotal: $4,100.00")
 
       click_on("Decrease quantity")
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Quantity: 1")
-      expect(page).to have_content("Cart Total: 2050")
-      expect(page).to have_content("Subtotal: 2050")
+      expect(page).to have_content("Cart Total: $2,050.00")
+      expect(page).to have_content("Subtotal: $2,050.00")
     end
   end
 end
