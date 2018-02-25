@@ -52,7 +52,7 @@ require 'rails_helper'
 
         visit new_admin_trip_path
 
-        fill_in("Duration", with: "420")
+        fill_in("Duration", with: 420)
         fill_in("Start date", with: "12345")
         fill_in("Start station", with: "1")
         fill_in("End date", with: "12456")
