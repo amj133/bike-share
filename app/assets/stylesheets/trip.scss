@@ -28,6 +28,7 @@
   width: 90vw;
   display: flex;
   justify-content: space-between;
+  .next {justify-content: flex-end;}
   div {
     background-color: rgba(244, 248, 255, 0.85);
     padding: 5px;

@@ -1,27 +1,30 @@
-<h3>Admin Dashboard</h3>
+<div class="dashboard">
+  <h3>Admin Dashboard</h3>
 
-<%= link_to "View all accessories", admin_bike_shop_path %>
+  <%= link_to "View all accessories", admin_bike_shop_path %>
 
-<ul>Order Count By Status:
-  <li>Ordered: <%= Order.by_status("Ordered").count %></li>
-  <li>Paid: <%= Order.by_status("Paid").count %></li>
-  <li>Cancelled: <%= Order.by_status("Cancelled").count %></li>
-  <li>Completed: <%= Order.by_status("Completed").count %></li>
-</ul>
+  <ul>Order Count By Status:
+    <div>Ordered: <%= Order.by_status("Ordered").count %></div>
+    <div>Paid: <%= Order.by_status("Paid").count %></div>
+    <div>Cancelled: <%= Order.by_status("Cancelled").count %></div>
+    <div>Completed: <%= Order.by_status("Completed").count %></div>
+  </ul>
+  <div>Filter Orders by:</div>
+  <div class="order-filters">
+      <%= link_to "Ordered", "/admin/dashboard?status=status='Ordered'" %>
+      <%= link_to "Paid", "/admin/dashboard?status=status='Paid'" %>
+      <%= link_to "Cancelled", "/admin/dashboard?status=status='Cancelled'" %>
+      <%= link_to "Completed", "/admin/dashboard?status=status='Completed'" %>
+  </div>
 
-Filter Orders by:
-  <%= link_to "Ordered", "/admin/dashboard?status=status='Ordered'" %>
-  <%= link_to "Paid", "/admin/dashboard?status=status='Paid'" %>
-  <%= link_to "Cancelled", "/admin/dashboard?status=status='Cancelled'" %>
-  <%= link_to "Completed", "/admin/dashboard?status=status='Completed'" %>
-
-<% @orders.each do |order| %>
-  <%= link_to order.id, order_path(order) %>
-  <% if order.status == 'Ordered' %>
-    <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
-    <%= button_to 'mark as paid', admin_order_path(order, status: "Paid"), method: :patch %>
-    <% elsif order.status == 'Paid' %>
-    <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
-    <%= button_to 'mark as completed', admin_order_path(order, status: "Completed"), method: :patch %>
+  <% @orders.each do |order| %>
+    <%= link_to order.id, order_path(order) %>
+    <% if order.status == 'Ordered' %>
+      <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
+      <%= button_to 'mark as paid', admin_order_path(order, status: "Paid"), method: :patch %>
+      <% elsif order.status == 'Paid' %>
+      <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
+      <%= button_to 'mark as completed', admin_order_path(order, status: "Completed"), method: :patch %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

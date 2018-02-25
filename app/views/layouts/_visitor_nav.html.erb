@@ -3,18 +3,21 @@
     <div>Stations</div>
       <div class="dropdown-content">
         <div><%= link_to "All Stations", stations_path %></div>
+        <%= yield :stations_dropdown %>
       </div>
   </div>
   <div class="dropdown">
     <div>Trips</div>
       <div class="dropdown-content">
         <div><%= link_to "All Trips", trips_path %></div>
+        <%= yield :trips_dropdown %>
       </div>
   </div>
   <div class="dropdown">
     <div>Conditions</div>
       <div class="dropdown-content">
         <div><%= link_to "All Conditions", conditions_path %></div>
+        <%= yield :conditions_dropdown %>
       </div>
   </div>
 </div>

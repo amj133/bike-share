@@ -1,3 +1,17 @@
-<nav>
-  
-</nav>
+<% content_for :trips_dropdown do %>
+<div><%= link_to "New Trip", new_admin_trip_path %></div>
+<% end %>
+
+<% content_for :conditions_dropdown do %>
+<div><%= link_to "New Condition", new_admin_condition_path %></div>
+<% end %>
+
+<% content_for :admin_dashboard do %>
+<div><%= link_to "Admin Dashboard", admin_dashboard_path %></div>
+<% end %>
+
+<% content_for :stations_dropdown do %>
+  <div><%= link_to "New Station", new_admin_station_path %></div>
+<% end %>
+
+<%= render partial: "layouts/user_nav" %>

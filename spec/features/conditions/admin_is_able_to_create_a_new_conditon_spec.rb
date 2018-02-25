@@ -21,7 +21,6 @@ require 'rails_helper'
         expect(page).to have_content("Date")
         expect(page).to have_content("Max temp f")
         expect(page).to have_content("Mean humidity")
-        expect(page).to have_content("Max wind speed")
     end
   end
 
@@ -44,26 +43,16 @@ require 'rails_helper'
         fill_in("Date", with: DateTime.new(2009, 5, 4))
         fill_in("Max temp f", with: 200)
         fill_in("Mean temp f", with: 200)
-
         fill_in("Min temp f", with: 10)
-        fill_in("Max dewpoint f", with: 23)
-        fill_in("Mean dewpoint f", with: 34)
-        fill_in("Max humidity", with: 35)
         fill_in("Mean humidity", with: 21)
-        fill_in("Max sea level pressure inches", with: 12)
-        fill_in("Min sea level pressure inches", with: 56)
         fill_in("Mean visibility miles", with: 43)
-        fill_in("Min visibility miles", with: 34)
         fill_in("Mean wind speed", with: 23)
         fill_in("Precipitation inches", with: 23)
-        fill_in("Cloud cover", with: 12)
-        fill_in("Events", with: 12)
-        fill_in("Zipcode", with: 32218)
         click_button("Create Condition")
 
 
         expect(current_path).to eq condition_path(Condition.last)
-        expect(page).to have_content("Condition details")
+        expect(page).to have_content("Condition Details")
         expect(page).to have_content(200)
         expect(page).to have_content(10)
         expect(page).to have_content("New condition created")
