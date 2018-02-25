@@ -3,6 +3,7 @@
     <div>Stations</div>
       <div class="dropdown-content">
         <div><%= link_to "All Stations", stations_path %></div>
+        <%= yield :stations_dropdown %>
       </div>
   </div>
   <div class="dropdown">
