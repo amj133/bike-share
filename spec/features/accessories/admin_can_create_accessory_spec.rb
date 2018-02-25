@@ -10,11 +10,11 @@ describe "admin can create an accessory" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
 
-      visit new_accessory_path
+      visit bike_shop_new_path
       fill_in('Name', with: 'Gloves')
       fill_in('Description', with: 'Keep your hands warm!')
       fill_in('Price', with: 1234)
-      click_on('Create Accssory')
+      click_on('Create Accessory')
 
       expect(current_path).to eq(admin_bike_shop_path)
       expect(page).to have_content(Accessory.last.name)
