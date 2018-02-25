@@ -13,7 +13,7 @@ describe "visitor can edit items in cart" do
       expect(page).to have_content("Cart: 1")
       expect(page).to have_content(accessory_1.name)
       expect(page).to have_content(accessory_1.price)
-      expect(page).to have_button("remove")
+      expect(page).to have_button("Remove")
     end
   end
 
@@ -24,7 +24,7 @@ describe "visitor can edit items in cart" do
       visit bike_shop_path
       click_on("Add to cart")
       visit cart_path
-      click_on("remove")
+      click_on("Remove")
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Cart: 0")
@@ -87,6 +87,24 @@ describe "visitor can edit items in cart" do
       expect(page).to have_content("Quantity: 1")
       expect(page).to have_content("Cart Total: $2,050.00")
       expect(page).to have_content("Subtotal: $2,050.00")
+    end
+
+    it "clicks on remove quantity, accessory removed from cart" do
+      accessory_1 = create(:accessory, price: 2050)
+
+      visit bike_shop_path
+      click_on("Add to cart")
+      visit cart_path
+      click_on("Increase quantity")
+
+      expect(page).to have_content("Quantity: 2")
+      expect(page).to have_content("Cart Total: $4,100.00")
+      expect(page).to have_content("Subtotal: $4,100.00")
+
+      click_on("Remove")
+
+      expect(current_path). to eq('/cart')
+      expect(page).to have_content("Cart Total: $0.00")
     end
   end
 end

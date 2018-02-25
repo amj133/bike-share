@@ -14,7 +14,7 @@
       <p>Subtotal: <%= number_to_currency(@cart.count_of(accessory.id) * accessory.price, unit: "$") %></p>
       <%= button_to "Increase quantity", increase_quantity_path(accessory_id: accessory.id), method: :patch %>
       <%= button_to "Decrease quantity", decrease_quantity_path(accessory_id: accessory.id), method: :patch %>
-      <%= button_to "remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
+      <%= button_to "Remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
     <% end %>
   </div>
 
