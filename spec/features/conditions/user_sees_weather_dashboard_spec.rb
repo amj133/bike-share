@@ -13,7 +13,7 @@ describe "user visit dashboard view" do
     user = User.create(username: 'Bob', password: 'password')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit condition_dashboard_path
+    visit weather_dashboard_path
 
     expect(page).to have_content(Condition.average_rides_per_day('max_temp_f', 30, 39))
     expect(page).to have_content(Condition.average_rides_per_day('max_temp_f', 80, 89))

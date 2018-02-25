@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "/trips-dashboard", to: "trips#dashboard"
 
   resources :conditions, only: [:index, :show]
+  get "/weather-dashboard", to: "conditions#dashboard"
 
   resources :stations, only: [:index, :show], param: :slug
   get "/stations-dashboard", to: "stations#dashboard"
