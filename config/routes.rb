@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :conditions, only: [:index, :show, :destroy, :edit, :update, :new, :create]
-    resources :stations, only: [:index ,:show, :destroy, :edit, :update], param: :slug
+    resources :stations, only: [:index ,:show, :destroy, :edit, :update, :new, :create], param: :slug
     resources :trips, only: [:index ,:show, :destroy, :edit, :update, :new, :create]
     resources :orders, only: [:update]
     get "/dashboard", to: "orders#index"
