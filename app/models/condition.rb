@@ -11,7 +11,7 @@ class Condition < ApplicationRecord
     data_min = minimum(attr)
     range_min = data_min - (data_min % amount)
     data_max = maximum(attr)
-    range_max = data_min + (amount - (data_max % amount))
+    range_max = data_max + (amount - (data_max % amount))
     [range_min, range_max]
   end
 
