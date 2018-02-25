@@ -8,9 +8,9 @@ class Condition < ApplicationRecord
   end
 
   def self.range(attr, amount)
-    data_min = minimum(attr)
+    data_min = joins(:trips).minimum(attr)
     range_min = data_min - (data_min % amount)
-    data_max = maximum(attr)
+    data_max = joins(:trips).maximum(attr)
     range_max = data_max + (amount - (data_max % amount))
     [range_min, range_max]
   end

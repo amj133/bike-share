@@ -1,0 +1,23 @@
+<% range_min = Condition.range('max_temp_f', 10)[0] %>
+<% range_max = Condition.range('max_temp_f', 10)[1] %>
+
+<table>
+  <tr>
+    <th>Temperature Range</th>
+    <th>Average Rides per Day</th>
+    <th>Most Rides in a Day</th>
+    <th>Least Rides in a Day</th>
+  </tr>
+  <% until range_min.ceil >= range_max %>
+    <% avg = Condition.average_rides_per_day('max_temp_f', range_min, range_min + 9.99) %>
+    <% most = Condition.date_with_most_rides('max_temp_f', range_min, range_min + 9.99) %>
+    <% least = Condition.date_with_least_rides('max_temp_f', range_min, range_min + 9.99) %>
+    <tr>
+      <td><%= "#{range_min.ceil}" %>° F - <%= "#{(range_min + 9.99).ceil}" %>° F</td>
+      <td><%= "#{avg}" %> </td>
+      <td><%= "#{most.values.first}" %> </td>
+      <td><%= "#{least.values.first}" %> </td>
+    </tr>
+    <% range_min += 9.99 %>
+  <% end %>
+</table>
