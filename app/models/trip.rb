@@ -61,7 +61,7 @@ class Trip < ApplicationRecord
 
   def self.user_subscrip_percentage
     user_subscrip_count.transform_values do |count|
-      count / Trip.count.to_f
+      ((count / Trip.count.to_f) * 100).round
     end
   end
 
