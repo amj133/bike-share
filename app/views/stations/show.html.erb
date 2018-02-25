@@ -1,7 +1,3 @@
-
-
-
-
 <h3>Station at <%= @station.slug %></h3>
 
 
@@ -23,7 +19,7 @@
       Most frequent zipcode of bikers: <%= @station.most_frequent_zipcode %>
       Bike ID that starts here most: <%= @station.most_frequent_bike_id %>
       <br>
-  
+
       <%= link_to "Delete", admin_station_path(@station.slug), method: "delete"  if current_admin? %>
       <%= link_to "Edit", edit_admin_station_path(@station.slug) if current_admin? %>
     </div>
