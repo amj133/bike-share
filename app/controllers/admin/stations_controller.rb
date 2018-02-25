@@ -1,5 +1,20 @@
 class Admin::StationsController < Admin::BaseController
 
+  def new
+    @station = Station.new
+  end
+
+  def create
+    @station = Station.new(station_params)
+    @station.slug=@station.name.parameterize
+    if @station.save
+      flash.notice = "New station created."
+      redirect_to station_path(@station.slug)
+    else
+      render :new
+    end
+  end
+
   def edit
     @station = Station.find_by(slug: params[:slug])
   end
