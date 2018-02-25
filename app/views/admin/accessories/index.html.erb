@@ -3,7 +3,7 @@
 <% @accessories.each do |accessory| %>
   <%= accessory.name %>
   <%= accessory.description %>
-  <%= accessory.image_path %>
+  <%= image_tag accessory.image_path %>
   <%= number_to_currency(accessory.price, unit: "$") %>
   <%= accessory.status %>
   <%= link_to "edit", edit_admin_accessory_path(accessory) %>
