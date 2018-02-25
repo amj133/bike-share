@@ -18,7 +18,7 @@
   </div>
 
   <% @orders.each do |order| %>
-    <%= link_to order.id, order_path(order) %>
+    <%= link_to "Order #{order.id}", order_path(order) %>
     <% if order.status == 'Ordered' %>
       <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
       <%= button_to 'mark as paid', admin_order_path(order, status: "Paid"), method: :patch %>
