@@ -1,50 +1,45 @@
-<h1>Trips Dashboard</h1>
+<div class="dashboard">
+  <h1>Trips Dashboard</h1>
 
-<%= Trip.avg_ride_duration %>
-The longest ride lasted: <%= Trip.longest_ride.duration %> minutes.
+  <div>Average Trip Duration: <%= Trip.avg_ride_duration.round %></div>
+  <div>The longest ride lasted: <%= Trip.longest_ride.duration %> minutes.</div>
+  <div>Weather during the longest ride:</div>
+  <div>Mean Temp: <%=
+  Trip.longest_ride.condition.mean_temp_f %></div>
+  <div>Mean Wind Speed: <%= Trip.longest_ride.condition.mean_wind_speed %></div>
+  <div>Mean Humidity: <%= Trip.longest_ride.condition.mean_humidity %></div>
+  <div>Cloud Cover: <%= Trip.longest_ride.condition.cloud_cover%></div>
+<div>The shortest ride lasted <%= Trip.shortest_ride.duration %> minutes.</div>
 
-Weather during the longest ride:
+  Weather during the shortest ride:
+  <div>Mean Temp: <%= Trip.shortest_ride.condition.mean_temp_f %></div>
+  <div>Mean Wind Speed: <%= Trip.shortest_ride.condition.mean_wind_speed %></div>
+  <div>Mean Humidity: <%= Trip.shortest_ride.condition.mean_humidity %></div>
+  <div>Cloud Cover: <%= Trip.shortest_ride.condition.cloud_cover%></div>
+  <div><%= Trip.most_starting_station.name %></div>
+  <div><%= Trip.most_starting_station.city %></div>
+  <div><%= Trip.most_ending_station.name %></div>
+  <div><%= Trip.most_ending_station.city %></div>
+  <div><%= Trip.most_ridden_bike.bike_id %></div>
+  <div><%= Trip.most_ridden_bike.trip_count %></div>
+  <div><%= Trip.least_ridden_bike.bike_id %></div>
+  <div><%= Trip.least_ridden_bike.trip_count %>
+</div>
+  <div>Most Popular Date: <%= Trip.most_popular_date.strftime("%b %d, %Y") %></div>
+  <div>Least Popular Date: <%= Trip.least_popular_date.strftime("%b %d, %Y") %></div>
+  <% Trip.month_breakdown.each do |my, ride_number| %>
+     <% if ride_number != 1 %>
+       <div> <%= ride_number %> rides in <%= my %> </div>
+     <% else %>
+        <div> <%= ride_number %> ride in <%= my %> </div>
+     <% end %>
+  <% end %>
 
-<li>Mean Temp: <%=
-Trip.longest_ride.condition.mean_temp_f %></li>
-<li>Mean Wind Speed: <%= Trip.longest_ride.condition.mean_wind_speed %></li>
-<li>Mean Humidity: <%= Trip.longest_ride.condition.mean_humidity %></li>
-<li>Cloud Cover: <%= Trip.longest_ride.condition.cloud_cover%></li>
+  <% Trip.user_subscrip_count.each do |type, number_of| %>
+    <div>There are <%= number_of %> "<%= type %>" subcriptions</div>
+  <% end %>
 
-The shortest ride lasted <%= Trip.shortest_ride.duration %> minutes.
-
-Weather during the shortest ride:
-<li>Mean Temp: <%= Trip.shortest_ride.condition.mean_temp_f %></li>
-<li>Mean Wind Speed: <%= Trip.shortest_ride.condition.mean_wind_speed %></li>
-<li>Mean Humidity: <%= Trip.shortest_ride.condition.mean_humidity %></li>
-<li>Cloud Cover: <%= Trip.shortest_ride.condition.cloud_cover%></li>
-
-<%= Trip.most_starting_station.name %>
-<%= Trip.most_starting_station.city %>
-
-<%= Trip.most_ending_station.name %>
-<%= Trip.most_ending_station.city %>
-
-<%= Trip.most_ridden_bike.bike_id %>
-<%= Trip.most_ridden_bike.trip_count %>
-<%= Trip.least_ridden_bike.bike_id %>
-<%= Trip.least_ridden_bike.trip_count %>
-
-<%= Trip.most_popular_date %>
-<%= Trip.least_popular_date %>
-
-<% Trip.month_breakdown.each do |my, ride_number| %>
-   <% if ride_number != 1 %>
-     <li> <%= ride_number %> rides in <%= my %> </li>
-   <% else %>
-      <li> <%= ride_number %> ride in <%= my %> </li>
-   <% end %>
-<% end %>
-
-<% Trip.user_subscrip_count.each do |type, number_of| %>
-  <li>There are <%= number_of %> "<%= type %>" subcriptions</li>
-<% end %>
-
-<% Trip.user_subscrip_percentage.each do |type, percent| %>
-   <li>"<%= type %>" makes up %<%= percent %> of all subscriptions  </li>
-<% end %>
+  <% Trip.user_subscrip_percentage.each do |type, percent| %>
+     <div>"<%= type %>" makes up <%= percent %>% of all subscriptions  </div>
+  <% end %>
+</div>
