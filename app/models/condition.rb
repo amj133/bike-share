@@ -6,4 +6,37 @@ class Condition < ApplicationRecord
   def readable_date
     date.strftime("%b %d, %Y")
   end
+
+  def self.range(attr, amount)
+    data_min = joins(:trips).minimum(attr)
+    range_min = data_min - (data_min % amount)
+    data_max = joins(:trips).maximum(attr)
+    range_max = data_max + (amount - (data_max % amount))
+    [range_min, range_max]
+  end
+
+  def self.rides_by_date(attr, min, max)
+    where("#{attr} BETWEEN ? AND ?", min, max)
+      .joins(:trips)
+      .group('conditions.date')
+      .count
+  end
+
+  def self.average_rides_per_day(attr, min, max)
+    rides = rides_by_date(attr, min, max).values
+    rides.count > 0 ? rides.sum / rides.count : 0
+  end
+
+  def self.date_with_most_rides(attr, min, max)
+    date_rides = rides_by_date(attr, min, max)
+    ride_count = date_rides.values.max_by {|count| count}
+    date_rides.select { |date, count| count == ride_count}
+  end
+
+  def self.date_with_least_rides(attr, min, max)
+    date_rides = rides_by_date(attr, min, max)
+    ride_count = date_rides.values.min_by {|count| count}
+    date_rides.select { |date, count| count == ride_count}
+  end
+
 end

@@ -1,0 +1,23 @@
+<div class="wd-background">
+  <div class="weather-dashboard">
+    <div class="condition-analysis">
+      <h3>Maximum Temperature Stats</h3>
+      <%= render partial: "analytics_table", locals: {attr: "max_temp_f", range_max: Condition.range('max_temp_f', 10)[1], range_min: Condition.range('max_temp_f', 10)[0], increment: 9.99, table_header: "Temperature Range", unit: "° F"} %>
+    </div>
+
+    <div class="condition-analysis">
+      <h3>Visibility Stats</h3>
+      <%= render partial: "analytics_table", locals: {attr: "mean_visibility_miles", range_max: Condition.range('mean_visibility_miles', 4)[1], range_min: Condition.range('mean_visibility_miles', 4)[0], increment: 3.99, table_header: "Visibility Range", unit: "mi"} %>
+    </div>
+
+    <div class="condition-analysis">
+      <h3>Wind Speed Stats</h3>
+      <%= render partial: "analytics_table", locals: {attr: "mean_wind_speed", range_max: Condition.range("mean_wind_speed", 4)[1], range_min: Condition.range("mean_wind_speed", 4)[0], increment: 3.99, table_header: "Wind Speed Range", unit: "mph"} %>
+    </div>
+
+    <div class="condition-analysis">
+      <h3>Precipitation Stats</h3>
+      <%= render partial: "analytics_table", locals: {attr: "precipitation_inches", range_max: Condition.range("precipitation_inches", 0.5)[1], range_min: Condition.range("precipitation_inches", 0.5)[0], increment: 0.49, table_header: "Precipitation Range", unit: "in"} %>
+    </div>
+  </div>
+</div>
