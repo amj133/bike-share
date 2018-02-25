@@ -10,4 +10,8 @@
 <div><%= link_to "Admin Dashboard", admin_dashboard_path %></div>
 <% end %>
 
+<% content_for :stations_dropdown do %>
+  <div><%= link_to "New Station", new_admin_station_path %></div>
+<% end %>
+
 <%= render partial: "layouts/user_nav" %>
