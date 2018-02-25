@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   patch "/decrease-quantity", to: "carts#decrease"
   patch "/remove-accessory", to: "carts#remove"
 
-  resources :accessories, only: [:show]
+  resources :accessories, only: [:show, :create]
   get "/bike-shop", to: "accessories#index"
+  get "/bike-shop/new", to: "accessories#new"
 
   resources :orders, only: [:create, :show]
 
