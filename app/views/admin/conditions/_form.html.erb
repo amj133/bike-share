@@ -7,31 +7,31 @@
   </div>
   <div class="form-field">
     <%= f.label "High Temperature" %>
-    <div class="unit"><%= f.number_field :max_temp_f %> °F</div>
+    <div class="unit"><%= f.number_field :max_temp_f, placeholder: "e.g. '90.0'" %> °F</div>
   </div>
   <div class="form-field">
     <%= f.label "Average Temperature" %>
-    <div class="unit"><%= f.number_field :mean_temp_f %> °F</div>
+    <div class="unit"><%= f.number_field :mean_temp_f, placeholder: "e.g. '72.0'" %> °F</div>
   </div>
   <div class="form-field">
     <%= f.label "Low Temperature" %>
-    <div class="unit"><%= f.number_field :min_temp_f %> °F</div>
+    <div class="unit"><%= f.number_field :min_temp_f, placeholder: "e.g. '-10.0'" %> °F</div>
   </div>
   <div class="form-field">
     <%= f.label "Average Humidity" %>
-    <div class="unit"><%= f.number_field :mean_humidity, min: 0, max: 100 %> %</div>
+    <div class="unit"><%= f.number_field :mean_humidity, min: 0, max: 100, placeholder: "e.g. '60.0'" %> %</div>
   </div>
   <div class="form-field">
     <%= f.label "Average Visibility" %>
-    <div class="unit"><%= f.number_field :mean_visibility_miles, min: 0 %> mi</div>
+    <div class="unit"><%= f.number_field :mean_visibility_miles, min: 0, placeholder: "e.g. '10.0'" %> mi</div>
   </div>
   <div class="form-field">
     <%= f.label "Average Wind Speed" %>
-    <div class="unit mph"><%= f.number_field :mean_wind_speed, min: 0 %> mph</div>
+    <div class="unit mph"><%= f.number_field :mean_wind_speed, min: 0, placeholder: "e.g. '5.0'" %> mph</div>
   </div>
   <div class="form-field">
     <%= f.label "Precipitation" %>
-    <div class="unit"><%= f.number_field :precipitation_inches, step: 0.1, min: 0 %> in</div>
+    <div class="unit"><%= f.number_field :precipitation_inches, step: 0.1, min: 0, placeholder: "e.g. '0.5'" %> in</div>
   </div>
 
   <%= f.submit class: "sub-btn" %>

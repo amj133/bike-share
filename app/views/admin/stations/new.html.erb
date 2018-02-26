@@ -1,33 +1,5 @@
-<div class="form new-form">
-  <h2> New Station </h2>
-  <%= form_for [:admin, @station] do |f| %>
-  <div class="form-field">
-    <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Station Name" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :lat %>
-    <%= f.text_field :lat, placeholder: "e.g. 0.0" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :long %>
-    <%= f.text_field :long, placeholder: "e.g. 0.0" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :dock_count %>
-    <%= f.text_field :dock_count, placeholder: "e.g. 10" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :city %>
-    <%= f.text_field :city, placeholder: "e.g. Denver" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :installation_date %>
-    <%= f.date_field :installation_date %>
-  </div>
+<% content_for :station_form do %>
+  <h2>New Station</h2>
+<% end %>
 
-  <%= f.hidden_field :slug %>
-
-  <%= f.submit class: "sub-btn" %>
-  <% end %>
-</div>
+<%= render partial: "form" %>
