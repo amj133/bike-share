@@ -38,7 +38,7 @@ a {
   padding: 15px;
   opacity: 0;
   animation-name: fade;
-  animation-duration: 3s;
+  animation-duration: 15s;
   &:hover {cursor: default;}
 }
 
@@ -95,7 +95,19 @@ nav {
   .dropdown {
     margin: 0px 15px;
     .dashboard-icon {
-      font-size: 36px;
+      font-size: 34px;
+    }
+  }
+
+  .analytics-drop {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 125px;
+    font-weight: bolder;
+    .analytics-drop {
+      margin-top: 7px;
     }
   }
 
@@ -216,9 +228,8 @@ nav {
   background-color: rgba(237, 241, 247, .85);
   border-radius: 10px;
   border: 1px black solid;
-  div {
-    margin: 15px;
-  }
+  h1, h3 {margin: 10px}
+  div {margin: 15px;}
 }
 
 .modify {
