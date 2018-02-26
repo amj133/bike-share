@@ -11,6 +11,11 @@
   width: 80vw;
 }
 
+.accessory-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
 .index-accessory {
   @include text-background;
   @include center-flex;
@@ -44,4 +49,18 @@
     th {font-size: 15px;}
     td {text-align: center;}
   }
+}
+
+.admin-index-accessory {
+  @include text-background;
+  @include center-flex;
+  div {
+    margin: 5px;
+    text-align: center;
+  }
+  font-size: 16px;
+  padding: 10px;
+  margin: 30px;
+  width: 250px;
+  height: 250px;
 }
