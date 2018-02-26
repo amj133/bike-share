@@ -41,4 +41,5 @@
 
 .trip-show {
   @include text-background;
+  h2 {margin: 0px;}
 }
