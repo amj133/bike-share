@@ -103,7 +103,7 @@ require 'rails_helper'
 
           click_link("Edit")
 
-          expect(page).to have_content("Edit Conditions")
+          expect(page).to have_content("Edit Condition")
           fill_in("Max temp f", with: 300)
 
 

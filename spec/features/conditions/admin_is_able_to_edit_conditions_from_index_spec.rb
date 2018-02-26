@@ -71,7 +71,7 @@ require 'rails_helper'
 
         expect(page).to have_content("Date")
 
-        expect(page).to have_content("Edit Conditions")
+        expect(page).to have_content("Edit Condition")
       end
     end
 
