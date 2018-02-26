@@ -1,40 +1,5 @@
-<div class="form new-form">
-  <h2> New Condition </h2>
-  <%= form_for [:admin, @condition] do |f| %>
-  <div class="form-field">
-    <%= f.label :date %>
-    <div class="unit"><%= f.date_field :date %></div>
-  </div>
-  <div class="form-field">
-    <%= f.label "High Temperature" %>
-    <div class="unit"><%= f.number_field :max_temp_f %> °F</div>
-  </div>
-  <div class="form-field">
-    <%= f.label "Average Temperature" %>
-    <div class="unit"><%= f.number_field :mean_temp_f %> °F</div>
-  </div>
-  <div class="form-field">
-    <%= f.label "Low Temperature" %>
-    <div class="unit"><%= f.number_field :min_temp_f %> °F</div>
-  </div>
-  <div class="form-field">
-    <%= f.label "Average Humidity" %>
-    <div class="unit"><%= f.number_field :mean_humidity, min: 0, max: 100 %> %</div>
-  </div>
-  <div class="form-field">
-    <%= f.label "Average Visibility" %>
-    <div class="unit"><%= f.number_field :mean_visibility_miles, min: 0 %> mi</div>
-  </div>
-  <div class="form-field">
-    <%= f.label "Average Wind Speed" %>
-    <div class="unit mph"><%= f.number_field :mean_wind_speed, min: 0 %> mph</div>
-  </div>
-  <div class="form-field">
-    <%= f.label "Precipitation" %>
-    <div class="unit"><%= f.number_field :precipitation_inches, step: 0.1, min: 0 %> in</div>
-  </div>
+<% content_for :condition_form do %>
+  <h2>New Condition</h2>
+<% end %>
 
-  <%= f.submit class: "sub-btn" %>
-
-  <% end %>
-</div>
+<%= render partial: "form" %>
