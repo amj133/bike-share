@@ -24,7 +24,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if current_admin?
+      @order = Order.find(params[:id])
+    else
+      render file: '/public/404'
+    end
   end
 
 end
