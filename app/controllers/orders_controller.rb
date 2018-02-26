@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_admin?
+    if current_user
       @order = Order.find(params[:id])
     else
       render file: '/public/404'
