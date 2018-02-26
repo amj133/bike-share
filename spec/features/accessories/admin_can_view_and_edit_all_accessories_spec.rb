@@ -18,11 +18,9 @@ describe "admin visits dashboard and clicks accessories link" do
     expect(page).to have_content(accessory_1.name)
     expect(page).to have_content(accessory_1.description)
     expect(page).to have_content("$101.00")
-    expect(page).to have_content(accessory_1.status)
     expect(page).to have_content(accessory_2.name)
     expect(page).to have_content(accessory_2.description)
     expect(page).to have_content("$102.00")
-    expect(page).to have_content(accessory_2.status)
   end
 
   it "allows admin to edit accessory" do
@@ -44,7 +42,6 @@ describe "admin visits dashboard and clicks accessories link" do
 
     expect(current_path).to eq('/admin/bike-shop')
     expect(page).to have_content('helmet')
-    expect(page).to have_content('inactive')
     expect(page).to have_content("$43.45")
   end
 

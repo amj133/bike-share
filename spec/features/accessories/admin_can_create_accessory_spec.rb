@@ -14,6 +14,7 @@ describe "admin can create an accessory" do
       fill_in('Name', with: 'Gloves')
       fill_in('Description', with: 'Keep your hands warm!')
       fill_in('Price', with: 1234)
+      select('active', from: 'Status')
       click_on('Create Accessory')
 
       expect(current_path).to eq(admin_bike_shop_path)
