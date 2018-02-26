@@ -1,4 +1,7 @@
-<h3><%= @accessory.name %></h3>
+<div class='show-accessory'>
+  <h3>Accessory: <%= @accessory.name %></h3>
 
-<p><%= @accessory.price %></p>
-<p><%= @accessory.description %></p>
+  <p><%= number_to_currency(@accessory.price, unit: "$") %></p><br>
+  <p>Description:</p>
+  <p><%= @accessory.description %></p>
+</div>

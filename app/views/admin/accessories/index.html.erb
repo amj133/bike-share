@@ -15,7 +15,7 @@
     <% @accessories.each do |accessory| %>
       <% if accessory.status == "active" %>
         <tr>
-          <td><%= accessory.name %></td>
+          <td><%= link_to accessory.name, accessory_path(accessory) %></td>
           <td><%= accessory.description %></td>
           <td><%= image_tag accessory.image_path, class: 'accessory-image' %></td>
           <td><%= number_to_currency(accessory.price, unit: "$") %></td>
