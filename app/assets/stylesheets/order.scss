@@ -1,0 +1,30 @@
+.show-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-weight: bold;
+  background-color: rgba(237, 241, 247, .75);
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.5px solid gray;
+  width: 25vw;
+}
+
+.show-order-header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid gray;
+  width: 20vw;
+}
+
+.show-order-info {
+  margin-top: 2vw;
+  border-bottom: 0.5px solid gray;
+  width: 20vw;
+}
+
+.show-order-accessories {
+  margin-top: 2vw;
+}
