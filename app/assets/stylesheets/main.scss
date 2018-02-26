@@ -236,13 +236,28 @@ nav {
   }
 }
 
+.profile-info {
+  @include text-background;
+  @include center-flex;
+  max-width: 400px;
+  margin: 50px;
+  p {margin: 5px;}
+}
+
+
 #select_orders {
   width: 125px;
 }
 
+.orders-header {
+  margin: 5px;
+  text-align: left;
+}
+
 .orders {
   @include table-background;
+  a {margin: 5px;}
   display: flex;
   flex-wrap: wrap;
-  a {margin: 20px;}
+  justify-content: center;
 }
