@@ -151,6 +151,10 @@ nav {
     input {margin-left: 10px;}
     display: flex;
     justify-content: space-between;
+    textarea {
+      width: 125px;
+      height: 150px;
+    }
   }
 }
 

@@ -1,14 +1,19 @@
-<h3>Create a new accessory</h3>
+<div class="form new-form">
+  <h3>Create a new accessory</h3>
 
-<%= form_for(@accessory) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <%= f.label :price %>
-  <%= f.number_field :price %>
+  <%= form_for(@accessory) do |f| %>
+  <div class="form-field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-field">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+  <div class="form-field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
 
   <%= f.label :status %>
   <%= select(:accessory, :status, options_for_select([['active', 'active'], ['inactive', 'inactive']])) %><br><br>
@@ -16,4 +21,5 @@
   <%= f.hidden_field :image_path, :value => 'bike.png' %>
 
   <%= f.submit %>
-<% end %>
+  <% end %>
+</div>
