@@ -5,13 +5,12 @@
   <p>Username: <%= @user.username %></p>
   <p>Email: <%= @user.email %></p>
 
-  <% unless @user.orders.nil? %>
+  <% unless @user.orders.empty? %>
       <div class="orders">Your Orders:</div>
       <div class="orders">
         <% @user.orders.each do |order| %>
           <p><%= link_to "Order #{order.id}", order_path(order) %></p>
         <% end %>
       </div>
-
   <% end  %>
 </div>
