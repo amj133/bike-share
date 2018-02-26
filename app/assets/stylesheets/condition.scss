@@ -108,3 +108,13 @@
     td {text-align: center;}
   }
 }
+
+.unit {
+  width: 164px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  #condition_mean_humidity {width: 125px;}
+}
+.mph { font-size: 12px;}

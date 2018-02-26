@@ -1,4 +1,4 @@
-<div class="text-box">
+<div class="dashboard">
   <h3>Welcome <%= @user.username %></h3>
 
   <p>Profile Information</p>
@@ -6,8 +6,12 @@
   <p>Email: <%= @user.email %></p>
 
   <% unless @user.orders.nil? %>
-    <% @user.orders.each do |order| %>
-      <p><%= link_to "Order #{order.id}", order_path(order) %></p>
-    <% end %>
+      <div class="orders">Your Orders:</div>
+      <div class="orders">
+        <% @user.orders.each do |order| %>
+          <p><%= link_to "Order #{order.id}", order_path(order) %></p>
+        <% end %>
+      </div>
+
   <% end  %>
 </div>

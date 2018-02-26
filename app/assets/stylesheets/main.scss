@@ -1,3 +1,4 @@
+@import 'setup';
 @import 'font-awesome';
 $citrus-pulp: #edffa5;
 $cloudy-blue: #a6bfe0;
@@ -6,10 +7,10 @@ $ll-bean-sea: #687fa5;
 $text-background: rgba(237, 241, 247, .85);
 
 body {
+  text-align: center;
   font-family: 'Raleway', sans-serif;  margin: 0px;
   text-decoration: none;
 }
-
 
 a {
   color: black;
@@ -18,13 +19,23 @@ a {
   text-decoration: none;
 }
 
+@keyframes fade {
+  0% {opacity: 1}
+  50% {opacity: 1}
+  100% {opacity: 0}
+}
+
 .flash {
+  z-index: 1;
   position: absolute;
-  margin-left: 15px;
+  min-width: 200px;
+  left: 0;
+  right: 0;
+  margin: 10px auto;
   padding: 15px;
   opacity: 0;
   animation-name: fade;
-  animation-duration: 5s;
+  animation-duration: 3s;
   &:hover {cursor: default;}
 }
 
@@ -190,6 +201,7 @@ nav {
 .dashboard {
   margin: 10vh auto;
   padding: 50px;
+  min-width: 400px;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -208,12 +220,13 @@ nav {
   font-size: 12px;
 }
 
-.unit {
-  width: 164px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  #condition_mean_humidity {width: 125px;}
+#select_orders {
+  width: 125px;
 }
-.mph { font-size: 12px;}
+
+.orders {
+  @include table-background;
+  display: flex;
+  flex-wrap: wrap;
+  a {margin: 20px;}
+}
