@@ -217,6 +217,16 @@ nav {
   font-size: 12px;
 }
 
+.show-modify {
+  margin: 10px;
+  a {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: rgba(219, 232, 252, 0.8);
+    padding: 5px 4px 1px 4px;
+  }
+}
+
 #select_orders {
   width: 125px;
 }
