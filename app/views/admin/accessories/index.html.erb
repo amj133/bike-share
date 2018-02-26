@@ -1,10 +1,51 @@
-<h3>All Accessories</h3>
+<div class="index-header admin-bike-shop">
+  <h3>All Accessories</h3>
+</div>
 
-<% @accessories.each do |accessory| %>
-  <%= accessory.name %>
-  <%= accessory.description %>
-  <%= image_tag accessory.image_path, class: 'accessory-image' %>
-  <%= number_to_currency(accessory.price, unit: "$") %>
-  <%= accessory.status %>
-  <%= link_to "edit", edit_admin_accessory_path(accessory) %>
-<% end %>
+<div class="admin-accessories">
+  <h3>Active Accessories</h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Edit</th>
+    </tr>
+    <% @accessories.each do |accessory| %>
+      <% if accessory.status == "active" %>
+        <tr>
+          <td><%= accessory.name %></td>
+          <td><%= accessory.description %></td>
+          <td><%= image_tag accessory.image_path, class: 'accessory-image' %></td>
+          <td><%= number_to_currency(accessory.price, unit: "$") %></td>
+          <td><%= link_to "edit", edit_admin_accessory_path(accessory) %></td>
+        <tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+<div class="admin-accessories">
+  <h3>Inactive Accessories</h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th>Edit</th>
+    </tr>
+    <% @accessories.each do |accessory| %>
+      <% if accessory.status == "inactive" %>
+        <tr>
+          <td><%= accessory.name %></td>
+          <td><%= accessory.description %></td>
+          <td><%= image_tag accessory.image_path, class: 'accessory-image' %></td>
+          <td><%= number_to_currency(accessory.price, unit: "$") %></td>
+          <td><%= link_to "edit", edit_admin_accessory_path(accessory) %></td>
+        <tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
