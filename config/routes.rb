@@ -40,4 +40,6 @@ Rails.application.routes.draw do
     resources :accessories, only: [:edit, :update]
     get "/bike-shop", to: "accessories#index"
   end
+  resources :error, only: [:show]
+  get '*path' => 'errors#show', via: [:get, :post]
 end
