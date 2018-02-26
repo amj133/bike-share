@@ -1,3 +1,27 @@
+@import 'setup';
+
 .accessory-image {
   height: 100px;
+}
+
+.admin-accessories {
+  position: relative;
+  h3 {
+    position: absolute;
+    top: 10px;
+  }
+  @include center-flex;
+  @include text-background;
+  width: 60vw;
+  margin: 20px;
+  padding: 20px;
+  table{
+    margin-top: 50px;
+    width: 90%;
+    border: 1px dotted gray;
+    border-radius: 10px;
+    padding: 10px;
+    th {font-size: 15px;}
+    td {text-align: center;}
+  }
 }
