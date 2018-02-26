@@ -1,10 +1,5 @@
 @import 'setup';
 @import 'font-awesome';
-$citrus-pulp: #edffa5;
-$cloudy-blue: #a6bfe0;
-$foggy-tears: #ddeaff;
-$ll-bean-sea: #687fa5;
-$text-background: rgba(237, 241, 247, .85);
 
 body {
   text-align: center;
@@ -21,17 +16,16 @@ a {
 
 @keyframes fade {
   0% {opacity: 1}
-  50% {opacity: 1}
+  30% {opacity: 1}
   100% {opacity: 0}
 }
 
 .flash {
+  @include text-background;
   z-index: 1;
   position: absolute;
   min-width: 200px;
-  left: 0;
-  right: 0;
-  margin: 10px auto;
+  margin: 10px 0px 0px 42%;
   padding: 15px;
   opacity: 0;
   animation-name: fade;
