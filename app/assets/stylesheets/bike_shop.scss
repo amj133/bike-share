@@ -4,6 +4,20 @@
   height: 100px;
 }
 
+.bike-shop {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80vw;
+}
+
+.index-accessory {
+  @include text-background;
+  @include center-flex;
+  height: 175px;
+  width: 175px;
+  margin: 30px;
+
 .admin-bike-shop {
   display: flex;
   align-items: center;
