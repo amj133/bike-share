@@ -35,6 +35,7 @@ a {
 
 .site-banner {
   font-size: 16px;
+  min-width: 523px;
   width: 100vw;
   height: 70px;
   background-color: $cloudy-blue;
@@ -78,6 +79,7 @@ nav {
     align-items: center;
     justify-content: center;
   }
+  min-width: 523px;
   width: 100vw;
   height: 45px;
   background-color: $citrus-pulp;
@@ -129,6 +131,7 @@ nav {
 }
 
 .application-section {
+  min-width: 523px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
