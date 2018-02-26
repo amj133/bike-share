@@ -4,4 +4,5 @@
   <p><%= number_to_currency(@accessory.price, unit: "$") %></p><br>
   <p>Description:</p>
   <p><%= @accessory.description %></p>
+  <%=  image_tag(@accessory.image_path, class: 'accessory-image') %>
 </div>
