@@ -68,6 +68,7 @@ nav {
   justify-content: space-between;
   border-bottom: 2px black solid;
   .navlinks{
+    font-weight: bolder;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,10 +82,11 @@ nav {
       font-size: 36px;
     }
   }
+
   .dropdown-content {
     display: none;
-
   }
+
   .dropdown:hover .dropdown-content {
     position: absolute;
     z-index: 1;
