@@ -43,7 +43,7 @@ describe "visitor can edit items in cart" do
       visit bike_shop_path
       click_on("Add to cart")
       visit cart_path
-      click_on("Increase quantity")
+      find(".increase-cart-link").click
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Cart: 2")
@@ -61,7 +61,7 @@ describe "visitor can edit items in cart" do
       click_on("Add to cart", match: :first)
       all('#add-to-cart')[1].click
       visit cart_path
-      click_on("Increase quantity", match: :first)
+      all(".increase-cart-link")[0].click
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content('Cart Total: $5,225.00')
@@ -75,13 +75,13 @@ describe "visitor can edit items in cart" do
       visit bike_shop_path
       click_on("Add to cart")
       visit cart_path
-      click_on("Increase quantity")
+      find(".increase-cart-link").click
 
       expect(page).to have_content("Quantity: 2")
       expect(page).to have_content("Cart Total: $4,100.00")
       expect(page).to have_content("Subtotal: $4,100.00")
 
-      click_on("Decrease quantity")
+      find(".decrease-cart-link").click
 
       expect(current_path). to eq('/cart')
       expect(page).to have_content("Quantity: 1")
@@ -95,7 +95,7 @@ describe "visitor can edit items in cart" do
       visit bike_shop_path
       click_on("Add to cart")
       visit cart_path
-      click_on("Increase quantity")
+      find(".increase-cart-link").click
 
       expect(page).to have_content("Quantity: 2")
       expect(page).to have_content("Cart Total: $4,100.00")
