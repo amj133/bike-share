@@ -27,15 +27,14 @@ describe "admin can view all orders" do
                                    submitted: DateTime.now)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
-      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
 
       visit admin_dashboard_path
 
-      expect(page).to have_link(order_1.id)
-      expect(page).to have_link(order_2.id)
-      expect(page).to have_link(order_3.id)
-      expect(page).to have_link(order_4.id)
-      expect(page).to have_link(order_5.id)
+      expect(page).to have_link("Order #{order_1.id}")
+      expect(page).to have_link("Order #{order_2.id}")
+      expect(page).to have_link("Order #{order_3.id}")
+      expect(page).to have_link("Order #{order_4.id}")
+      expect(page).to have_link("Order #{order_5.id}")
       expect(page).to have_content("Order Count By Status:")
       expect(page).to have_content("Ordered: 2")
       expect(page).to have_content("Paid: 1")
@@ -68,37 +67,36 @@ describe "admin can view all orders" do
                                    submitted: DateTime.now)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
-      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
 
       visit admin_dashboard_path
       click_on('Paid')
 
-      expect(page).to have_link(order_3.id)
-      expect(page).to_not have_link(order_1.id)
-      expect(page).to_not have_link(order_2.id)
-      expect(page).to_not have_link(order_4.id)
-      expect(page).to_not have_link(order_5.id)
+      expect(page).to have_link("Order #{order_3.id}")
+      expect(page).to_not have_link("Order #{order_1.id}")
+      expect(page).to_not have_link("Order #{order_2.id}")
+      expect(page).to_not have_link("Order #{order_4.id}")
+      expect(page).to_not have_link("Order #{order_5.id}")
 
       click_on('Ordered')
-      expect(page).to have_link(order_1.id)
-      expect(page).to have_link(order_2.id)
-      expect(page).to_not have_link(order_3.id)
-      expect(page).to_not have_link(order_4.id)
-      expect(page).to_not have_link(order_5.id)
+      expect(page).to have_link("Order #{order_1.id}")
+      expect(page).to have_link("Order #{order_2.id}")
+      expect(page).to_not have_link("Order #{order_3.id}")
+      expect(page).to_not have_link("Order #{order_4.id}")
+      expect(page).to_not have_link("Order #{order_5.id}")
 
       click_on('Cancelled')
-      expect(page).to have_link(order_4.id)
-      expect(page).to_not have_link(order_1.id)
-      expect(page).to_not have_link(order_2.id)
-      expect(page).to_not have_link(order_3.id)
-      expect(page).to_not have_link(order_5.id)
+      expect(page).to have_link("Order #{order_4.id}")
+      expect(page).to_not have_link("Order #{order_1.id}")
+      expect(page).to_not have_link("Order #{order_2.id}")
+      expect(page).to_not have_link("Order #{order_3.id}")
+      expect(page).to_not have_link("Order #{order_5.id}")
 
       click_on('Completed')
-      expect(page).to have_link(order_5.id)
-      expect(page).to_not have_link(order_1.id)
-      expect(page).to_not have_link(order_2.id)
-      expect(page).to_not have_link(order_3.id)
-      expect(page).to_not have_link(order_4.id)
+      expect(page).to have_link("Order #{order_5.id}")
+      expect(page).to_not have_link("Order #{order_1.id}")
+      expect(page).to_not have_link("Order #{order_2.id}")
+      expect(page).to_not have_link("Order #{order_3.id}")
+      expect(page).to_not have_link("Order #{order_4.id}")
     end
 
     it "admin can change status of order" do
@@ -123,7 +121,6 @@ describe "admin can view all orders" do
                                    submitted: DateTime.now)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
-      allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(bob)
 
       visit admin_dashboard_path
       click_on('cancel', match: :first)

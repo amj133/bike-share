@@ -26,7 +26,7 @@ class CartsController < ApplicationController
   end
 
   def decrease
-    @cart.remove_accessory(params[:accessory_id])
+    @cart.decrease_accessory(params[:accessory_id])
 
     redirect_to cart_path
   end
