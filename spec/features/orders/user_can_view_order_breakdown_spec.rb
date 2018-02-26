@@ -79,10 +79,13 @@ describe "user can view order breakdown" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
 
-      visit dashboard_path(bob)
-      click_on("Order #{order_1.id}")
+      visit order_path(order_1)
 
       expect(page).to have_content("Date Completed: 9/1/2011")
+
+      visit order_path(order_2)
+
+      expect(page).to have_content("Date Cancelled: 9/3/2011")
     end
   end
 end

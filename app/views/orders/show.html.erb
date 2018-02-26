@@ -5,6 +5,11 @@
   Email: <%= @order.user.email %>
 <% end %>
 
+<% if @order.status == "Completed" %>
+  Date Completed: <%= @order.updated_at.strftime("%-m/%-d/%Y") %>
+<% elsif @order.status == "Cancelled" %>
+  Date Cancelled: <%= @order.updated_at.strftime("%-m/%-d/%Y") %>
+<% end %>
 
 Order Total: <%= number_to_currency(@order.total, unit: "$") %>
 Quantity in Order: <%= @order.order_accessories.sum('quantity') %>
