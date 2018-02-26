@@ -20,12 +20,21 @@ a {
   100% {opacity: 0}
 }
 
+.flash-container {
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
 .flash {
   @include text-background;
   z-index: 1;
-  position: absolute;
+  position: relative;
   min-width: 200px;
-  margin: 10px 0px 0px 42%;
   padding: 15px;
   opacity: 0;
   animation-name: fade;

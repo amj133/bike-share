@@ -10,12 +10,15 @@
 
   <body>
     <% unless flash.empty? %>
-    <div class="flash" >
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg.html_safe, class: name %>
-      <% end %>
+    <div class="flash-container">
+      <div class="flash" >
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg.html_safe, class: name %>
+        <% end %>
+      </div>
     </div>
     <% end %>
+    
     <header class="site-banner">
       <%= link_to root_path do %>
         <div class="logo">
