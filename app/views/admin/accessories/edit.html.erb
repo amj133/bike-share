@@ -1,17 +1,24 @@
-<h3>Edit Accessory</h3>
+<div class="form new-form">
+  <h3>Edit Accessory</h3>
 
-<%= form_for(["admin", @accessory]) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br><br>
+  <%= form_for(["admin", @accessory]) do |f| %>
+    <div class="form-field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-field">
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+    </div>
+    <div class="form-field">
+      <%= f.label :status %>
+      <%= select(:accessory, :status, options_for_select([['active', 'active'], ['inactive', 'inactive']])) %>
+    </div>
+    <div class="form-field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %><br><br>
-
-  <%= f.label :price %>
-  <%= f.number_field :price %><br><br>
-
-  <%= f.label :status %>
-  <%= select(:accessory, :status, options_for_select([['active', 'active'], ['inactive', 'inactive']])) %><br><br>
-
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -9,16 +9,18 @@
   </head>
 
   <body>
+    <% unless flash.empty? %>
     <div class="flash" >
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg.html_safe, class: name %>
       <% end %>
     </div>
+    <% end %>
     <header class="site-banner">
       <%= link_to root_path do %>
         <div class="logo">
           <%= fa_icon "bicycle", class: 'bike-icon' %>
-          <h1> Bike Share</h1>
+          <h1>Bike Share</h1>
         </div>
       <% end %>
 
@@ -31,12 +33,9 @@
             Logged in as <%= link_to "#{current_user.username}", dashboard_path %>
           </div>
           <%= link_to "Logout", logout_path, method: :delete %>
-          <%= link_to cart_path do %>
-            Cart: <%= @cart.total_count %>
-          <% end %>
         <% end %>
-        <%= link_to cart_path do %>
-          Cart: <%= @cart.total_count %>
+        <%= link_to cart_path, class: "cart-icon" do %>
+          <%= fa_icon "shopping-cart" %> <%= @cart.total_count %>
         <% end %>
       </div>
     </header>

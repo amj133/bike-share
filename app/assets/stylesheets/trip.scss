@@ -1,3 +1,5 @@
+@import 'setup';
+
 .ti-header {
   margin: 15px 0px;
 }
@@ -35,4 +37,9 @@
     border-radius: 10px;
     border: 1px black solid;
   }
+}
+
+.trip-show {
+  @include text-background;
+  h2 {margin: 0px;}
 }

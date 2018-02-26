@@ -52,12 +52,12 @@ require 'rails_helper'
 
         visit new_admin_trip_path
 
-        fill_in("Duration", with: 420)
+        fill_in("trip_duration", with: 420)
         fill_in("Start date", with: "12345")
         select("Big Bikes", :from => "trip[start_station_id]")
         fill_in("End date", with: "12456")
         select("Big Bikes", :from => "trip[end_station_id]")
-        fill_in("Bike", with: "111")
+        fill_in("trip_bike_id", with: "111")
         select("Subscriber", :from => "trip[subscription]")
         fill_in("Zipcode", with: "32218")
 

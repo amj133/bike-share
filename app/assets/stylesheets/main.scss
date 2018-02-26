@@ -1,15 +1,11 @@
+@import 'setup';
 @import 'font-awesome';
-$citrus-pulp: #edffa5;
-$cloudy-blue: #a6bfe0;
-$foggy-tears: #ddeaff;
-$ll-bean-sea: #687fa5;
-$text-background: rgba(237, 241, 247, .85);
 
 body {
+  text-align: center;
   font-family: 'Raleway', sans-serif;  margin: 0px;
   text-decoration: none;
 }
-
 
 a {
   color: black;
@@ -18,18 +14,28 @@ a {
   text-decoration: none;
 }
 
+@keyframes fade {
+  0% {opacity: 1}
+  30% {opacity: 1}
+  100% {opacity: 0}
+}
+
 .flash {
+  @include text-background;
+  z-index: 1;
   position: absolute;
-  margin-left: 15px;
+  min-width: 200px;
+  margin: 10px 0px 0px 42%;
   padding: 15px;
   opacity: 0;
   animation-name: fade;
-  animation-duration: 5s;
+  animation-duration: 3s;
   &:hover {cursor: default;}
 }
 
 .site-banner {
   font-size: 16px;
+  min-width: 523px;
   width: 100vw;
   height: 70px;
   background-color: $cloudy-blue;
@@ -55,7 +61,10 @@ a {
     text-align: center;
     margin-right: 30px;
     font-weight: bold;
-    .logged-in-as { margin: 10px;}
+    .logged-in-as {
+      margin: 10px;
+      a {margin: 0px;}
+    }
   }
 }
 
@@ -65,10 +74,12 @@ nav {
   justify-content: space-between;
   border-bottom: 2px black solid;
   .navlinks{
+    font-weight: bolder;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  min-width: 523px;
   width: 100vw;
   height: 45px;
   background-color: $citrus-pulp;
@@ -78,10 +89,11 @@ nav {
       font-size: 36px;
     }
   }
+
   .dropdown-content {
     display: none;
-
   }
+
   .dropdown:hover .dropdown-content {
     position: absolute;
     z-index: 1;
@@ -119,6 +131,7 @@ nav {
 }
 
 .application-section {
+  min-width: 523px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -126,7 +139,8 @@ nav {
   min-height: 90vh;
   width: 100vw;
   background-image: url("bikes/5.jpg");
-  background-size: 100vw 100vh;
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 .text-box {
@@ -148,9 +162,13 @@ nav {
   text-align: center;
   .form-field {
     margin: 25px 0px;
-    input {margin: 0px 10px;}
+    input {margin-left: 10px;}
     display: flex;
     justify-content: space-between;
+    textarea {
+      width: 125px;
+      height: 150px;
+    }
   }
 }
 
@@ -180,6 +198,7 @@ nav {
 .dashboard {
   margin: 10vh auto;
   padding: 50px;
+  min-width: 400px;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -196,4 +215,25 @@ nav {
 .modify {
   text-align: center;
   font-size: 12px;
+}
+
+.show-modify {
+  margin: 10px;
+  a {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: rgba(219, 232, 252, 0.8);
+    padding: 5px 4px 1px 4px;
+  }
+}
+
+#select_orders {
+  width: 125px;
+}
+
+.orders {
+  @include table-background;
+  display: flex;
+  flex-wrap: wrap;
+  a {margin: 20px;}
 }

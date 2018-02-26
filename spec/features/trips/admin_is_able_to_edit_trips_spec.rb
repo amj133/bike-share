@@ -47,7 +47,7 @@ require 'rails_helper'
 
         click_link("Edit")
 
-        expect(page).to have_content("Edit Trips")
+        expect(page).to have_content("Edit Trip")
         expect(page).to have_content("Duration")
         expect(page).to have_content("Start station")
         expect(page).to have_content("Zipcode")
@@ -76,11 +76,11 @@ require 'rails_helper'
 
         click_link("Edit")
 
-        expect(page).to have_content("Edit Trips")
+        expect(page).to have_content("Edit Trip")
 
-        fill_in('Duration', with: '666')
+        fill_in('trip_duration', with: '666')
         fill_in('Zipcode', with: '32218')
-        fill_in('Subscription', with: 'Subscriber')
+        select('Subscriber', :from => 'Subscription')
 
         click_button("Update Trip")
 

@@ -1,18 +1,17 @@
-<html>
-  <head>
-  </head>
-  <body>
-   <h2>Trip Details</h2>
-  <ul> 
-  <li>Duration: <%= (Time.at( @trip.duration * 60).utc.strftime("%k hrs %M min")) %></li>
-  <li>Start-date: <%= @trip.start_date %></li>
-  <li>Start-station-id: :<%= @trip.start_station_id %></li>
-  <li>End-date: <%= @trip.end_date %></li>
-  <li>End-station-id: <%= @trip.end_station_id %></li>
-  <li>Bike-id :<%= @trip.bike_id %></li>
-  <li>Subscription: <%= @trip.subscription %></li>
-  <li>Zipcode: <%= @trip.zipcode %></li></ul>
-  <%= link_to "Delete",   admin_trip_path(@trip), method: "delete"  if current_admin? %>
-  <%= link_to "Edit", edit_admin_trip_path(@trip) if current_admin? %>
-  </body>
-</html>
+
+<div class="trip-show">
+  <h2>Trip Details</h2>
+  <ul>
+  <div>Duration: <%= (Time.at( @trip.duration * 60).utc.strftime("%k hrs %M min")) %></div>
+  <div>Start-date: <%= @trip.start_date %></div>
+  <div>Start-station-id: :<%= @trip.start_station_id %></div>
+  <div>End-date: <%= @trip.end_date %></div>
+  <div>End-station-id: <%= @trip.end_station_id %><</iv>
+  <div>Bike-id :<%= @trip.bike_id %></div>
+  <div>Subscription: <%= @trip.subscription %></div>
+  <div>Zipcode: <%= @trip.zipcode %></div></ul>
+  <div class="show-modify">
+    <%= link_to "Delete",   admin_trip_path(@trip), method: "delete"  if current_admin? %>
+    <%= link_to "Edit", edit_admin_trip_path(@trip) if current_admin? %>
+  </div>
+</div>

@@ -40,15 +40,14 @@
   width: 100vw;
   background-image: url("bikes/9.jpg");
   background-size: 100vw 100vh;
+  background-attachment: fixed;
   .condition {
+    @include text-background;
     text-align: center;
     h3 {margin-top: 10px;}
-    background-color: rgba(237, 241, 247, .85);
-    width: 80vw;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 30px;
+    width: 75vw;
+    padding: 15px;
+    margin: 50px;
     .condition-stats {
       display: flex;
       flex-wrap: wrap;
@@ -109,3 +108,13 @@
     td {text-align: center;}
   }
 }
+
+.unit {
+  width: 164px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  #condition_mean_humidity {width: 125px;}
+}
+.mph { font-size: 12px;}

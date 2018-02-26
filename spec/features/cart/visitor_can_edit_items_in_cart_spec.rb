@@ -10,7 +10,7 @@ describe "visitor can edit items in cart" do
       visit cart_path
 
       expect(current_path).to eq('/cart')
-      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("1")
       expect(page).to have_content(accessory_1.name)
       expect(page).to have_content(accessory_1.price)
       expect(page).to have_button("Remove")
@@ -27,7 +27,7 @@ describe "visitor can edit items in cart" do
       click_on("Remove")
 
       expect(current_path). to eq('/cart')
-      expect(page).to have_content("Cart: 0")
+      expect(page).to have_content("0")
       expect(page).to have_content("Successfully removed")
       expect(page).to_not have_content(accessory_1.price)
       click_on("#{accessory_1.name}")
@@ -46,7 +46,7 @@ describe "visitor can edit items in cart" do
       click_on("Increase quantity")
 
       expect(current_path). to eq('/cart')
-      expect(page).to have_content("Cart: 2")
+      expect(page).to have_content("2")
       expect(page).to have_content(accessory_1.name)
       expect(page).to have_content("Unit Price: $2,050")
       expect(page).to have_content("Quantity: 2")

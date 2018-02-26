@@ -103,11 +103,11 @@ require 'rails_helper'
 
         click_link("Edit")
 
-        expect(page).to have_content("Edit Trips")
+        expect(page).to have_content("Edit Trip")
 
-        fill_in('Duration', with: '120')
+        fill_in('trip_duration', with: '120')
         fill_in('Zipcode', with: '32218')
-        fill_in('Subscription', with: 'Subscriber')
+        select('Subscriber', from: 'Subscription')
 
         click_button("Update Trip")
 

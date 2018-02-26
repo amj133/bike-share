@@ -1,0 +1,38 @@
+<div class="form new-form">
+  <%= yield :trip_form %>
+  <%= form_for [:admin, @trip] do |f| %>
+  <div class="form-field">
+    <%= f.label "Duration (minutes)" %>
+    <%= f.text_field :duration, placeholder: "e.g. '60'" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+  <div class="form-field">
+    <%= f.label :start_station_id %>
+    <%= f.select :start_station_id, Station.all.map {|s| [s.name, s.id]}, { prompt: true } %>
+  </div>
+  <div class="form-field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+  <div class="form-field">
+    <%= f.label :end_station_id %>
+    <%= f.select :end_station_id, Station.all.map {|s| [s.name, s.id]}, { prompt: true } %>
+  </div>
+  <div class="form-field">
+    <%= f.label "Bike id" %>
+    <%= f.text_field :bike_id, placeholder: "e.g. '10'" %>
+  </div>
+  <div class="form-field">
+    <%= f.label :subscription %>
+    <%= f.select :subscription, Trip.pluck(:subscription).uniq.map {|s| [s, s]} %>
+  </div>
+  <div class="form-field">
+    <%= f.label :zipcode %>
+    <%= f.text_field :zipcode, placeholder: "e.g. '11234'" %>
+  </div>
+  <%= f.submit class: "sub-btn" %>
+  <% end %>
+</div>
