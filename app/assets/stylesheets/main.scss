@@ -106,9 +106,8 @@ nav {
     justify-content: space-between;
     width: 125px;
     font-weight: bolder;
-    .analytics-drop {
-      margin-top: 7px;
-    }
+    &:hover {cursor: default;}
+    div{margin-top: 5px;}
   }
 
   .dropdown-content {
