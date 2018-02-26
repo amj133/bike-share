@@ -97,20 +97,12 @@ require 'rails_helper'
 
         click_link("Edit")
 
-        fill_in("Max temp f", with: "200")
-        fill_in("Min temp f", with: "10")
-        fill_in("Max dewpoint f", with: "23")
-        fill_in("Mean dewpoint f", with: "34")
-        fill_in("Max humidity", with: "35")
-        fill_in("Mean humidity", with: "21")
-        fill_in("Max sea level pressure inches", with: "12")
-        fill_in("Min sea level pressure inches", with: "56")
-        fill_in("Mean visibility miles", with: "43")
-        fill_in("Min visibility miles", with: "34")
-        fill_in("Mean wind speed", with: "23")
-        fill_in("Cloud cover", with: "12")
-        fill_in("Events", with: "12")
-        fill_in("Zipcode", with: "32218")
+        fill_in("condition_max_temp_f", with: "200")
+        fill_in("condition_mean_temp_f", with: "10")
+        fill_in("condition_min_temp_f", with: "10")
+        fill_in("condition_mean_humidity", with: "21")
+        fill_in("condition_mean_visibility_miles", with: "43")
+        fill_in("condition_mean_wind_speed", with: "23")
 
         click_button("Update Condition")
 

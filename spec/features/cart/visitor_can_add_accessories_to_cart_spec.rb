@@ -29,15 +29,15 @@ describe "visitor can add accessories to cart" do
     it "total accessories in cart increments" do
       visit bike_shop_path
 
-      expect(page).to have_content("Cart: 0")
+      expect(page).to have_content("0")
 
       click_button("Add to cart")
 
-      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("1")
 
       visit conditions_path
 
-      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("1")
     end
   end
 end

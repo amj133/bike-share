@@ -17,7 +17,6 @@ require 'rails_helper'
 
         visit condition_path(condition)
 
-
         expect(page).to have_content(condition.readable_date)
         expect(page).to have_link("Edit")
         expect(page).to have_link("Delete")
@@ -40,7 +39,6 @@ require 'rails_helper'
         click_button("Log in")
 
         visit condition_path(condition)
-
 
         expect(page).to have_content(condition.readable_date)
         expect(page).to_not have_link("Edit")
@@ -66,7 +64,6 @@ require 'rails_helper'
           click_button("Log in")
 
           visit condition_path(condition)
-
 
           expect(page).to have_content(condition.readable_date)
 
@@ -104,9 +101,7 @@ require 'rails_helper'
           click_link("Edit")
 
           expect(page).to have_content("Edit Condition")
-          fill_in("Max temp f", with: 300)
-
-
+          fill_in("condition_max_temp_f", with: 300)
 
           click_button("Update Condition")
 
