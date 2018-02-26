@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user or admin visits stations dashboard" do
   it "displays station analytics" do
-    bob = User.create!(username: "bob", password: "test")
+    bob = User.create!(username: "bob", password: "test", email: "email@gmail.com")
     create_list(:station, 3)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
