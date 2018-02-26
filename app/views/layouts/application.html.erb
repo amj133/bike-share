@@ -31,12 +31,9 @@
             Logged in as <%= link_to "#{current_user.username}", dashboard_path %>
           </div>
           <%= link_to "Logout", logout_path, method: :delete %>
-          <%= link_to cart_path do %>
-            Cart: <%= @cart.total_count %>
-          <% end %>
         <% end %>
-        <%= link_to cart_path do %>
-          Cart: <%= @cart.total_count %>
+        <%= link_to cart_path, class: "cart-icon" do %>
+          <%= fa_icon "shopping-cart" %> <%= @cart.total_count %>
         <% end %>
       </div>
     </header>

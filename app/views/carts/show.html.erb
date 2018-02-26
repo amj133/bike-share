@@ -1,6 +1,6 @@
 <div class="cart-show">
-  <div class="">
-    <h3>Accessories in your cart</h3>
+  <div>
+    <h3>Accessories in your cart:</h3>
     <h3>Cart Total: <%= number_to_currency(@cart.total_cost, unit: "$") %></h3>
   </div>
 
@@ -18,7 +18,7 @@
     <% end %>
   </div>
 
-  <div class="">
+  <div>
     <%= button_to "Checkout", orders_path %>
   </div>
 </div>

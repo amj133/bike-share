@@ -55,7 +55,10 @@ a {
     text-align: center;
     margin-right: 30px;
     font-weight: bold;
-    .logged-in-as { margin: 10px;}
+    .logged-in-as {
+      margin: 10px;
+      a {margin: 0px;}
+    }
   }
 }
 
@@ -126,7 +129,8 @@ nav {
   min-height: 90vh;
   width: 100vw;
   background-image: url("bikes/5.jpg");
-  background-size: 100vw 100vh;
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 .text-box {

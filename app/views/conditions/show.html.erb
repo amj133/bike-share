@@ -1,56 +1,58 @@
 <div class="condition-show">
-  <div class="condition">
-    <h3>Condition Details for <%= @condition.readable_date %></h3>
-    <div class="condition-stats">
-      <ul>
-        <div>Temperature:</div>
-        <li>High:  <div><%= @condition.max_temp_f %>° F</div></li>
-        <li>Average:  <div><%= @condition.mean_temp_f %>° F</div></li>
-        <li>Low: <div><%= @condition.min_temp_f %>° F</div></li>
-      </ul>
-      <ul>
-        <div>Dewpoint:</div>
-        <li>High:  <div><%= @condition.max_dewpoint_f %>° F</div></li>
-        <li>Average:  <div><%= @condition.mean_dewpoint_f %>° F</div></li>
-        <li>Low:  <div><%= @condition.min_dewpoint_f %>° F</div></li>
-      </ul>
-      <ul>
-        <div>Humidity:</div>
-        <li>High:  <div><%= @condition.max_humidity %>%</div></li>
-        <li>Average:  <div><%= @condition.mean_humidity %>%</div></li>
-        <li>Low:  <div><%= @condition.min_humidity %>%</div></li>
-      </ul>
-      <ul>
-        <div>Sea Level Pressure:</div>
-        <li>Maximum:  <div><%= @condition.max_sea_level_pressure_inches %> in</div></li>
-        <li>Average:  <div><%= @condition.mean_sea_level_pressure_inches %> in</div></li>
-        <li>Minimum:  <div><%= @condition.min_sea_level_pressure_inches %> in</div></li>
-      </ul>
-      <ul>
-        <div>Visibility:</div>
-        <li>Maximum:  <div><%= @condition.max_visibility_miles.to_i %> mi</div></li>
-        <li>Average:  <div><%= @condition.mean_visibility_miles.to_i %> mi</div></li>
-        <li>Minimum:  <div><%= @condition.min_visibility_miles.to_i %> mi</div></li>
-      </ul>
-      <ul>
-        <div>Wind Speed:</div>
-        <li>Maximum:  <div><%= @condition.max_wind_speed.to_i %> mph</div></li>
-        <li>Average:  <div><%= @condition.mean_wind_speed.to_i %> mph</div></li>
-        <li>Gusts:  <div><%= @condition.max_gust_speed.to_i %> mph</div></li>
-        <li>Wind Direction:  <div><%= @condition.wind_dir_degrees %>°</div></li>
-      </ul>
-      <ul>
-        <div>Other Conditions:</div>
-        <li>Precipitation:  <div><%= @condition.precipitation_inches %></div></li>
-        <li>Cloud-cover:  <div><%= @condition.cloud_cover %></div></li>
-        <li>Events:  <div><%= @condition.events %></div></li>
-      </ul>
-    </div>
-    <div class="admin-option">
-      <%= link_to "Edit", edit_admin_condition_path(@condition) if current_admin? %>
-      <%= link_to "Delete",   admin_condition_path(@condition), method: "delete"  if current_admin? %><br>
-    </div>
+  <div>
+    <div class="condition">
+      <h3>Condition Details for <%= @condition.readable_date %></h3>
+      <div class="condition-stats">
+        <ul>
+          <div>Temperature:</div>
+          <li>High:  <div><%= @condition.max_temp_f %>° F</div></li>
+          <li>Average:  <div><%= @condition.mean_temp_f %>° F</div></li>
+          <li>Low: <div><%= @condition.min_temp_f %>° F</div></li>
+        </ul>
+        <ul>
+          <div>Dewpoint:</div>
+          <li>High:  <div><%= @condition.max_dewpoint_f %>° F</div></li>
+          <li>Average:  <div><%= @condition.mean_dewpoint_f %>° F</div></li>
+          <li>Low:  <div><%= @condition.min_dewpoint_f %>° F</div></li>
+        </ul>
+        <ul>
+          <div>Humidity:</div>
+          <li>High:  <div><%= @condition.max_humidity %>%</div></li>
+          <li>Average:  <div><%= @condition.mean_humidity %>%</div></li>
+          <li>Low:  <div><%= @condition.min_humidity %>%</div></li>
+        </ul>
+        <ul>
+          <div>Sea Level Pressure:</div>
+          <li>Maximum:  <div><%= @condition.max_sea_level_pressure_inches %> in</div></li>
+          <li>Average:  <div><%= @condition.mean_sea_level_pressure_inches %> in</div></li>
+          <li>Minimum:  <div><%= @condition.min_sea_level_pressure_inches %> in</div></li>
+        </ul>
+        <ul>
+          <div>Visibility:</div>
+          <li>Maximum:  <div><%= @condition.max_visibility_miles.to_i %> mi</div></li>
+          <li>Average:  <div><%= @condition.mean_visibility_miles.to_i %> mi</div></li>
+          <li>Minimum:  <div><%= @condition.min_visibility_miles.to_i %> mi</div></li>
+        </ul>
+        <ul>
+          <div>Wind Speed:</div>
+          <li>Maximum:  <div><%= @condition.max_wind_speed.to_i %> mph</div></li>
+          <li>Average:  <div><%= @condition.mean_wind_speed.to_i %> mph</div></li>
+          <li>Gusts:  <div><%= @condition.max_gust_speed.to_i %> mph</div></li>
+          <li>Wind Direction:  <div><%= @condition.wind_dir_degrees %>°</div></li>
+        </ul>
+        <ul>
+          <div>Other Conditions:</div>
+          <li>Precipitation:  <div><%= @condition.precipitation_inches %></div></li>
+          <li>Cloud-cover:  <div><%= @condition.cloud_cover %></div></li>
+          <li>Events:  <div><%= @condition.events %></div></li>
+        </ul>
+      </div>
+      <div class="admin-option">
+        <%= link_to "Edit", edit_admin_condition_path(@condition) if current_admin? %>
+        <%= link_to "Delete",   admin_condition_path(@condition), method: "delete"  if current_admin? %><br>
+      </div>
 
-    <%= link_to "Back to Conditions Index", conditions_path %>
+      <%= link_to "Back to Conditions Index", conditions_path %>
+    </div>
   </div>
 </div>
