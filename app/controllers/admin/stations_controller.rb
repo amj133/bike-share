@@ -22,7 +22,6 @@ class Admin::StationsController < Admin::BaseController
   def update
     @station = Station.find(params[:slug])
     @station.update(station_params)
-    @station.slug=@station.name.parameterize
       if @station.save
         redirect_to station_path(@station.slug)
       else
