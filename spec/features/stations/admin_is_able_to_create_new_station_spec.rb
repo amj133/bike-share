@@ -7,14 +7,13 @@ require 'rails_helper'
       user = User.create(username: "Kyle", email: "email",
                           password: "password" ,role: 1)
 
-        visit root_path
+      visit root_path
 
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        visit new_admin_station_path
+      visit new_admin_station_path
 
-       expect(current_path).to eq new_admin_station_path
-
+      expect(current_path).to eq new_admin_station_path
     end
   end
 
@@ -42,10 +41,11 @@ require 'rails_helper'
       click_button("Create Station")
 
       expect(page).to have_content("riding")
+      expect(page).to have_content("Station riding created.")
       expect(page).to have_content(1245654)
       expect(page).to have_content(1245654)
       expect(page).to have_content(23)
-      expect(page).to have_content( "Jacksonville")
-      expect(page).to have_content( "Aug 21, 2013")
+      expect(page).to have_content("Jacksonville")
+      expect(page).to have_content("Aug 21, 2013")
     end
   end

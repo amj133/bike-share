@@ -45,4 +45,24 @@ describe "admin visits dashboard and clicks accessories link" do
     expect(page).to have_content("$43.45")
   end
 
+  it "allows admin to retire or activate accessory from bike-shop" do
+    bob = User.create(username: "bob",
+                      password: "test",
+                      email:"bob@gmail.com",
+                      role: 1)
+    accessory_1 = create(:accessory, status: "active")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
+
+    visit admin_bike_shop_path
+    click_on("retire")
+
+    expect(current_path).to eq(admin_bike_shop_path)
+    expect(page).to have_button('activate')
+
+    click_on("activate")
+
+    expect(current_path).to eq(admin_bike_shop_path)
+    expect(page).to have_button('retire')
+  end
 end

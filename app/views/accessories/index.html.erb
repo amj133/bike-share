@@ -1,8 +1,12 @@
-<h3>Welcome to Bike Shop - see accessories below</h3>
+<div class="index-header">Welcome to Bike Shop!</div>
 
-<% @accessories.each do |accessory| %>
-  <%= accessory.name %>
-  <%= number_to_currency(accessory.price, unit: "$") %>
-  <%= image_tag(accessory.image_path, class: "accessory-image") %>
-  <%= button_to "Add to cart", carts_path(accessory_id: accessory.id), id: 'add-to-cart' %>
-<% end %>
+<div class="bike-shop">
+  <% @accessories.each do |accessory| %>
+    <div class="index-accessory">
+      <div><%= link_to accessory.name, accessory_path(accessory) %></div>
+      <div><%= number_to_currency(accessory.price, negative_format: "(%u%n)") %></div>
+      <%= image_tag(accessory.image_path, class: "accessory-image") %>
+      <%= button_to "Add to cart", carts_path(accessory_id: accessory.id), id: 'add-to-cart' %>
+    </div>
+  <% end %>
+</div>

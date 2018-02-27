@@ -1,23 +1,5 @@
-<h2> Edit Trips </h2>
+<% content_for :trip_form do %>
+  <h2>Edit Trip</h2>
+<% end %>
 
-<%= form_for [:admin, @trip] do |f| %>
-        <%= f.label :duration %>
-        <%= f.text_field :duration, placeholder: "Trip duration*" %><br><br>
-        <%= f.label :start_date %>
-        <%= f.text_field :start_date, placeholder: "Start date*" %><br><br>
-        <%= f.label :start_station_id %>
-        <%= f.text_field :start_station_id, placeholder: "Start station id*" %><br><br>
-        <%= f.label :end_date %>
-        <%= f.text_field :end_date, placeholder: "End date*" %><br><br>
-        <%= f.label :end_station_id %>
-        <%= f.text_field :end_station_id, placeholder: "End station id *" %><br><br>
-        <%= f.label :bike_id %>
-        <%= f.text_field :bike_id, placeholder: "Bike id*" %><br><br>
-        <%= f.label :subscription %>
-        <%= f.text_field :subscription, placeholder: "Subscription type*" %><br><br>
-        <%= f.label :zipcode %>
-        <%= f.text_field :zipcode, placeholder: "Zipcode*" %><br><br>
-
-        <%= f.submit class: "sub-btn" %>
-
-        <% end %>
+<%= render partial: "form" %>

@@ -1,40 +1,5 @@
-<div class="form new-form">
-  <h2> New Condition </h2>
-  <%= form_for [:admin, @condition] do |f| %>
-  <div class="form-field">
-    <%= f.label :date %>
-    <%= f.text_field :date, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :max_temp_f %>
-    <%= f.text_field :max_temp_f, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :mean_temp_f %>
-    <%= f.text_field :mean_temp_f, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :min_temp_f %>
-    <%= f.text_field :min_temp_f, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :mean_humidity %>
-    <%= f.text_field :mean_humidity, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :mean_visibility_miles %>
-    <%= f.text_field :mean_visibility_miles, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :mean_wind_speed %>
-    <%= f.text_field :mean_wind_speed, placeholder: "*" %>
-  </div>
-  <div class="form-field">
-    <%= f.label :precipitation_inches %>
-    <%= f.text_field :precipitation_inches, placeholder: "*" %>
-  </div>
+<% content_for :condition_form do %>
+  <h2>New Condition</h2>
+<% end %>
 
-  <%= f.submit class: "sub-btn" %>
-
-  <% end %>
-</div>
+<%= render partial: "form" %>

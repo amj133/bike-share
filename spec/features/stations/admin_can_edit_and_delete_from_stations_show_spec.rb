@@ -66,11 +66,11 @@ end
 
       click_link("Edit")
 
-      expect(page).to have_content("Edit Stations")
+      expect(page).to have_content("Edit Station")
       fill_in("Name", with: "big fun")
 
       click_button("Update Station")
 
-      expect(page).to have_content("Station at big-fun")
+      expect(page).to have_content("Station at big fun")
     end
   end

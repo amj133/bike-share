@@ -29,15 +29,28 @@ describe "visitor can add accessories to cart" do
     it "total accessories in cart increments" do
       visit bike_shop_path
 
-      expect(page).to have_content("Cart: 0")
+      expect(page).to have_content("0")
 
       click_button("Add to cart")
 
-      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("1")
 
       visit conditions_path
 
-      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("1")
+    end
+  end
+
+  describe "visitor tries to checkout" do
+    it "redirects them to login page" do
+      visit bike_shop_path
+      click_on("Add to cart")
+
+      visit cart_path
+      click_on('Checkout')
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Must be logged in to checkout!")
     end
   end
 end

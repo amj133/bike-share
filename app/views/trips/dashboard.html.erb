@@ -1,45 +1,50 @@
-<div class="dashboard">
-  <h1>Trips Dashboard</h1>
+<h1 class="index-header">Trip Analytics</h1>
+<div class="trips-dashboard">
+  <div class="trip-records">
+    <h3>Records:</h3>
+  <section>
+    <div><strong>Longest Trip:</strong> <%= Trip.longest_ride.formatted_duration %></div>
+    <div><strong>Shortest Trip:</strong> <%= Trip.shortest_ride.formatted_duration %></div>
+    <div><strong>Most trips started at&nbsp</strong> <%= Trip.most_starting_station.name %> in <%= Trip.most_starting_station.city %></div>
+    <div><strong>Most trips ended at&nbsp</strong> <%= Trip.most_ending_station.name %> in <%= Trip.most_ending_station.city %></div>
+    <div><strong>The most ridden bike</strong> #<%= Trip.most_ridden_bike.bike_id %>, with <%= Trip.most_ridden_bike.trip_count %> rides.</div>
+    <div><strong>The least ridden bike:</strong> #<%= Trip.least_ridden_bike.bike_id %>, with <%= Trip.least_ridden_bike.trip_count %> rides.</div>
+    <div><strong>Most Trips Ever:</strong> <%= Trip.most_popular_date %></div>
+    <div><strong>Most Rides Ever:</strong> <%= Trip.least_popular_date %></div>
+  </section>
+  </div>
+  <section class="trip-stats">
+    <div class="trip-stat">
+      <h3><strong>Averages</strong></h3>
+      <section>
+        <div><strong>Average Trip Duration:&nbsp</strong> <%= Trip.avg_ride_duration %></div>
+        <h5>Weather averages during the longest ride:</h5>
+        <div><strong>Temp:</strong> <%=Trip.longest_ride.condition.mean_temp_f %>° F</div>
+        <div><strong>Wind Speed:</strong> <%= Trip.longest_ride.condition.mean_wind_speed %>mph</div>
+        <div><strong>Humidity:</strong> <%= Trip.longest_ride.condition.mean_humidity %>%</div>
+        <div><strong>Cloud Cover:</strong> <%= Trip.longest_ride.condition.cloud_cover%> oktas</div>
+        <h5>Weather averages during the shortest ride:</h5>
+        <div><strong>Temperature:</strong> <%= Trip.shortest_ride.condition.mean_temp_f %>° F</div>
+        <div><strong>Wind Speed:</strong> <%= Trip.shortest_ride.condition.mean_wind_speed %>mph</div>
+        <div><strong>Humidity:</strong> <%= Trip.shortest_ride.condition.mean_humidity %>%</div>
+        <div><strong>Cloud Cover:</strong> <%= Trip.shortest_ride.condition.cloud_cover%> oktas</div>
+      </section>
+    </div>
 
-  <div>Average Trip Duration: <%= Trip.avg_ride_duration.round %></div>
-  <div>The longest ride lasted: <%= Trip.longest_ride.duration %> minutes.</div>
-  <div>Weather during the longest ride:</div>
-  <div>Mean Temp: <%=
-  Trip.longest_ride.condition.mean_temp_f %></div>
-  <div>Mean Wind Speed: <%= Trip.longest_ride.condition.mean_wind_speed %></div>
-  <div>Mean Humidity: <%= Trip.longest_ride.condition.mean_humidity %></div>
-  <div>Cloud Cover: <%= Trip.longest_ride.condition.cloud_cover%></div>
-<div>The shortest ride lasted <%= Trip.shortest_ride.duration %> minutes.</div>
-
-  Weather during the shortest ride:
-  <div>Mean Temp: <%= Trip.shortest_ride.condition.mean_temp_f %></div>
-  <div>Mean Wind Speed: <%= Trip.shortest_ride.condition.mean_wind_speed %></div>
-  <div>Mean Humidity: <%= Trip.shortest_ride.condition.mean_humidity %></div>
-  <div>Cloud Cover: <%= Trip.shortest_ride.condition.cloud_cover%></div>
-  <div><%= Trip.most_starting_station.name %></div>
-  <div><%= Trip.most_starting_station.city %></div>
-  <div><%= Trip.most_ending_station.name %></div>
-  <div><%= Trip.most_ending_station.city %></div>
-  <div><%= Trip.most_ridden_bike.bike_id %></div>
-  <div><%= Trip.most_ridden_bike.trip_count %></div>
-  <div><%= Trip.least_ridden_bike.bike_id %></div>
-  <div><%= Trip.least_ridden_bike.trip_count %>
-</div>
-  <div>Most Popular Date: <%= Trip.most_popular_date %></div>
-  <div>Least Popular Date: <%= Trip.least_popular_date %></div>
-  <% Trip.month_breakdown.each do |my, ride_number| %>
-     <% if ride_number != 1 %>
-       <div> <%= ride_number %> rides in <%= my %> </div>
-     <% else %>
-        <div> <%= ride_number %> ride in <%= my %> </div>
-     <% end %>
-  <% end %>
-
-  <% Trip.user_subscrip_count.each do |type, number_of| %>
-    <div>There are <%= number_of %> "<%= type %>" subcriptions</div>
-  <% end %>
-
-  <% Trip.user_subscrip_percentage.each do |type, percent| %>
-     <div>"<%= type %>" makes up <%= percent %>% of all subscriptions  </div>
-  <% end %>
+    <div class="trip-stat">
+      <h3>More Statistics:</h3>
+      <section>
+        Rides per month:
+        <% Trip.month_breakdown.each do |my, ride_number| %>
+          <div> <strong><%= my %>:</strong> <%= ride_number %> </div>
+        <% end %>
+      </section>
+      <% Trip.user_subscrip_count.each do |type, number_of| %>
+        <div><strong><%= number_of %></strong>&nbsp<%= type %> subcriptions</div>
+      <% end %>
+      <% Trip.user_subscrip_percentage.each do |type, percent| %>
+         <div> Subscriptions are&nbsp<strong><%= percent %>%</strong>&nbsp<%= type %></div>
+      <% end %>
+    </div>
+  </section>
 </div>

@@ -1,3 +1,5 @@
+@import 'setup';
+
 .stations-index {
   display: flex;
   flex-wrap: wrap;
@@ -27,5 +29,15 @@
       margin: 2px;
       font-style: oblique;
     }
+  }
+}
+
+.station-show {
+  @include text-background;
+  @include center-flex;
+  h3 { margin: 0px;}
+  .station-show-analytics {
+    @include table-background;
+    h4 {margin: 10px; }
   }
 }

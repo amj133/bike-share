@@ -1,24 +1,27 @@
 <div class="dashboard">
   <h3>Admin Dashboard</h3>
 
-  <%= link_to "View all accessories", admin_bike_shop_path %>
+  <%= link_to "View all accessories", admin_bike_shop_path %><br>
 
-  <ul>Order Count By Status:
-    <div>Ordered: <%= Order.by_status("Ordered").count %></div>
-    <div>Paid: <%= Order.by_status("Paid").count %></div>
-    <div>Cancelled: <%= Order.by_status("Cancelled").count %></div>
-    <div>Completed: <%= Order.by_status("Completed").count %></div>
-  </ul>
+  <div>
+    Order Count By Status:
+      <div>Ordered: <%= Order.by_status("Ordered").count %></div>
+      <div>Paid: <%= Order.by_status("Paid").count %></div>
+      <div>Cancelled: <%= Order.by_status("Cancelled").count %></div>
+      <div>Completed: <%= Order.by_status("Completed").count %></div>
+  </div>
+
   <div>Filter Orders by:</div>
   <div class="order-filters">
-      <%= link_to "Ordered", "/admin/dashboard?status=status='Ordered'" %>
-      <%= link_to "Paid", "/admin/dashboard?status=status='Paid'" %>
-      <%= link_to "Cancelled", "/admin/dashboard?status=status='Cancelled'" %>
-      <%= link_to "Completed", "/admin/dashboard?status=status='Completed'" %>
+      <%= link_to "All", "/admin/dashboard" %>&nbsp;&nbsp;
+      <%= link_to "Ordered", "/admin/dashboard?status=status='Ordered'" %>&nbsp;&nbsp;
+      <%= link_to "Paid", "/admin/dashboard?status=status='Paid'" %>&nbsp;&nbsp;
+      <%= link_to "Cancelled", "/admin/dashboard?status=status='Cancelled'" %>&nbsp;&nbsp;
+      <%= link_to "Completed", "/admin/dashboard?status=status='Completed'" %>&nbsp;&nbsp;
   </div>
 
   <% @orders.each do |order| %>
-    <%= link_to "Order #{order.id}", order_path(order) %>
+    <p><%= link_to "Order #{order.id}", order_path(order) %> - <%= order.status %></p>
     <% if order.status == 'Ordered' %>
       <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
       <%= button_to 'mark as paid', admin_order_path(order, status: "Paid"), method: :patch %>

@@ -1,23 +1,49 @@
-<h3>Order <%= @order.id %></h3>
+<div class="show-order">
+  <div class="show-order-header">
+    <h3>Order <%= @order.id %></h3>
+  </div>
 
-<% if current_admin? %>
-  Customer: <%= @order.user.username %>
-  Email: <%= @order.user.email %>
-<% end %>
+  <div class="show-order-info">
+    <% if current_admin? || @order.user.id = current_user.id %>
+      Customer: <%= @order.user.username %><br><br>
+      Email: <%= @order.user.email %><br><br>
+      Shipping to:<br><br>
+      <div class="shipping-info">
+        <div><%= @order.user.first_name %>&nbsp;<%= @order.user.last_name %></div>
+        <div><%= @order.user.street %></div>
+        <div><%= @order.user.city %>, <%= @order.user.state %>&nbsp;<%= @order.user.zipcode %></div>
+      </div>
+    <% end %>
 
-<% if @order.status == "Completed" %>
-  Date Completed: <%= @order.updated_at.strftime("%-m/%-d/%Y") %>
-<% elsif @order.status == "Cancelled" %>
-  Date Cancelled: <%= @order.updated_at.strftime("%-m/%-d/%Y") %>
-<% end %>
+    <% if @order.status == "Completed" %>
+      Date Completed: <%= @order.updated_at.strftime("%-m/%-d/%Y") %><br><br>
+    <% elsif @order.status == "Cancelled" %>
+      Date Cancelled: <%= @order.updated_at.strftime("%-m/%-d/%Y") %><br><br>
+    <% end %>
 
-Order Total: <%= number_to_currency(@order.total, unit: "$") %>
-Quantity in Order: <%= @order.order_accessories.sum('quantity') %>
-Status: <%= @order.status %>
-Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %>
+    Order Total: <%= number_to_currency(@order.total, unit: "$") %><br><br>
+    Quantity of Accessories: <%= @order.order_accessories.sum('quantity') %><br><br>
+    Status: <%= @order.status %><br><br>
+    Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %><br><br><br>
+  </div>
 
-<% @order.accessories.each do |accessory| %>
-  Name: <%= link_to accessory.name, accessory_path(accessory) %>
-  Quantity: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity %>
-  Subtotal: <%= number_to_currency(@order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price, unit: "$") %>
-<% end %>
+  <div>
+    <% @order.accessories.each do |accessory| %>
+    <div class="show-order-accessories">
+      Name: <%= link_to accessory.name, accessory_path(accessory) %><br><br>
+      Quantity: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity %> |
+      Subtotal: <%= number_to_currency(@order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price, unit: "$") %><br><br>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="order-status-buttons">
+    <% if @order.status == 'Ordered' %>
+      <%= button_to 'cancel', admin_order_path(@order, status: "Cancelled"), method: :patch %>
+      <%= button_to 'mark as paid', admin_order_path(@order, status: "Paid"), method: :patch %>
+      <% elsif @order.status == 'Paid' %>
+      <%= button_to 'cancel', admin_order_path(@order, status: "Cancelled"), method: :patch %>
+      <%= button_to 'mark as completed', admin_order_path(@order, status: "Completed"), method: :patch %>
+    <% end %>
+  </div>
+</div>

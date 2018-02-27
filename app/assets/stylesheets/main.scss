@@ -1,15 +1,11 @@
+@import 'setup';
 @import 'font-awesome';
-$citrus-pulp: #edffa5;
-$cloudy-blue: #a6bfe0;
-$foggy-tears: #ddeaff;
-$ll-bean-sea: #687fa5;
-$text-background: rgba(237, 241, 247, .85);
 
 body {
+  text-align: center;
   font-family: 'Raleway', sans-serif;  margin: 0px;
   text-decoration: none;
 }
-
 
 a {
   color: black;
@@ -18,18 +14,37 @@ a {
   text-decoration: none;
 }
 
-.flash {
+@keyframes fade {
+  0% {opacity: 1}
+  30% {opacity: 1}
+  100% {opacity: 0}
+}
+
+.flash-container {
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  margin-left: 15px;
+  left: 0;
+  right: 0;
+}
+
+.flash {
+  @include text-background;
+  z-index: 1;
+  position: relative;
+  min-width: 200px;
   padding: 15px;
   opacity: 0;
   animation-name: fade;
-  animation-duration: 5s;
+  animation-duration: 15s;
   &:hover {cursor: default;}
 }
 
 .site-banner {
   font-size: 16px;
+  min-width: 523px;
   width: 100vw;
   height: 70px;
   background-color: $cloudy-blue;
@@ -53,9 +68,12 @@ a {
   }
   .access-options {
     text-align: center;
-    margin-right: 30px;
+    margin: 0px 8px 5px 0px;
     font-weight: bold;
-    .logged-in-as { margin: 10px;}
+    .logged-in-as {
+      margin: 10px;
+      a {margin: 0px;}
+    }
   }
 }
 
@@ -65,23 +83,37 @@ nav {
   justify-content: space-between;
   border-bottom: 2px black solid;
   .navlinks{
+    font-weight: bolder;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+  min-width: 523px;
   width: 100vw;
   height: 45px;
   background-color: $citrus-pulp;
   .dropdown {
     margin: 0px 15px;
     .dashboard-icon {
-      font-size: 36px;
+      font-size: 34px;
     }
   }
+
+  .analytics-drop {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 125px;
+    font-weight: bolder;
+    &:hover {cursor: default;}
+    div{margin-top: 5px;}
+  }
+
   .dropdown-content {
     display: none;
-
   }
+
   .dropdown:hover .dropdown-content {
     position: absolute;
     z-index: 1;
@@ -110,7 +142,7 @@ nav {
 .welcome-background {
   min-height: 90vh;
   width: 100vw;
-  background-image: url("bikes/1.jpg");
+  background-image: image-url("bikes/1.jpg");
   background-size: 100vw 100vh;
   display: flex;
   flex-direction: column;
@@ -119,14 +151,16 @@ nav {
 }
 
 .application-section {
+  min-width: 523px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   min-height: 90vh;
   width: 100vw;
-  background-image: url("bikes/5.jpg");
-  background-size: 100vw 100vh;
+  background-image: image-url("bikes/5.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 .text-box {
@@ -134,7 +168,7 @@ nav {
   padding: 20px;
   font-weight: bold;
   width: 500px;
-  height: 300px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,9 +182,13 @@ nav {
   text-align: center;
   .form-field {
     margin: 25px 0px;
-    input {margin: 0px 10px;}
+    input {margin-left: 10px;}
     display: flex;
     justify-content: space-between;
+    textarea {
+      width: 125px;
+      height: 150px;
+    }
   }
 }
 
@@ -180,6 +218,7 @@ nav {
 .dashboard {
   margin: 10vh auto;
   padding: 50px;
+  min-width: 400px;
   font-weight: bold;
   display: flex;
   flex-direction: column;
@@ -188,12 +227,47 @@ nav {
   background-color: rgba(237, 241, 247, .85);
   border-radius: 10px;
   border: 1px black solid;
-  div {
-    margin: 15px;
-  }
+  h1, h3 {margin: 10px}
+  div {margin: 15px;}
 }
 
 .modify {
   text-align: center;
   font-size: 12px;
+}
+
+.show-modify {
+  margin: 10px;
+  a {
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: rgba(219, 232, 252, 0.8);
+    padding: 5px 4px 1px 4px;
+  }
+}
+
+.profile-info {
+  @include text-background;
+  @include center-flex;
+  max-width: 400px;
+  margin: 50px;
+  p {margin: 5px;}
+}
+
+
+#select_orders {
+  width: 125px;
+}
+
+.orders-header {
+  margin: 5px;
+  text-align: left;
+}
+
+.orders {
+  @include table-background;
+  a {margin: 5px;}
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

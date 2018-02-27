@@ -1,0 +1,46 @@
+@import 'setup';
+
+.show-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  font-weight: bold;
+  background-color: rgba(237, 241, 247, .75);
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.5px solid gray;
+  width: 25vw;
+  min-width: 400px;
+}
+
+.show-order-header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid gray;
+  width: 80%;
+}
+
+.show-order-info {
+  margin-top: 2vw;
+  border-bottom: 0.5px solid gray;
+  width: 80%;
+  .shipping-info {
+    border: 1px solid black;
+    border-radius: 5px;
+    background: $text-background;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    div {
+      margin: 5px;
+      font-size: 18px;
+    }
+  }
+}
+
+.show-order-accessories {
+  padding: 15px;
+  margin-top: 0.25vw;
+}

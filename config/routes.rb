@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get "/dashboard", to: "orders#index"
     resources :accessories, only: [:edit, :update]
     get "/bike-shop", to: "accessories#index"
+    patch "retire", to: "accessories#retire"
+    patch "activate", to: "accessories#activate"
   end
   resources :error, only: [:show]
   get '*path' => 'errors#show', via: [:get, :post]

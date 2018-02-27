@@ -26,6 +26,6 @@ describe "admin visits order show page" do
     expect(page).to have_content("Subtotal: $110.00")
     expect(page).to have_link('shoe')
     expect(page).to have_content('Subtotal: $225.00')
-    expect(page).to have_content("Quantity  in Order: 2")
+    expect(page).to have_content("Quantity of Accessories: 2")
   end
 end

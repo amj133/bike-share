@@ -19,8 +19,8 @@ require 'rails_helper'
 
         expect(page).to have_content("New Condition")
         expect(page).to have_content("Date")
-        expect(page).to have_content("Max temp f")
-        expect(page).to have_content("Mean humidity")
+        expect(page).to have_content("High temperature")
+        expect(page).to have_content("Average humidity")
     end
   end
 
@@ -41,13 +41,13 @@ require 'rails_helper'
 
         visit new_admin_condition_path
         fill_in("Date", with: DateTime.new(2009, 5, 4))
-        fill_in("Max temp f", with: 200)
-        fill_in("Mean temp f", with: 200)
-        fill_in("Min temp f", with: 10)
-        fill_in("Mean humidity", with: 21)
-        fill_in("Mean visibility miles", with: 43)
-        fill_in("Mean wind speed", with: 23)
-        fill_in("Precipitation inches", with: 23)
+        fill_in("condition_max_temp_f", with: "200")
+        fill_in("condition_mean_temp_f", with: "10")
+        fill_in("condition_min_temp_f", with: "10")
+        fill_in("condition_mean_humidity", with: "21")
+        fill_in("condition_mean_visibility_miles", with: "43")
+        fill_in("condition_mean_wind_speed", with: "23")
+        fill_in("condition_precipitation_inches", with: 23)
         click_button("Create Condition")
 
 
@@ -55,7 +55,6 @@ require 'rails_helper'
         expect(page).to have_content("Condition Details")
         expect(page).to have_content(200)
         expect(page).to have_content(10)
-        expect(page).to have_content("New condition created")
-
+        expect(page).to have_content("Condition for #{DateTime.new(2009, 5, 4).strftime("%-m/%-d/%Y")} created")
     end
   end

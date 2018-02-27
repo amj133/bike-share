@@ -28,7 +28,6 @@ require 'rails_helper'
        expect(page).to have_content("Bike")
        expect(page).to have_content("Subscription")
        expect(page).to have_content("Zipcode")
-
     end
   end
 
@@ -52,19 +51,19 @@ require 'rails_helper'
 
         visit new_admin_trip_path
 
-        fill_in("Duration", with: 420)
+        fill_in("trip_duration", with: 420)
         fill_in("Start date", with: "12345")
         select("Big Bikes", :from => "trip[start_station_id]")
         fill_in("End date", with: "12456")
         select("Big Bikes", :from => "trip[end_station_id]")
-        fill_in("Bike", with: "111")
+        fill_in("trip_bike_id", with: "111")
         select("Subscriber", :from => "trip[subscription]")
         fill_in("Zipcode", with: "32218")
 
         click_button("Create Trip")
 
         expect(page).to have_content("Trip Details")
-        expect(page).to have_content("New trip created")
+        expect(page).to have_content("Trip #{Trip.last.id} created")
         expect(page).to have_content("Subscriber")
         expect(page).to have_content("32218")
         expect(page).to have_content("111")

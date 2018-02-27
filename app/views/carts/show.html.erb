@@ -1,24 +1,48 @@
 <div class="cart-show">
-  <div class="">
-    <h3>Accessories in your cart</h3>
+  <div class="cart-show-header">
+    <h3>Accessories in your cart: <%= @cart.total_count %></h3>
     <h3>Cart Total: <%= number_to_currency(@cart.total_cost, unit: "$") %></h3>
   </div>
 
-  <div class="show-cart">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Edit</th>
+    </tr>
     <% @accessories.each do |accessory| %>
-      <%= accessory.name %><br>
-      <%= accessory.description %><br>
-      <%= image_tag(accessory.image_path, class: 'accessory-image') %>
-      <p>Unit Price: <%= number_to_currency(accessory.price, unit: "$") %></p>
-      <p>Quantity: <%= @cart.count_of(accessory.id) %></p>
-      <p>Subtotal: <%= number_to_currency(@cart.count_of(accessory.id) * accessory.price, unit: "$") %></p>
-      <%= button_to "Increase quantity", increase_quantity_path(accessory_id: accessory.id), method: :patch %>
-      <%= button_to "Decrease quantity", decrease_quantity_path(accessory_id: accessory.id), method: :patch %>
-      <%= button_to "Remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
+      <div class="cart-row">
+        <tr>
+          <td><%= accessory.name %></td>
+          <td><%= accessory.description %></td>
+          <td><%= image_tag(accessory.image_path, class: 'accessory-image') %></td>
+          <td><%= number_to_currency(accessory.price, unit: "$") %></td>
+          <td><%= @cart.count_of(accessory.id) %></td>
+          <td><%= number_to_currency(@cart.count_of(accessory.id) * accessory.price, unit: "$") %></td>
+          <td>
+            <div class='cart-buttons'>
+              <%= link_to increase_quantity_path(accessory_id: accessory.id), method: :patch, class: 'increase-cart-link' do %>
+                <div>
+                  <%= fa_icon "plus-square", class: 'increase-cart-icon' %>
+                </div>
+              <% end %>
+            <%= link_to decrease_quantity_path(accessory_id: accessory.id), method: :patch, class: 'decrease-cart-link' do %>
+              <div>
+                <%= fa_icon "minus-square", class: 'decrease-cart-icon' %>
+              </div>
+            <% end %>
+            </div>
+            <%= button_to "Remove", remove_accessory_path(accessory_id: accessory.id), method: :patch %>
+            </div>
+          </td>
+        <tr>
+      </div>
     <% end %>
+  </table>
+  <div>
+   <%= button_to "Checkout", orders_path %>
   </div>
-
-  <div class="">
-    <%= button_to "Checkout", orders_path %>
-  </div>
-</div>
