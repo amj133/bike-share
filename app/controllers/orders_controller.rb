@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user
+    if current_user.orders.map {|order| order.id}.include?(params[:id].to_i) || current_user.admin?
       @order = Order.find(params[:id])
     else
       render file: '/public/404'

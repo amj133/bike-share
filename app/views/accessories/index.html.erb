@@ -3,7 +3,7 @@
 <div class="bike-shop">
   <% @accessories.each do |accessory| %>
     <div class="index-accessory">
-      <div><%= accessory.name %></div>
+      <div><%= link_to accessory.name, accessory_path(accessory) %></div>
       <div><%= number_to_currency(accessory.price, negative_format: "(%u%n)") %></div>
       <%= image_tag(accessory.image_path, class: "accessory-image") %>
       <%= button_to "Add to cart", carts_path(accessory_id: accessory.id), id: 'add-to-cart' %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225233713) do
+ActiveRecord::Schema.define(version: 20180226200846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20180225233713) do
     t.bigint "end_station_id"
     t.integer "bike_id"
     t.string "subscription"
-    t.integer "zipcode"
+    t.bigint "zipcode"
     t.index ["end_station_id"], name: "index_trips_on_end_station_id"
     t.index ["start_station_id"], name: "index_trips_on_start_station_id"
   end

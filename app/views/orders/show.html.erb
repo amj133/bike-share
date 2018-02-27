@@ -28,4 +28,14 @@
       Subtotal: <%= number_to_currency(@order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price, unit: "$") %><br><br>
     <% end %>
   </div>
+
+  <div class="order-status-buttons">
+    <% if @order.status == 'Ordered' %>
+      <%= button_to 'cancel', admin_order_path(@order, status: "Cancelled"), method: :patch %>
+      <%= button_to 'mark as paid', admin_order_path(@order, status: "Paid"), method: :patch %>
+      <% elsif @order.status == 'Paid' %>
+      <%= button_to 'cancel', admin_order_path(@order, status: "Cancelled"), method: :patch %>
+      <%= button_to 'mark as completed', admin_order_path(@order, status: "Completed"), method: :patch %>
+    <% end %>
+  </div>
 </div>

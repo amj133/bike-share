@@ -75,3 +75,7 @@
   padding: 20px;
   margin: 50px;
 }
+
+.show-accessory {
+  @include text-background;
+}

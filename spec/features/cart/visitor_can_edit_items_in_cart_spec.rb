@@ -48,9 +48,12 @@ describe "visitor can edit items in cart" do
       expect(current_path). to eq('/cart')
       expect(page).to have_content("2")
       expect(page).to have_content(accessory_1.name)
-      expect(page).to have_content("Unit Price: $2,050")
-      expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Subtotal: $4,100.00")
+      expect(page).to have_content("Unit Price")
+      expect(page).to have_content("$2,050")
+      expect(page).to have_content("Quantity")
+      expect(page).to have_content("2")
+      expect(page).to have_content("Subtotal")
+      expect(page).to have_content("$4,100.00")
     end
 
     it "cart total will increase" do
@@ -77,16 +80,16 @@ describe "visitor can edit items in cart" do
       visit cart_path
       find(".increase-cart-link").click
 
-      expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Cart Total: $4,100.00")
-      expect(page).to have_content("Subtotal: $4,100.00")
+      expect(page).to have_content("2")
+      expect(page).to have_content("$4,100.00")
+      expect(page).to have_content("$4,100.00")
 
       find(".decrease-cart-link").click
 
       expect(current_path). to eq('/cart')
-      expect(page).to have_content("Quantity: 1")
+      expect(page).to have_content("1")
       expect(page).to have_content("Cart Total: $2,050.00")
-      expect(page).to have_content("Subtotal: $2,050.00")
+      expect(page).to have_content("$2,050.00")
     end
 
     it "clicks on remove quantity, accessory removed from cart" do
@@ -97,9 +100,9 @@ describe "visitor can edit items in cart" do
       visit cart_path
       find(".increase-cart-link").click
 
-      expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Cart Total: $4,100.00")
-      expect(page).to have_content("Subtotal: $4,100.00")
+      expect(page).to have_content("2")
+      expect(page).to have_content("$4,100.00")
+      expect(page).to have_content("$4,100.00")
 
       click_on("Remove")
 

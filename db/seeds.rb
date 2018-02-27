@@ -24,7 +24,7 @@ Accessory.create(name: "fixie", description: "comes with a free fist tat!", pric
 Accessory.create(name: "hub spikes", description: "for those intense road battles!", price: 54, image_path: 'bike.png', status: "inactive")
 Accessory.create(name: "square wheels", description: "pre-human bike wheels, how novel is that!!!", price: 112.00, image_path: 'bike.png', status: "inactive")
 
-stations = CSV.open('db/fixtures/station_fixture.csv', headers: true, header_converters: :symbol)
+stations = CSV.open('db/csv/station.csv', headers: true, header_converters: :symbol)
 stations.each do |row|
   date_split = row[:installation_date].split("/")
   Station.create(id: row[:id],
@@ -36,7 +36,7 @@ stations.each do |row|
                  installation_date: DateTime.new(date_split[2].to_i, date_split[0].to_i, date_split[1].to_i))
 end
 
-conditions = CSV.open('db/fixtures/weather_fixture.csv', headers: true, header_converters: :symbol)
+conditions = CSV.open('db/csv/weather.csv', headers: true, header_converters: :symbol)
 conditions.each do |row|
   date_split = row[:date].split("/")
   Condition.create(date: DateTime.new(date_split[2].to_i, date_split[0].to_i, date_split[1].to_i),
@@ -65,7 +65,7 @@ conditions.each do |row|
                    zipcode: row[:zip_code].to_i)
 end
 
-trips = CSV.open('db/fixtures/trip_fixture.csv', headers: true, header_converters: :symbol)
+trips = CSV.open('db/csv/trip.csv', headers: true, header_converters: :symbol)
 trips.each do |row|
   start_date_split = row[:start_date].split[0].split("/")
   end_date_split = row[:end_date].split[0].split("/")
