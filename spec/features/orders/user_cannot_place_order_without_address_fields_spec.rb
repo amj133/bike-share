@@ -17,6 +17,6 @@ describe "user tries to place order without shipping information" do
     click_on "Checkout"
 
     expect(current_path).to eq(edit_user_path(user))
-    expect(page).to have_content("You must have all shipping information to checkout!")
+    expect(page).to have_content("#{user.shipping_info.select {|attr| attr.nil?}} can't be empty!")
   end
 end
