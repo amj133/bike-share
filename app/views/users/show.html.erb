@@ -4,6 +4,14 @@
   <p>Profile Information</p>
   <p>Username: <%= @user.username %></p>
   <p>Email: <%= @user.email %></p>
+  <p>First Name: <% @user.first_name %></p>
+  <p>Last Name: <%= @user.last_name %></p>
+  <p>Street: <%= @user.street %></p>
+  <p>City: <%= @user.city %></p>
+  <p>State: <%= @user.state %></p>
+  <p>Zipcode: <%= @user.zipcode %></p>
+
+  <%= link_to "Update Profile", edit_user_path(@user) %>
   <% unless @user.orders.empty? %>
   <div class="orders-header">Your Orders:</div>
       <div class="orders">

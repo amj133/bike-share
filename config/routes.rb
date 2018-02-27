@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :stations, only: [:index, :show], param: :slug
   get "/stations-dashboard", to: "stations#dashboard"
 
-  resources :users, only: [:show, :new, :create]
+  resources :users, only: [:show, :new, :create, :edit, :update]
   get "/dashboard", to: "users#show"
 
   resources :carts, only: [:create]
