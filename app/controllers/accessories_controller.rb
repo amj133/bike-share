@@ -17,13 +17,16 @@ class AccessoriesController < ApplicationController
   end
 
   def create
-    @accessory = Accessory.new(accessory_params)
-    if @accessory.save
-      redirect_to admin_bike_shop_path
+    if current_admin?
+      @accessory = Accessory.new(accessory_params)
+      if @accessory.save
+        redirect_to admin_bike_shop_path
+      else
+        render :new
+      end
     else
-      render :new
-    end
-    #need to gate from non-admin?
+      render file: "/errors/error"
+    end 
   end
 
   private
