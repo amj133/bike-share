@@ -9,11 +9,11 @@ class Trip < ApplicationRecord
   has_one :condition, class_name: 'Condition', foreign_key: 'date', primary_key: 'start_date'
 
   def formatted_duration
-    Time.at(duration * 60).utc.strftime("%k hrs %M min")
+    Time.at(duration * 60).utc.strftime("%k hrs %M min").strip
   end
 
   def self.avg_ride_duration
-    Time.at(average(:duration) * 60).utc.strftime("%k hrs %M min")
+    Time.at(average(:duration) * 60).utc.strftime("%k hrs %M min").strip
   end
 
   def self.longest_ride
