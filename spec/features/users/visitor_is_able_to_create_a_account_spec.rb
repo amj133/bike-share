@@ -17,7 +17,7 @@ describe "visitor is able to create a account" do
        fill_in("Last name", with: "Bobson" )
        fill_in("Street", with: "123 Fake St" )
        fill_in("City", with: "Nowhere" )
-       fill_in("State", with: "NO" )
+       select("Colorado", from: "State")
        fill_in("Zipcode", with: "12345" )
        click_on("Submit")
 
