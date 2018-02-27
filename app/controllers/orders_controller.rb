@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     if session[:cart].values.sum == 0
       flash.notice = "No accessories in your cart!"
       redirect_to bike_shop_path
-    elsif current_user
+    elsif current_user && current_user.shipping_info.any? {|attr| attr != nil}
       user = User.find(session[:user_id])
       @order = user.orders.create(status: "Ordered",
                                   total: @cart.total_cost,
@@ -14,12 +14,13 @@ class OrdersController < ApplicationController
                                         order_id: @order.id,
                                         quantity: quantity )
       end
-
       flash.notice = "You have successfully submitted your order."
       session[:cart] = Hash.new(0)
       @cart.contents = Hash.new(0)
-
       redirect_to dashboard_path
+    elsif current_user
+      flash.notice = "#{current_user.shipping_info.select {|attr| attr.nil?}} can't be empty!"
+      redirect_to edit_user_path(current_user)
     else
       flash.notice = "Must be logged in to checkout!"
       redirect_to login_path

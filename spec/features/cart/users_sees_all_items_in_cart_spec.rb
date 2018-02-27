@@ -30,12 +30,12 @@ describe "user can view all items in cart" do
     it "after clicking checkout, displays message and directs to user dashboard" do
       accessory_1 = create(:accessory, price: 110)
       accessory_2 = create(:accessory, price: 225)
-      bob = User.create(username: "bob", password: "test", email:"bob@gmail.com")
+      user = create(:user)
 
       visit root_path
       click_link("Login")
-      fill_in("Username", with: "bob")
-      fill_in("Password", with: "test")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
       click_button("Log in")
 
       visit bike_shop_path
