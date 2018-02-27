@@ -25,7 +25,7 @@ describe Trip, type: :model do
       create(:trip, duration: 400)
       create(:trip, duration: 500)
 
-      expect(Trip.avg_ride_duration).to eq(400)
+      expect(Trip.avg_ride_duration).to eq("6 hrs 40 min")
     end
     it "calculates longest ride" do
       create(:trip, duration: 300)

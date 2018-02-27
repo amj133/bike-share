@@ -71,6 +71,6 @@ end
 
       click_button("Update Station")
 
-      expect(page).to have_content("Station at big-fun")
+      expect(page).to have_content("Station at big fun")
     end
   end

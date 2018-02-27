@@ -16,7 +16,7 @@ describe "visitor is able to create a account" do
        click_on("Submit")
 
        expect(current_path).to eq("/dashboard")
-       expect(page).to have_content("Welcome #{User.last.username}")
+       expect(page).to have_content("Welcome, #{User.last.username.capitalize}")
        expect(page).to have_content("Logged in as #{User.last.username}")
        expect(page).to have_link("Logout")
     end

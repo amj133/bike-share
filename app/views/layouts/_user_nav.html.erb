@@ -1,12 +1,16 @@
 <%= render partial: "layouts/visitor_nav" %>
 
 <div class="dropdown dashboard-drop">
-  <%= fa_icon "tachometer", class: 'dashboard-icon' %>
+  <div class="analytics-drop"><div>
+    Analytics
+  </div>
+  <%= fa_icon "calculator", class: 'dashboard-icon' %>
+  </div>
     <div class="dropdown-content">
-      <div><%= link_to "Personal Dashboard", dashboard_path %></div>
+      <div><%= link_to "User Profile", dashboard_path %></div>
       <%= yield :admin_dashboard %>
-      <div><%= link_to "Stations Dashboard", stations_dashboard_path %></div>
-      <div><%= link_to "Trips Dashboard", trips_dashboard_path %></div>
-      <div><%= link_to "Weather Dashboard", weather_dashboard_path %></div>
+      <div><%= link_to "Station Analytics", stations_dashboard_path %></div>
+      <div><%= link_to "Trip Analytics", trips_dashboard_path %></div>
+      <div><%= link_to "Weather Analytics", weather_dashboard_path %></div>
     </div>
 </div>

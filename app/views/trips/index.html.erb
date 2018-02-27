@@ -7,7 +7,7 @@
     <div class="index-trip">
       <%= link_to trip_path(trip) do %>
       <div><%= trip.id %></div>
-      <div>Duration: <%= Time.at(trip.duration * 60).utc.strftime("%k hrs %M min") %></div>
+      <div>Duration: <%= trip.formatted_duration %></div>
       <div>Start Date: <%= trip.start_date.strftime("%b %d, %Y") %></div>
       <div>Starting Station: <%= trip.start_station.name %></div>
       <div>End Date: <%= trip.end_date.strftime("%b %d, %Y") %></div>
