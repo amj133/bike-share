@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash.notice = "Couldn't update #{current_user.username}'s information."
-      render :edit
+      redirect_to edit_user_path(current_user)
     end
   end
 

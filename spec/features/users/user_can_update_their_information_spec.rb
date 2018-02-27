@@ -25,11 +25,12 @@ describe "user visits edit page from their show" do
     click_on("Submit")
 
     expect(current_path).to eq(user_path(user))
+    expect(page).to have_content("Successfully updated #{user.username}'s info.")
     expect(page).to have_content("Bob")
-    # expect(page).to have_content("Bobson")
-    # expect(page).to have_content("123 Fake St")
-    # expect(page).to have_content("Nowhere")
-    # expect(page).to have_content("CO")
-    # expect(page).to have_content("12345")
+    expect(page).to have_content("Bobson")
+    expect(page).to have_content("123 Fake St")
+    expect(page).to have_content("Nowhere")
+    expect(page).to have_content("CO")
+    expect(page).to have_content("12345")
   end
 end
