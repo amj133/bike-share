@@ -11,14 +11,14 @@
   </ul>
   <div>Filter Orders by:</div>
   <div class="order-filters">
-      <%= link_to "Ordered", "/admin/dashboard?status=status='Ordered'" %>
-      <%= link_to "Paid", "/admin/dashboard?status=status='Paid'" %>
-      <%= link_to "Cancelled", "/admin/dashboard?status=status='Cancelled'" %>
-      <%= link_to "Completed", "/admin/dashboard?status=status='Completed'" %>
+      <%= link_to "Ordered", "/admin/dashboard?status=status='Ordered'" %>&nbsp;&nbsp;
+      <%= link_to "Paid", "/admin/dashboard?status=status='Paid'" %>&nbsp;&nbsp;
+      <%= link_to "Cancelled", "/admin/dashboard?status=status='Cancelled'" %>&nbsp;&nbsp;
+      <%= link_to "Completed", "/admin/dashboard?status=status='Completed'" %>&nbsp;&nbsp;
   </div>
 
   <% @orders.each do |order| %>
-    <%= link_to "Order #{order.id}", order_path(order) %>
+    <p><%= link_to "Order #{order.id}", order_path(order) %> - <%= order.status %></p>
     <% if order.status == 'Ordered' %>
       <%= button_to 'cancel', admin_order_path(order, status: "Cancelled"), method: :patch %>
       <%= button_to 'mark as paid', admin_order_path(order, status: "Paid"), method: :patch %>
