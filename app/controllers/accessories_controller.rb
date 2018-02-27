@@ -1,7 +1,7 @@
 class AccessoriesController < ApplicationController
 
   def index
-    @accessories = Accessory.all
+    @accessories = Accessory.abc
   end
 
   def show

@@ -1,7 +1,7 @@
 class Admin::AccessoriesController < Admin::BaseController
 
   def index
-    @accessories = Accessory.all
+    @accessories = Accessory.abc
   end
 
   def edit
