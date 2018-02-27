@@ -11,7 +11,7 @@
     <% least = Condition.date_with_least_rides(attr, range_min, range_min + increment) %>
     <% unless avg == 0 %>
       <tr>
-        <td><%= "#{range_min.ceil}" %> - <%= "#{(range_min + increment).ceil} #{unit}"%></td>
+        <td><%= "#{range_min.round(1)}" %> - <%= "#{(range_min + increment).round(1)} #{unit}"%></td>
         <td><%= "#{avg}" %> </td>
         <td><%= "#{most.values.first}" %> </td>
         <td><%= "#{least.values.first}" %> </td>
