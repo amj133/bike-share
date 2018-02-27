@@ -14,6 +14,7 @@ describe User, type: :model do
     it "can be created as admin" do
       kyle = User.create!(username: "kyle",
                            password: "password",
+                           email: "email@gmail.com",
                            role:  1)
 
         expect(kyle.role).to eq("admin")
@@ -24,11 +25,12 @@ describe User, type: :model do
   describe "roles" do
     it "can be created as registered" do
       bob = User.create!(username: "bob",
-                          password: "password"
+                          password: "password",
+                          email: "email@gmail.com"
                           )
 
       expect(bob.role).to eq("default")
       expect(bob.admin?).to_not be_truthy
     end
   end
-end 
+end

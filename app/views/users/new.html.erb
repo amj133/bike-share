@@ -100,5 +100,11 @@
    </div>
 
     <%= f.submit "Submit" %>
+    <% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+   <br>
+   <% end %>
+   <% end %>
   <% end %>
 </div>

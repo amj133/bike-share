@@ -20,7 +20,8 @@ end
 describe "user goes to station show page" do
   it "displays analytics specific to that station" do
     bob = User.create!(username: "bobrocks",
-                       password: "test")
+                       password: "test",
+                       email: "email@gmail.com")
     station_1 = create(:station, id: 1, name: 'station1')
     station_2 = create(:station, id: 2, name: 'station2')
     create(:condition, date: DateTime.new(2001, 9, 1))

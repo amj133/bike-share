@@ -4,12 +4,14 @@ describe "Existing user successfully logs in" do
   context "visits root path and clicks login" do
     it "they enter information and are logged in" do
       bob = User.create!(username: "bobrocks",
-                         password: "test")
+                         password: "test",
+                         email: "somethingspecial@gmail.com")
 
       visit root_path
       click_on("Login")
       fill_in("Username", with: "bobrocks")
       fill_in("Password", with: "test")
+
       click_on("Log in")
 
       expect(current_path).to eq(dashboard_path)
@@ -24,12 +26,14 @@ describe "Existing user can logout" do
   context "clicks logout from their dashboard" do
     it "redirects to root" do
       bob = User.create!(username: "bobrocks",
-                         password: "test")
+                         password: "test",
+                          email: "somethingspecial@gmail.com")
 
       visit root_path
       click_on("Login")
       fill_in("Username", with: "bobrocks")
       fill_in("Password", with: "test")
+    
       click_on("Log in")
 
       visit root_path
