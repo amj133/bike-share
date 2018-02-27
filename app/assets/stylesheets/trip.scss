@@ -43,3 +43,29 @@
   @include text-background;
   h2 {margin: 0px;}
 }
+
+.trips-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .trip-records {
+    @include text-background;
+    width: 550px;
+    div {
+      white-space: nowrap;
+      overflow-x: scroll;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .averages {
+    @include text-background;
+    width:550px;
+  }
+
+  .statistics {
+    @include text-background;
+    width: 550px;
+  }
+}

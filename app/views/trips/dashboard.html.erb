@@ -1,18 +1,18 @@
-<div class="dashboard">
-  <h1>Trip Analytics</h1>
+<h1 class="index-header">Trip Analytics</h1>
+<div class="trips-dashboard">
   <div class="trip-records">
-    Records:
-    <div>Longest Trip: <%= Trip.longest_ride.duration %> minutes.</div>
-    <div>Shortest Trip: <%= Trip.shortest_ride.duration %> minutes.</div>
-    <div>Most trips started at <%= Trip.most_starting_station.name %> in <%= Trip.most_starting_station.city %></div>
-    <div>Most trips ended at <%= Trip.most_ending_station.name %> in <%= Trip.most_ending_station.city %></div>
-    <div>The most ridden bike is bike #<%= Trip.most_ridden_bike.bike_id %>, with <%= Trip.most_ridden_bike.trip_count %> rides.</div>
-    <div>The least ridden bike is bike #<%= Trip.least_ridden_bike.bike_id %>, with <%= Trip.least_ridden_bike.trip_count %> rides.</div>
-    <div><%= Trip.most_popular_date %> was the day with the most rides ever.</div>
-    <div><%= Trip.least_popular_date %> was the day with the least rides ever.</div>
+    <h3>Records:</h3>
+    <div><strong>Longest Trip:</strong> <%= Trip.longest_ride.formatted_duration %></div>
+    <div><strong>Shortest Trip:</strong> <%= Trip.shortest_ride.formatted_duration %></div>
+    <div><strong>Most trips started at</strong> <%= Trip.most_starting_station.name %> in <%= Trip.most_starting_station.city %></div>
+    <div><strong>Most trips ended at</strong> <%= Trip.most_ending_station.name %> in <%= Trip.most_ending_station.city %></div>
+    <div><strong>The most ridden bike</strong> #<%= Trip.most_ridden_bike.bike_id %>, with <%= Trip.most_ridden_bike.trip_count %> rides.</div>
+    <div><strong>The least ridden bike:</strong> #<%= Trip.least_ridden_bike.bike_id %>, with <%= Trip.least_ridden_bike.trip_count %> rides.</div>
+    <div><strong>Most Trips Ever:</strong> <%= Trip.most_popular_date %></div>
+    <div><strong>Most Rides Ever:</strong> <%= Trip.least_popular_date %></div>
   </div>
   <div class="averages">
-    Averages
+    <h3>Averages</h3>
     <div>Average Trip Duration: <%= Trip.avg_ride_duration.round %></div>
 
     <div class="trip-weather-avgs">
@@ -31,7 +31,8 @@
     </div>
   </div>
 
-  <div class="statisics">
+  <div class="statistics">
+    <h3>More Statistics:</h3>
     <div>
       Rides per month:
       <% Trip.month_breakdown.each do |my, ride_number| %>
