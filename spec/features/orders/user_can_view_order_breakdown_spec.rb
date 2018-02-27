@@ -5,12 +5,12 @@ describe "user can view order breakdown" do
     it "shows order break down" do
       accessory_1 = create(:accessory, price: 110)
       accessory_2 = create(:accessory, price: 225)
-      bob = User.create(username: "bob", password: "test", email:"bob@gmail.com")
+      bob = create(:user)
 
       visit root_path
       click_link("Login")
-      fill_in("Username", with: "bob")
-      fill_in("Password", with: "test")
+      fill_in("Username", with: bob.username)
+      fill_in("Password", with: bob.password)
       click_button("Log in")
 
       visit bike_shop_path
@@ -37,12 +37,12 @@ describe "user can view order breakdown" do
     it "shows order break down" do
       accessory_1 = create(:accessory, price: 110)
       accessory_2 = create(:accessory, price: 225)
-      bob = User.create(username: "bob", password: "test", email:"bob@gmail.com")
+      bob = create(:user)
 
       visit root_path
       click_link("Login")
-      fill_in("Username", with: "bob")
-      fill_in("Password", with: "test")
+      fill_in("Username", with: bob.username)
+      fill_in("Password", with: bob.password)
       click_button("Log in")
 
       visit bike_shop_path
@@ -59,6 +59,12 @@ describe "user can view order breakdown" do
 
       expect(current_path).to eq(order_path(3))
       expect(page).to have_content(accessory_1.name)
+      expect(page).to have_content(bob.first_name)
+      expect(page).to have_content(bob.last_name)
+      expect(page).to have_content(bob.street)
+      expect(page).to have_content(bob.city)
+      expect(page).to have_content(bob.state)
+      expect(page).to have_content(bob.zipcode)
       expect(page).to have_content("Quantity: 1")
       expect(page).to have_content("Subtotal: $110.00")
       expect(page).to have_content("Order Total: $110.00")
@@ -67,14 +73,14 @@ describe "user can view order breakdown" do
     end
 
     it "displays updated at timestamp for completed and cancelled orders" do
-      bob = User.create(username: "bob", password: "test", email:"bob@gmail.com")
+      bob = create(:user)
       order_1 = bob.orders.create(status: "Completed", total: 50, updated_at: DateTime.new(2011, 9, 1), submitted: DateTime.new(2011, 8, 18))
       order_2 = bob.orders.create(status: "Cancelled", total: 60, updated_at: DateTime.new(2011, 9, 3), submitted: DateTime.new(2011, 7, 18))
 
       visit root_path
       click_link("Login")
-      fill_in("Username", with: "bob")
-      fill_in("Password", with: "test")
+      fill_in("Username", with: bob.username)
+      fill_in("Password", with: bob.password)
       click_button("Log in")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
