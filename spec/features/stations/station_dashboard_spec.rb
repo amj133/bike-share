@@ -21,8 +21,10 @@ end
 
 describe "visitor cannot visit stations dashboard" do
   it "displays 404 page" do
+    create_list(:station, 3)
+
     visit stations_dashboard_path
 
-    expect(page).to have_content("The page you were looking for doesn't exist")
+    expect(page).to_not have_content("Total station count: 3")
   end
 end

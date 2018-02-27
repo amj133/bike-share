@@ -21,7 +21,7 @@ class Admin::ConditionsController < Admin::BaseController
   def create
     @condition = Condition.new(condition_params)
     if @condition.save
-     flash.notice = "New condition created."
+     flash.notice = "Condition for #{@condition.date.strftime("%-m/%-d/%Y")} created."
       redirect_to condition_path(@condition)
     else
       render :new
@@ -30,8 +30,8 @@ class Admin::ConditionsController < Admin::BaseController
 
   def destroy
     @condition = Condition.find(params[:id])
+    flash.notice = "Condition for #{@condition.date.strftime("%-m/%-d/%Y")} deleted."
     @condition.destroy
-    flash.notice = "Condition deleted."
     redirect_to conditions_path
   end
 

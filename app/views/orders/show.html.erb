@@ -9,9 +9,9 @@
       Email: <%= @order.user.email %><br><br>
       Shipping to:<br><br>
       <div class="shipping-info">
-        <div><%= @order.user.first_name %>&nbsp<%= @order.user.last_name %></div>
+        <div><%= @order.user.first_name %>&nbsp;<%= @order.user.last_name %></div>
         <div><%= @order.user.street %></div>
-        <div><%= @order.user.city %>, <%= @order.user.state %>&nbsp<%= @order.user.zipcode %></div>
+        <div><%= @order.user.city %>, <%= @order.user.state %>&nbsp;<%= @order.user.zipcode %></div>
       </div>
     <% end %>
 
@@ -27,11 +27,13 @@
     Submitted: <%= @order.submitted.strftime("%l:%M %P, %-m/%-d/%Y") %><br><br><br>
   </div>
 
-  <div class="show-order-accessories">
+  <div>
     <% @order.accessories.each do |accessory| %>
+    <div class="show-order-accessories">
       Name: <%= link_to accessory.name, accessory_path(accessory) %><br><br>
       Quantity: <%= @order.order_accessories.find_by(accessory_id: accessory.id).quantity %> |
       Subtotal: <%= number_to_currency(@order.order_accessories.find_by(accessory_id: accessory.id).quantity * accessory.price, unit: "$") %><br><br>
+    </div>
     <% end %>
   </div>
 

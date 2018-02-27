@@ -55,7 +55,6 @@ require 'rails_helper'
         expect(page).to have_content("Condition Details")
         expect(page).to have_content(200)
         expect(page).to have_content(10)
-        expect(page).to have_content("New condition created")
-
+        expect(page).to have_content("Condition for #{DateTime.new(2009, 5, 4).strftime("%-m/%-d/%Y")} created")
     end
   end

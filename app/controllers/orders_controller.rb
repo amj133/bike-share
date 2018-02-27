@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
 
   def create
-    if current_user
+    if session[:cart].values.sum == 0
+      flash.notice = "No accessories in your cart!"
+      redirect_to bike_shop_path
+    elsif current_user
       user = User.find(session[:user_id])
       @order = user.orders.create(status: "Ordered",
                                   total: @cart.total_cost,
@@ -27,7 +30,7 @@ class OrdersController < ApplicationController
     if current_user.orders.map {|order| order.id}.include?(params[:id].to_i) || current_user.admin?
       @order = Order.find(params[:id])
     else
-      render file: '/public/404'
+      render file: '/errors/error'
     end
   end
 

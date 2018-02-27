@@ -8,7 +8,7 @@ class Admin::StationsController < Admin::BaseController
     @station = Station.new(station_params)
     @station.slug=@station.name.parameterize
     if @station.save
-      flash.notice = "New station created."
+      flash.notice = "Station #{@station.name} created."
       redirect_to station_path(@station.slug)
     else
       render :new
