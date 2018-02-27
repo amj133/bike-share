@@ -13,7 +13,7 @@ class Trip < ApplicationRecord
   end
 
   def self.avg_ride_duration
-    average(:duration)
+    Time.at(average(:duration) * 60).utc.strftime("%k hrs %M min")
   end
 
   def self.longest_ride
