@@ -19,7 +19,7 @@ describe "user visit dashboard view" do
     expect(page).to have_content("Precipitation Range Average Rides per Day Most Rides in a Day	Least Rides in a Day")
     expect(page).to have_content("Wind Speed Range Average Rides per Day Most Rides in a Day	Least Rides in a Day")
     expect(page).to have_content("Visibility Range Average Rides per Day Most Rides in a Day	Least Rides in a Day")
-    expect(page).to have_content("0 - 10 ° F 8 8 8 10 - 20 ° F 10 10 10")
+    expect(page).to have_content("0.0 - 10.0 ° F 8 8 8 10.0 - 20.0 ° F 10 10 10")
     expect(page).to have_content(Condition.average_rides_per_day('max_temp_f', 0, 10))
     expect(page).to have_content(Condition.average_rides_per_day('mean_wind_speed', 0, 4))
     expect(page).to have_content(Condition.average_rides_per_day('mean_visibility_miles', 0, 4))
