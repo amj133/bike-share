@@ -28,7 +28,6 @@ require 'rails_helper'
        expect(page).to have_content("Bike")
        expect(page).to have_content("Subscription")
        expect(page).to have_content("Zipcode")
-
     end
   end
 
@@ -64,7 +63,7 @@ require 'rails_helper'
         click_button("Create Trip")
 
         expect(page).to have_content("Trip Details")
-        expect(page).to have_content("New trip created")
+        expect(page).to have_content("Trip #{Trip.last.id} created")
         expect(page).to have_content("Subscriber")
         expect(page).to have_content("32218")
         expect(page).to have_content("111")

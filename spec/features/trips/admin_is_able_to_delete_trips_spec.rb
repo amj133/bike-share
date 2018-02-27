@@ -74,7 +74,7 @@ require 'rails_helper'
 
         click_link("Delete")
 
-        expect(page).to have_content("Trip deleted.")
+        expect(page).to have_content("Trip #{trip.id} deleted.")
         expect(page).to_not have_content("Delete")
       end
     end

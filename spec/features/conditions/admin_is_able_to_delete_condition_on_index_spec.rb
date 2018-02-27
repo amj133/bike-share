@@ -49,7 +49,7 @@ require 'rails_helper'
 
     describe "Admin see conditions index"  do
       it "Admin is able to delete a condition"  do
-        condition = create(:condition)
+        condition = create(:condition, date: DateTime.new(2009, 5, 4))
         user = User.create(username: "Kyle", email: "email",
         password: "password", role: 1)
 
@@ -69,6 +69,6 @@ require 'rails_helper'
         click_link("Delete")
 
         expect(page).to_not have_content(condition.readable_date)
-        expect(page).to have_content("Condition deleted.")
+        expect(page).to have_content("Condition for #{DateTime.new(2009, 5, 4).strftime("%-m/%-d/%Y")} deleted.")
       end
     end

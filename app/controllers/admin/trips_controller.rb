@@ -10,15 +10,15 @@ class Admin::TripsController < Admin::BaseController
 
   def destroy
     @trip = Trip.find(params[:id])
+    flash.notice = "Trip #{@trip.id} deleted."
     @trip.destroy
-    flash.notice = "Trip deleted."
     redirect_to trips_path
   end
 
   def create
     @trip = Trip.new(trip_params)
     if @trip.save
-     flash.notice = "New trip created."
+     flash.notice = "Trip #{@trip.id} created."
       redirect_to trip_path(@trip)
     else
       render :new
