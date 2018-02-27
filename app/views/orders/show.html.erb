@@ -4,9 +4,13 @@
   </div>
 
   <div class="show-order-info">
-    <% if current_admin? %>
+    <% if current_admin? || @order.user.id = current_user.id %>
       Customer: <%= @order.user.username %><br><br>
       Email: <%= @order.user.email %><br><br>
+      Shipping to:<br><br>
+      <%= @order.user.first_name %><%= @order.user.last_name %><br><br>
+      <%= @order.user.street %><br><br>
+      <%= @order.user.city %>, <%= @order.user.state %><%= @order.user.zipcode %>
     <% end %>
 
     <% if @order.status == "Completed" %>
