@@ -146,7 +146,7 @@ nav {
   background-size: 100vw 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 }
 
@@ -164,7 +164,7 @@ nav {
 }
 
 .text-box {
-  margin: 20vh auto;
+  margin: 2vh auto;
   padding: 20px;
   font-weight: bold;
   width: 500px;
@@ -176,6 +176,7 @@ nav {
   background-color: $text-background;
   border-radius: 10px;
   border: 1px black solid;
+  margin-top: 10vh;
 }
 
 .form {
