@@ -35,8 +35,12 @@
       <div>Bike Id: <%= trip.bike_id %></div>
       <div>Subscription Type: <%= trip.subscription %></div>
       <div>Zipcode: <%= trip.zipcode %></div>
-      <%= link_to "Delete", admin_trip_path(trip), method: "delete"  if current_admin? %>
-      <%= link_to "Edit", edit_admin_trip_path(trip) if current_admin? %>
+        <% if current_admin?  %>
+          <div class="modify">
+            <%= link_to "Delete", admin_trip_path(trip), method: "delete" %>
+            <%= link_to "Edit", edit_admin_trip_path(trip)%>
+          </div>
+        <% end %>
       <% end %>
     </div>
 <% end %>
