@@ -6626,7 +6626,7 @@ nav .dashboard-drop:hover .dropdown-content {
 .welcome-background {
   min-height: 90vh;
   width: 100vw;
-  background-image: url(/assets/bikes/1-ea558c919bbcb3bdd99b404c78a879dd3619fd3db74cbcfb095154228ac45d40.jpg);
+  background-image: url(/assets/bikes/6-20ef11196baa0dce6295bd3e1f0e4238f78b9f3e0f72eb7edb4e239a2f70bead.jpg);
   background-size: 100vw 100vh;
   display: flex;
   flex-direction: column;
@@ -6738,21 +6738,15 @@ nav .dashboard-drop:hover .dropdown-content {
 .modify {
   text-align: center;
   font-size: 12px;
+  min-height: 30px;
 }
 
-/* line 239, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 240, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 .show-modify {
   margin: 10px;
 }
-/* line 241, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
-.show-modify a {
-  border: 1px solid gray;
-  border-radius: 10px;
-  background-color: rgba(219, 232, 252, 0.8);
-  padding: 5px 4px 1px 4px;
-}
 
-/* line 249, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 244, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 .profile-info {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px solid black;
@@ -6766,23 +6760,23 @@ nav .dashboard-drop:hover .dropdown-content {
   max-width: 400px;
   margin: 50px;
 }
-/* line 254, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 249, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 .profile-info p {
   margin: 5px;
 }
 
-/* line 258, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 253, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 #select_orders {
   width: 125px;
 }
 
-/* line 262, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 257, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 .orders-header {
   margin: 5px;
   text-align: left;
 }
 
-/* line 267, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 262, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 .orders {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px dotted gray;
@@ -6793,7 +6787,7 @@ nav .dashboard-drop:hover .dropdown-content {
   flex-wrap: wrap;
   justify-content: center;
 }
-/* line 269, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
+/* line 264, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/main.scss */
 .orders a {
   margin: 5px;
 }
@@ -6863,7 +6857,7 @@ nav .dashboard-drop:hover .dropdown-content {
   border-radius: 10px;
   background-color: rgba(237, 241, 247, 0.85);
   width: 350px;
-  height: 100px;
+  min-height: 100px;
   margin: 15px 30px;
   padding: 15px;
 }
@@ -6955,6 +6949,13 @@ nav .dashboard-drop:hover .dropdown-content {
   justify-content: flex-end;
 }
 /* line 34, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+.pagination section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+}
+/* line 40, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .pagination div {
   background-color: rgba(244, 248, 255, 0.85);
   padding: 5px;
@@ -6962,7 +6963,7 @@ nav .dashboard-drop:hover .dropdown-content {
   border: 1px black solid;
 }
 
-/* line 42, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 48, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trip-show {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px solid black;
@@ -6970,23 +6971,23 @@ nav .dashboard-drop:hover .dropdown-content {
   margin: 50px;
   padding: 30px;
 }
-/* line 44, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 50, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trip-show h2 {
   margin: 0px;
 }
 
-/* line 47, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 53, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-/* line 49, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 55, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard h3 {
   margin: 0px;
 }
-/* line 50, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 56, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-records {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px solid black;
@@ -6997,10 +6998,10 @@ nav .dashboard-drop:hover .dropdown-content {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 550px;
+  min-width: 550px;
   height: 300px;
 }
-/* line 55, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 61, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-records section {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px dotted gray;
@@ -7008,7 +7009,7 @@ nav .dashboard-drop:hover .dropdown-content {
   margin: 30px;
   padding: 15px;
 }
-/* line 56, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 62, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-records div {
   margin: 5px;
   white-space: nowrap;
@@ -7016,11 +7017,11 @@ nav .dashboard-drop:hover .dropdown-content {
   display: flex;
   justify-content: space-between;
 }
-/* line 64, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 70, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-stats {
   display: flex;
 }
-/* line 67, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 73, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-stat {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px solid black;
@@ -7032,7 +7033,7 @@ nav .dashboard-drop:hover .dropdown-content {
   align-items: center;
   text-align: center;
 }
-/* line 73, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 79, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-stat section {
   background-color: rgba(237, 241, 247, 0.85);
   border: 1px dotted gray;
@@ -7041,7 +7042,7 @@ nav .dashboard-drop:hover .dropdown-content {
   padding: 15px;
   width: 340px;
 }
-/* line 76, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
+/* line 82, /Users/AndrewDymond/turing/2module/projects/bike-share/app/assets/stylesheets/trip.scss */
 .trips-dashboard .trip-stat div {
   margin: 5px;
   white-space: nowrap;
