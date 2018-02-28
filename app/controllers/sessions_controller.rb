@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path
     else
       flash.notice = "User credentials not found."
-      render :new
+      redirect_to login_path
     end
   end
 
