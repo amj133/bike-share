@@ -17,10 +17,12 @@
             <li>Average Wind Speed: <div><%= condition.mean_wind_speed.to_i %></div>mph</li>
             <li>Precipitation: <div><%= condition.precipitation_inches %> in</div></li>
           </ul>
-        <div class="modify">
-          <%= link_to "Delete",   admin_condition_path(condition), method: "delete"  if current_admin? %>
-          <%= link_to "Edit", edit_admin_condition_path(condition) if current_admin? %>
-        </div>
+        <% if current_admin? %>
+          <div class="modify">
+            <%= link_to "Delete",   admin_condition_path(condition), method: "delete" %>
+            <%= link_to "Edit", edit_admin_condition_path(condition) if current_admin? %>
+          </div>
+        <% end %>
       </div>
       <% end %>
     </div>

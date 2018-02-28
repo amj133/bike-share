@@ -11,8 +11,9 @@
     margin-bottom: 10px;
   }
   .index-trip {
+    @include center-flex;
     background-color: rgba(244, 248, 255, 0.85);
-    height: 150px;
+    min-height: 150px;
     width: 200px;
     font-size: 14px;
     border: 1px black solid;
@@ -20,6 +21,7 @@
     padding: 10px;
     margin: 15px;
     div {
+      margin: 2px;
       height: 15px;
       overflow: hidden;
     }
@@ -37,7 +39,7 @@
     justify-content: center;
     min-width: 240px;
   }
-  div {
+  .previous, .next {
     background-color: rgba(244, 248, 255, 0.85);
     padding: 5px;
     border-radius: 10px;

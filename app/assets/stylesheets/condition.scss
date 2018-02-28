@@ -23,8 +23,10 @@
     padding: 15px;
     border-radius: 10px;
     ul {
+      margin-bottom: 0px;
       padding-left: 4px;
       li {
+        margin: 2px;
         display: flex;
         justify-content: space-between;
       }
