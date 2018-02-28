@@ -11,6 +11,7 @@
     margin-bottom: 10px;
   }
   .index-trip {
+    @include center-flex;
     background-color: rgba(244, 248, 255, 0.85);
     height: 150px;
     width: 200px;
@@ -20,6 +21,7 @@
     padding: 10px;
     margin: 15px;
     div {
+      margin: 2px;
       height: 15px;
       overflow: hidden;
     }
