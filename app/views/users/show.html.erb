@@ -9,9 +9,9 @@
   <p>Street: <%= @user.street %></p>
   <p>City: <%= @user.city %></p>
   <p>State: <%= @user.state %></p>
-  <p>Zipcode: <%= @user.zipcode %></p>
+  <p>Zipcode: <%= @user.zipcode %></p><br>
 
-  <%= link_to "Update Profile", edit_user_path(@user) %>
+  <%= link_to "Update Profile", edit_user_path(@user) %><br>
   <% unless @user.orders.empty? %>
   <div class="orders-header">Your Orders:</div>
       <div class="orders">
