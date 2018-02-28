@@ -3,15 +3,14 @@ require 'rails_helper'
   describe "Admin sees conditions index"  do
     it "Admin sees delete button next to conditions"  do
         condition = create(:condition)
-        user = User.create(username: "Kyle", email: "email",
-        password: "password" ,role: 1)
+        user = create(:user, role: 1)
 
         visit root_path
 
         click_link("Login")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+        fill_in("Username", with: user.username)
+        fill_in("Password", with: user.password)
 
         click_button("Log in")
 
@@ -27,15 +26,14 @@ require 'rails_helper'
   describe "Admin new conditions form"  do
     it "Admin submits new conditions form and sees new form"  do
         condition = create(:condition)
-        user = User.create(username: "Kyle", email: "email",
-        password: "password" ,role: 1)
+        user = create(:user, role: 1)
 
         visit root_path
 
         click_link("Login")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+        fill_in("Username", with: user.username)
+        fill_in("Password", with: user.password)
 
         click_button("Log in")
 

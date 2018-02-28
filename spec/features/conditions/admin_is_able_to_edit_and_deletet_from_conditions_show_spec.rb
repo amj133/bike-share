@@ -3,15 +3,14 @@ require 'rails_helper'
   describe "Admin sees condition show"  do
     it "Admin sees edit and delete button next to condition"  do
       condition = create(:condition)
-      user = User.create(username: "Kyle", email: "email",
-      password: "password" ,role: 1)
+      user = create(:user, role: 1)
 
       visit root_path
 
       click_link("Login")
 
-      fill_in("Username", with: "Kyle")
-      fill_in("Password", with: "password")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
 
       click_button("Log in")
 
@@ -26,15 +25,14 @@ require 'rails_helper'
   describe "User sees condition show"  do
     it "User does not see edit and delete button next to condition"  do
       condition = create(:condition)
-      user = User.create(username: "Kyle", email: "email",
-      password: "password")
+      user = create(:user)
 
       visit root_path
 
       click_link("Login")
 
-      fill_in("Username", with: "Kyle")
-      fill_in("Password", with: "password")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
 
       click_button("Log in")
 
@@ -51,15 +49,14 @@ require 'rails_helper'
     describe "Admin sees condition show"  do
       it "Admin is able to delete condition and redirected to conditions index"  do
         condition = create(:condition)
-        user = User.create(username: "Kyle", email: "email",
-        password: "password" ,role: 1)
+        user = create(:user, role: 1)
 
         visit root_path
 
         click_link("Login")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+        fill_in("Username", with: user.username)
+        fill_in("Password", with: user.password)
 
         click_button("Log in")
 
@@ -77,15 +74,14 @@ require 'rails_helper'
     describe "Admin sees condition show"  do
       it "Admin is able to edit condition and then sees updated condition"  do
         condition = create(:condition)
-        user = User.create(username: "Kyle", email: "email",
-        password: "password" ,role: 1)
+        user = create(:user, role: 1)
 
         visit root_path
 
         click_link("Login")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+        fill_in("Username", with: user.username)
+        fill_in("Password", with: user.password)
 
         click_button("Log in")
 

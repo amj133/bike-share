@@ -6,22 +6,20 @@ require 'rails_helper'
       trip = Trip.create!(duration: 73, start_date: Time.now, start_station_id: 1,
                           end_date: Time.now, end_station_id: 1, bike_id: 22, subscription: "Subscriber",
                           zipcode: 32218)
-      user = User.create(username: "Kyle", email: "email",
-                          password: "password" ,role: 1)
+      user = create(:user, role: 1)
 
-        visit root_path
+      visit root_path
 
-        click_link("Login")
+      click_link("Login")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
+      click_button("Log in")
 
-        click_button("Log in")
+      visit trip_path(trip)
 
-        visit trip_path(trip)
-
-       expect(page).to have_link("Delete")
-       expect(page).to have_link("Edit")
+     expect(page).to have_link("Delete")
+     expect(page).to have_link("Edit")
     end
   end
 
@@ -31,22 +29,19 @@ require 'rails_helper'
       trip = Trip.create!(duration: 73, start_date: Time.now, start_station_id: 1,
                           end_date: Time.now, end_station_id: 1, bike_id: 22, subscription: "Subscriber",
                           zipcode: 32218)
-      user = User.create(username: "Kyle", email: "email",
-                          password: "password")
+      user = create(:user)
 
-        visit root_path
+      visit root_path
+      click_link("Login")
 
-        click_link("Login")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
+      click_button("Log in")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+      visit trip_path(trip)
 
-        click_button("Log in")
-
-        visit trip_path(trip)
-
-       expect(page).to_not have_link("Delete")
-       expect(page).to_not have_link("Edit")
+      expect(page).to_not have_link("Delete")
+      expect(page).to_not have_link("Edit")
     end
   end
 
@@ -56,15 +51,14 @@ require 'rails_helper'
       trip = Trip.create!(duration: 73, start_date: Time.now, start_station_id: 1,
                           end_date: Time.now, end_station_id: 1, bike_id: 22, subscription: "Subscriber",
                           zipcode: 32218)
-      user = User.create(username: "Kyle", email: "email",
-      password: "password", role: 1)
+      user = create(:user, role: 1)
 
       visit root_path
 
       click_link("Login")
 
-      fill_in("Username", with: "Kyle")
-      fill_in("Password", with: "password")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
 
       click_button("Log in")
 
@@ -87,32 +81,31 @@ require 'rails_helper'
       trip = Trip.create!(duration: 73, start_date: Time.now, start_station_id: 1,
                           end_date: Time.now, end_station_id: 1, bike_id: 22, subscription: "Subscriber",
                           zipcode: 32218)
-      user = User.create(username: "Kyle", email: "email",
-                          password: "password" ,role: 1)
+      user = create(:user, role: 1)
 
-        visit root_path
+      visit root_path
 
-        click_link("Login")
+      click_link("Login")
 
-        fill_in("Username", with: "Kyle")
-        fill_in("Password", with: "password")
+      fill_in("Username", with: user.username)
+      fill_in("Password", with: user.password)
 
-        click_button("Log in")
+      click_button("Log in")
 
-        visit trip_path(trip)
+      visit trip_path(trip)
 
-        click_link("Edit")
+      click_link("Edit")
 
-        expect(page).to have_content("Edit Trip")
+      expect(page).to have_content("Edit Trip")
 
-        fill_in('trip_duration', with: '120')
-        fill_in('Zipcode', with: '32218')
-        select('Subscriber', from: 'Subscription')
+      fill_in('trip_duration', with: '120')
+      fill_in('Zipcode', with: '32218')
+      select('Subscriber', from: 'Subscription')
 
-        click_button("Update Trip")
+      click_button("Update Trip")
 
-        expect(page).to have_content(Time.at( 120 * 60).utc.strftime("%k hrs %M min"))
-        expect(page).to have_content(32218)
-        expect(page).to have_content("Subscriber")
+      expect(page).to have_content(Time.at( 120 * 60).utc.strftime("%k hrs %M min"))
+      expect(page).to have_content(32218)
+      expect(page).to have_content("Subscriber")
     end
   end

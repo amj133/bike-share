@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to dashboard_path
     else
-      flash.notice = "#{@user.username} already exists"
+      flash.notice = "Couldn't create account."
       render :new
     end
   end

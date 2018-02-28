@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "user tries to place order without shipping information" do
   it "redirects them to update their info with shipping info" do
-    user = User.create(username: "Bob", password: "password")
+    user = User.create(username: "Bob", password: "password", email: "donald@duck.com")
     create(:accessory)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
