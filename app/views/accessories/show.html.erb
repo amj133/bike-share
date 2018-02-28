@@ -4,5 +4,6 @@
   <p><%= number_to_currency(@accessory.price, unit: "$") %></p><br>
   <p>Description:</p>
   <p><%= @accessory.description %></p>
-  <%=  image_tag(@accessory.image_path, class: 'accessory-image') %>
+  <%=  image_tag(@accessory.image_path, class: 'accessory-image') %><br><br>
+  <%= button_to "Add to cart", carts_path(accessory_id: @accessory.id), id: 'add-to-cart' %>
 </div>

@@ -142,7 +142,7 @@ nav {
 .welcome-background {
   min-height: 90vh;
   width: 100vw;
-  background-image: image-url("bikes/1.jpg");
+  background-image: image-url("bikes/6.jpg");
   background-size: 100vw 100vh;
   display: flex;
   flex-direction: column;
@@ -234,16 +234,11 @@ nav {
 .modify {
   text-align: center;
   font-size: 12px;
+  min-height: 30px;
 }
 
 .show-modify {
   margin: 10px;
-  a {
-    border: 1px solid gray;
-    border-radius: 10px;
-    background-color: rgba(219, 232, 252, 0.8);
-    padding: 5px 4px 1px 4px;
-  }
 }
 
 .profile-info {

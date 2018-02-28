@@ -12,13 +12,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
+      flash.notice = "User credentials not found."
       render :new
     end
   end
 
   def destroy
     session.destroy
-
     redirect_to root_path
   end
 

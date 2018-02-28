@@ -31,6 +31,12 @@
   display: flex;
   justify-content: space-between;
   .next {justify-content: flex-end;}
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 240px;
+  }
   div {
     background-color: rgba(244, 248, 255, 0.85);
     padding: 5px;
@@ -50,7 +56,7 @@
   .trip-records {
     @include text-background;
     @include center-flex;
-    width: 550px;
+    min-width: 550px;
     height: 300px;
     section {@include table-background;}
     div {
