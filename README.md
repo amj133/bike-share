@@ -2,7 +2,7 @@
 
 This application is used to track bike share data within the greater San Fransisco Metropolitan Bay Area.  A bike shop of accessories is also available for users to purchase.  The data includes 70 stations throughout the Bay area, with over 600,000 trips between the stations.  Users can view analytics for stations, trips, and weather conditions. 
 
-![schema](https://i.imgur.com/8wmBf2h.png)
+![schema](https://imgur.com/a/iD7z0)
 
 ## Getting Started
 
