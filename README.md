@@ -8,24 +8,19 @@ This application is used to track bike share data within the greater San Fransis
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Installing
 
-Clone the repository to your local computer using the command below:
+A step by step series of examples that tell you have to get a development env running. Clone the repository to your local computer using the command below:
 
 ```
-git clone 
+git clone https://github.com/amj133/bike-share.git
 ```
 
-Use the command below to make sure you have all the required gems installed.
+Run bundle to make sure you have all the required gems installed.
 
 ```
 bundle
 ```
-
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
 
 * To configure the database run the following commands.
 
