@@ -12,6 +12,13 @@ describe Trip, type: :model do
     it {should validate_presence_of(:zipcode)}
   end
   describe "relationships" do
+    it "can exist if station a start or end station" do
+      station = create(:station)
+      trip = create(:trip, start_station_id: station.id, end_station_id: station.id)
+      station.destroy
+
+      expect(trip).to be_valid
+    end
     it {should belong_to :start_station}
     it {should belong_to :end_station}
     it {should have_one :condition}
@@ -60,18 +67,22 @@ describe Trip, type: :model do
       expect(Trip.shortest_ride.condition).to eq(condition)
     end
     it "calculates the station with most starting rides" do
-      create(:trip, start_station_id: 1)
-      create(:trip, start_station_id: 1)
-      create(:trip, start_station_id: 2)
+      station_1 = create(:station)
+      station_2 = create(:station)
+      create(:trip, start_station_id: station_1.id)
+      create(:trip, start_station_id: station_1.id)
+      create(:trip, start_station_id: station_2.id)
 
-      expect(Trip.most_starting_station.id).to eq(1)
+      expect(Trip.most_starting_station.id).to eq(station_1.id)
     end
     it "calculates the station with most starting rides" do
-      create(:trip, end_station_id: 1)
-      create(:trip, end_station_id: 1)
-      create(:trip, end_station_id: 2)
+      station_1 = create(:station)
+      station_2 = create(:station)
+      create(:trip, end_station_id: station_1.id)
+      create(:trip, end_station_id: station_1.id)
+      create(:trip, end_station_id: station_2.id)
 
-      expect(Trip.most_ending_station.id).to eq(1)
+      expect(Trip.most_ending_station.id).to eq(station_1.id)
     end
     it "calculates the most ridden bike & that bike's trip count" do
       create(:trip, bike_id: 1)
