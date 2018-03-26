@@ -6,11 +6,11 @@ This application is used to track bike share data within the greater San Fransis
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.  Visit the deployed site at: https://enigmatic-spire-10343.herokuapp.com/ 
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running. Clone the repository to your local computer using the command below:
+Follow these steps to install the bike share application locally and run the development environment. Clone the repository to your local computer using the command below:
 
 ```
 git clone https://github.com/amj133/bike-share.git
