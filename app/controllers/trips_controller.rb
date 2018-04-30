@@ -15,10 +15,6 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
-  def dashboard
-
-  end
-
   private
 
   def require_current_user
