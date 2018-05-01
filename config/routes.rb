@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     patch "retire", to: "accessories#retire"
     patch "activate", to: "accessories#activate"
   end
+  
   resources :error, only: [:show]
   get '*path' => 'errors#show', via: [:get, :post]
 end
