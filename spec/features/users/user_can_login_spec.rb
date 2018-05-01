@@ -33,7 +33,6 @@ describe "Existing user can logout" do
       click_on("Login")
       fill_in("Username", with: "bobrocks")
       fill_in("Password", with: "test")
-    
       click_on("Log in")
 
       visit root_path

@@ -77,12 +77,6 @@ describe "user can view order breakdown" do
       order_1 = bob.orders.create(status: "Completed", total: 50, updated_at: DateTime.new(2011, 9, 1), submitted: DateTime.new(2011, 8, 18))
       order_2 = bob.orders.create(status: "Cancelled", total: 60, updated_at: DateTime.new(2011, 9, 3), submitted: DateTime.new(2011, 7, 18))
 
-      visit root_path
-      click_link("Login")
-      fill_in("Username", with: bob.username)
-      fill_in("Password", with: bob.password)
-      click_button("Log in")
-
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(bob)
 
       visit order_path(order_1)

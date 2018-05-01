@@ -5,14 +5,7 @@ require 'rails_helper'
         station = create(:station)
         user = create(:user, role: 1)
 
-        visit root_path
-
-        click_link("Login")
-
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit stations_path
 
@@ -26,14 +19,7 @@ require 'rails_helper'
         station = create(:station)
         user = create(:user)
 
-        visit root_path
-
-        click_link("Login")
-
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit stations_path
 
@@ -47,14 +33,7 @@ require 'rails_helper'
         station = create(:station)
         user = create(:user, role: 1)
 
-        visit root_path
-
-        click_link("Login")
-
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit stations_path
 

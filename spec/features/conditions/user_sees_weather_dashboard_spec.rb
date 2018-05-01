@@ -10,7 +10,9 @@ describe "user visit dashboard view" do
     create(:condition, max_temp_f: 17, date: date_2)
     create_list(:trip, 8, start_station_id: 1, end_station_id: 2, start_date: date)
     create_list(:trip, 10, start_station_id: 1, end_station_id: 2, start_date: date_2)
+
     user = User.create(username: 'Bob', password: 'password')
+    
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit weather_dashboard_path

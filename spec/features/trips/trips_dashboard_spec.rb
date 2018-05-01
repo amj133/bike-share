@@ -1,15 +1,18 @@
 require "rails_helper"
 
 describe "user visits trip dashboard" do
-  it "displays trip analytics" do
-    user = User.new(username: "Guy Fieri", password: "donkey$auce")
+  before(:each) do
+    @user = User.new(username: "Guy Fieri", password: "donkey$auce")
     date = DateTime.new(2001, 9, 1)
     create(:condition, date: date)
     create(:station, id: 1)
     create(:station, id: 2)
     create(:trip, duration: 300, start_date: date)
     create(:trip, duration: 500, start_date: date)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+
+  it "displays trip analytics" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
     visit trips_dashboard_path
 
@@ -28,16 +31,10 @@ describe "user visits trip dashboard" do
     expect(page).to have_content(Trip.least_popular_date)
   end
   it "displays weather stats for longest and shortest rides" do
-    user = User.new(username: "Guy Fieri", password: "donkey$auce")
-    date = DateTime.new(2001, 9, 1)
-    create(:condition, date: date)
-    create(:station, id: 1)
-    create(:station, id: 2)
-    create(:trip, duration: 300, start_date: date)
-    create(:trip, duration: 500, start_date: date)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
     visit trips_dashboard_path
+
     expect(page).to have_content("Weather averages during the longest ride:")
     expect(page).to have_content(Trip.longest_ride.condition.mean_temp_f)
     expect(page).to have_content(Trip.longest_ride.condition.mean_wind_speed)

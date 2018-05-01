@@ -1,70 +1,47 @@
 require 'rails_helper'
 
-  describe "Admin sees conditions index"  do
-    it "Admin sees delete button next to conditions"  do
-        condition = create(:condition)
-        user = create(:user, role: 1)
+describe "Admin sees conditions index"  do
+  it "Admin sees delete button next to conditions"  do
+    condition = create(:condition)
+    user = create(:user, role: 1)
 
-        visit root_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        click_link("Login")
+    visit conditions_path
 
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
-
-        visit conditions_path
-
-
-        expect(page).to have_content(condition.readable_date)
-        expect(page).to have_link("Delete")
-
-
-    end
+    expect(page).to have_content(condition.readable_date)
+    expect(page).to have_link("Delete")
   end
-  describe "user sees conditions index"  do
-    it "User does not see delete button"  do
-        condition = create(:condition)
-        user = create(:user)
+end
 
-        visit root_path
+describe "user sees conditions index"  do
+  it "User does not see delete button"  do
+    condition = create(:condition)
+    user = create(:user)
 
-        click_link("Login")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
+    visit conditions_path
 
-        click_button("Log in")
+    expect(page).to have_content(condition.readable_date)
+    expect(page).to_not have_link("Deleted")
+  end
+end
 
-        visit conditions_path
+describe "Admin see conditions index"  do
+  it "Admin is able to delete a condition"  do
+    condition = create(:condition, date: DateTime.new(2009, 5, 4))
+    user = create(:user, role: 1)
 
-        expect(page).to have_content(condition.readable_date)
-        expect(page).to_not have_link("Deleted")
-      end
-    end
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    describe "Admin see conditions index"  do
-      it "Admin is able to delete a condition"  do
-        condition = create(:condition, date: DateTime.new(2009, 5, 4))
-        user = create(:user, role: 1)
+    visit conditions_path
 
-        visit root_path
+    expect(page).to have_content(condition.readable_date)
 
-        click_link("Login")
+    click_link("Delete")
 
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
-
-        visit conditions_path
-
-        expect(page).to have_content(condition.readable_date)
-
-        click_link("Delete")
-
-        expect(page).to_not have_content(condition.readable_date)
-        expect(page).to have_content("Condition for #{DateTime.new(2009, 5, 4).strftime("%-m/%-d/%Y")} deleted.")
-      end
-    end
+    expect(page).to_not have_content(condition.readable_date)
+    expect(page).to have_content("Condition for #{DateTime.new(2009, 5, 4).strftime("%-m/%-d/%Y")} deleted.")
+  end
+end

@@ -1,108 +1,75 @@
 require 'rails_helper'
 
-  describe "Admin sees condition show"  do
-    it "Admin sees edit and delete button next to condition"  do
-        condition = create(:condition)
-        user = create(:user, role: 1)
+describe "Admin sees condition show"  do
+  it "Admin sees edit and delete button next to condition"  do
+    condition = create(:condition)
+    user = create(:user, role: 1)
 
-        visit root_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        click_link("Login")
+    visit condition_path(condition)
 
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
-
-        visit condition_path(condition)
-
-        expect(page).to have_content(condition.readable_date)
-        expect(page).to have_link("Edit")
-        expect(page).to have_link("Delete")
-    end
+    expect(page).to have_content(condition.readable_date)
+    expect(page).to have_link("Edit")
+    expect(page).to have_link("Delete")
   end
+end
 
-  describe "User sees condition show"  do
-    it "User does not see edit and delete button next to condition"  do
-        condition = create(:condition)
-        user = create(:user)
+describe "User sees condition show"  do
+  it "User does not see edit and delete button next to condition"  do
+    condition = create(:condition)
+    user = create(:user)
 
-        visit root_path
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        click_link("Login")
+    visit condition_path(condition)
 
-        fill_in("Username", with: user.username)
-        fill_in("Password", with: user.password)
-
-        click_button("Log in")
-
-        visit condition_path(condition)
-
-        expect(page).to have_content(condition.readable_date)
-        expect(page).to_not have_link("Edit")
-        expect(page).to_not have_link("Delete")
-    end
+    expect(page).to have_content(condition.readable_date)
+    expect(page).to_not have_link("Edit")
+    expect(page).to_not have_link("Delete")
   end
+end
 
-  require 'rails_helper'
+describe "Admin sees condition show"  do
+  it "Admin is able to delete condition and redirected to conditions index"  do
+    condition = create(:condition)
+    user = create(:user, role: 1)
 
-    describe "Admin sees condition show"  do
-      it "Admin is able to delete condition and redirected to conditions index"  do
-          condition = create(:condition)
-          user = create(:user, role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-          visit root_path
+    visit condition_path(condition)
 
-          click_link("Login")
+    expect(page).to have_content(condition.readable_date)
+    expect(page).to have_content(condition.readable_date)
 
-          fill_in("Username", with: user.username)
-          fill_in("Password", with: user.password)
+    click_link("Delete")
 
-          click_button("Log in")
+    expect(current_path).to eq conditions_path
+    expect(page).to have_content("Displaying 0 conditions")
+  end
+end
 
-          visit condition_path(condition)
+describe "Admin sees condition show"  do
+  it "Admin is able to edit condition and then sees updated condition"  do
+    condition = create(:condition)
+    user = create(:user, role: 1)
 
-          expect(page).to have_content(condition.readable_date)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-          expect(page).to have_content(condition.readable_date)
+    visit condition_path(condition)
 
-          click_link("Delete")
+    expect(page).to have_content(condition.readable_date)
+    expect(page).to have_content(condition.readable_date)
 
-          expect(current_path).to eq conditions_path
-          expect(page).to have_content("Displaying 0 conditions")
-      end
-    end
+    click_link("Edit")
 
-    describe "Admin sees condition show"  do
-      it "Admin is able to edit condition and then sees updated condition"  do
-          condition = create(:condition)
-          user = create(:user, role: 1)
+    expect(page).to have_content("Edit Condition")
 
-          visit root_path
+    fill_in("condition_max_temp_f", with: 300)
+    click_button("Update Condition")
 
-          click_link("Login")
-
-          fill_in("Username", with: user.username)
-          fill_in("Password", with: user.password)
-
-          click_button("Log in")
-
-          visit condition_path(condition)
-
-
-          expect(page).to have_content(condition.readable_date)
-
-          expect(page).to have_content(condition.readable_date)
-
-          click_link("Edit")
-
-          expect(page).to have_content("Edit Condition")
-          fill_in("condition_max_temp_f", with: 300)
-
-          click_button("Update Condition")
-
-          expect(page).to have_content(300)
-          expect(current_path).to eq condition_path(condition)
-          expect(page).to have_content("Condition Details")
-      end
-    end
+    expect(page).to have_content(300)
+    expect(current_path).to eq condition_path(condition)
+    expect(page).to have_content("Condition Details")
+  end
+end
