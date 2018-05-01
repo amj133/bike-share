@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "welcome#index"
 
   resources :trips, only: [:index, :show]
-  get "/trips-dashboard", to: "trips#dashboard"
+  get "/trips-dashboard", to: "trips_dashboard#index"
 
   resources :conditions, only: [:index, :show]
   get "/weather-dashboard", to: "conditions#dashboard"

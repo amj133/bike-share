@@ -1,0 +1,52 @@
+<h1 class="index-header">Trip Analytics</h1>
+<div class="trips-dashboard">
+  <div class="trip-records">
+    <h3>Records:</h3>
+  <section>
+    <div><strong>Longest Trip:</strong> <%= @stats.longest_trip %></div>
+    <div><strong>Shortest Trip:</strong> <%= @stats.shortest_trip %></div>
+    <div><strong>Most trips started at&nbsp</strong> <%= @stats.station_with_most_starts %> in <%= @stats.most_starts_city %></div>
+    <div><strong>Most trips ended at&nbsp</strong> <%= @stats.station_with_most_ends %> in <%= @stats.most_ends_city %></div>
+    <div><strong>The most ridden bike</strong> #<%= @stats.most_ridden_bike_id %>, with <%= @stats.highest_trip_count %> rides.</div>
+    <div><strong>The least ridden bike:</strong> #<%= @stats.least_ridden_bike_id %>, with <%= @stats.lowest_trip_count %> rides.</div>
+    <div><strong>Most Trips Ever:</strong> <%= @stats.most_popular_date %></div>
+    <div><strong>Most Rides Ever:</strong> <%= @stats.least_popular_date %></div>
+  </section>
+  </div>
+  <section class="trip-stats">
+    <div class="trip-stat">
+      <h3><strong>Averages</strong></h3>
+      <section>
+        <div><strong>Average Trip Duration:&nbsp</strong> <%= @stats.avg_ride_duration %></div>
+        <h5>Weather averages during the longest ride:</h5>
+        <div><strong>Temp:</strong> <%=@stats.longest_ride_mean_temp %>° F</div>
+        <div><strong>Wind Speed:</strong> <%= @stats.longest_ride_mean_wind_speed %>mph</div>
+        <div><strong>Humidity:</strong> <%= @stats.longest_ride_mean_humidity %>%</div>
+        <div><strong>Cloud Cover:</strong> <%= @stats.longest_ride_cloud_cover%> oktas</div>
+        <h5>Weather averages during the shortest ride:</h5>
+        <div><strong>Temperature:</strong> <%= @stats.shortest_ride_mean_temp %>° F</div>
+        <div><strong>Wind Speed:</strong> <%= @stats.shortest_ride_mean_wind_speed %>mph</div>
+        <div><strong>Humidity:</strong> <%= @stats.shortest_ride_mean_humidity %>%</div>
+        <div><strong>Cloud Cover:</strong> <%= @stats.shortest_ride_cloud_cover %> oktas</div>
+      </section>
+    </div>
+
+    <div class="trip-stat">
+      <h3>More Statistics:</h3>
+      <br>
+      <% @stats.subscription_count.each do |type, number_of| %>
+        <div><strong><%= number_of %></strong>&nbsp<%= type %> subcriptions</div>
+      <% end %>
+      <% @stats.subscription_percentage.each do |type, percent| %>
+        <div> Subscriptions are&nbsp<strong><%= percent %>%</strong>&nbsp<%= type %></div>
+      <% end %>
+
+      <section>
+        Rides per month:
+        <% @stats.month_breakdown.each do |my, ride_number| %>
+          <div> <strong><%= my %>:</strong> <%= ride_number %> </div>
+        <% end %>
+      </section>
+    </div>
+  </section>
+</div>
