@@ -8,14 +8,7 @@ require 'rails_helper'
                           zipcode: 32218)
       user = create(:user, role: 1)
 
-      visit root_path
-
-      click_link("Login")
-
-      fill_in("Username", with: user.username)
-      fill_in("Password", with: user.password)
-
-      click_button("Log in")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit new_admin_trip_path
 
@@ -38,14 +31,7 @@ require 'rails_helper'
                           zipcode: 32218)
       user = create(:user, role: 1)
 
-      visit root_path
-
-      click_link("Login")
-
-      fill_in("Username", with: user.username)
-      fill_in("Password", with: user.password)
-
-      click_button("Log in")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit new_admin_trip_path
 
@@ -57,7 +43,6 @@ require 'rails_helper'
       fill_in("trip_bike_id", with: "111")
       select("Subscriber", :from => "trip[subscription]")
       fill_in("Zipcode", with: "32218")
-
       click_button("Create Trip")
 
       expect(page).to have_content("Trip Details")

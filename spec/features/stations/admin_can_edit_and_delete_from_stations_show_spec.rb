@@ -3,10 +3,8 @@ require 'rails_helper'
 describe "Admin sees station show"  do
   it "Admin see edit button and delete button"  do
     station = create(:station, id: 1)
-    trip    = create(:trip, start_station_id: 1, end_station_id: 1)
-    user    = User.create(username: "Kyle", email: "email", password: "password" ,role: 1)
-
-    visit root_path
+    trip = create(:trip, start_station_id: 1, end_station_id: 1)
+    user = User.create(username: "Kyle", email: "email", password: "password" ,role: 1)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -23,8 +21,6 @@ describe "user sees station show"  do
     trip = create(:trip, start_station_id: 1, end_station_id: 1)
     user = User.create(username: "Kyle", email: "email", password: "password" )
 
-    visit root_path
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit station_path(station.slug)
@@ -40,13 +36,11 @@ describe "Admin sees station show"  do
     trip = create(:trip, start_station_id: 1, end_station_id: 1)
     user = User.create(username: "Kyle", email: "email", password: "password" ,role: 1 )
 
-    visit root_path
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit station_path(station.slug)
-
     click_link("Delete")
+
     expect(page).to_not have_link("Delete")
     expect(page).to have_content("Station #{station.name} deleted.")
   end
@@ -58,8 +52,6 @@ end
       trip = create(:trip, start_station_id: 1, end_station_id: 1)
       user = User.create(username: "Kyle", email: "email", password: "password" ,role: 1 )
 
-      visit root_path
-
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit station_path(station.slug)
@@ -68,7 +60,6 @@ end
 
       expect(page).to have_content("Edit Station")
       fill_in("Name", with: "big fun")
-
       click_button("Update Station")
 
       expect(page).to have_content("Station at big fun")

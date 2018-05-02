@@ -3,13 +3,12 @@ require "rails_helper"
 describe "user visits edit page from their show" do
   it "allows them to update their data" do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit login_path
     fill_in "Username", with: user.username
     fill_in "Password", with: user.password
     click_on "Log in"
-
+    
     visit user_path(user)
     click_on "Update Profile"
 

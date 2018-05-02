@@ -34,54 +34,50 @@ class Station < ApplicationRecord
   end
 
   def rides_started_count
-    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
-           .where("stations.id = #{self.id}")
-           .count
+    started_trips.count
   end
 
   def rides_ended_count
-    Station.joins("INNER JOIN trips ON stations.id = trips.end_station_id")
-           .where("stations.id = #{self.id}")
-           .count
+    ended_trips.count
   end
 
   def most_popular_destination_station_id
-    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
-           .where("stations.id = #{self.id}")
-           .group("trips.end_station_id")
-           .order("COUNT(trips) DESC")
-           .count.keys.first
+    started_trips
+      .select("trips.end_station_id, COUNT(*) AS trip_count")
+      .group(:end_station_id)
+      .order("trip_count DESC")
+      .first.end_station_id
   end
 
   def most_popular_origination_station_id
-    Station.joins("INNER JOIN trips ON stations.id = trips.end_station_id")
-           .where("stations.id = #{self.id}")
-           .group("trips.start_station_id")
-           .order("COUNT(trips) DESC")
-           .count.keys.first
+    ended_trips
+      .select("trips.start_station_id, COUNT(*) AS trip_count")
+      .group(:start_station_id)
+      .order("trip_count DESC")
+      .first.start_station_id
   end
 
   def date_with_highest_trips_started
-    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
-           .where("stations.id = #{self.id}")
-           .group("trips.start_date")
-           .order("COUNT(trips) DESC")
-           .count.keys.first.strftime("%-m/%-d/%Y")
+    started_trips
+      .select("trips.start_date, COUNT(*) AS trip_count")
+      .group("trips.start_date")
+      .order("trip_count DESC")
+      .first.start_date.strftime("%-m/%-d/%Y")
   end
 
   def most_frequent_zipcode
-    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
-           .where("stations.id = #{self.id}")
-           .group("trips.zipcode")
-           .order("COUNT(trips) DESC")
-           .count.keys.first
+    started_trips
+      .select("zipcode, COUNT(*) AS trip_count")
+      .group("zipcode")
+      .order("trip_count DESC")
+      .first.zipcode
   end
 
   def most_frequent_bike_id
-    Station.joins("INNER JOIN trips ON stations.id = trips.start_station_id")
-           .where("stations.id = #{self.id}")
-           .group("trips.bike_id")
-           .order("COUNT(trips) DESC")
-           .count.keys.first
+    started_trips
+      .select("bike_id, COUNT(*) AS trip_count")
+      .group("bike_id")
+      .order("trip_count DESC")
+      .first.bike_id
   end
 end

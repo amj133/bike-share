@@ -7,14 +7,7 @@ require 'rails_helper'
       trip = create(:trip, start_station_id: station.id, end_station_id: station.id)
       user = create(:user, role: 1)
 
-      visit root_path
-
-      click_link("Login")
-
-      fill_in("Username", with: user.username)
-      fill_in("Password", with: user.password)
-
-      click_button("Log in")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit trips_path
 
@@ -28,14 +21,7 @@ require 'rails_helper'
       trip = create(:trip, start_station_id: station.id, end_station_id: station.id)
       user = create(:user, role: 1)
 
-      visit root_path
-
-      click_link("Login")
-
-      fill_in("Username", with: user.username)
-      fill_in("Password", with: user.password)
-
-      click_button("Log in")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit trips_path
 
@@ -54,17 +40,9 @@ require 'rails_helper'
       trip = create(:trip, start_station_id: station.id, end_station_id: station.id)
       user = create(:user, role: 1)
 
-      visit root_path
-
-      click_link("Login")
-
-      fill_in("Username", with: user.username)
-      fill_in("Password", with: user.password)
-
-      click_button("Log in")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit trips_path
-
       click_link("Edit")
 
       expect(page).to have_content("Edit Trip")
@@ -72,7 +50,6 @@ require 'rails_helper'
       fill_in('trip_duration', with: '666')
       fill_in('Zipcode', with: '32218')
       select(trip.subscription, :from => 'Subscription')
-
       click_button("Update Trip")
 
       expect(page).to have_content(Time.at(666 * 60).utc.strftime("%k hrs %M min"))
