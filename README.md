@@ -1,25 +1,26 @@
 # Bike share
 
-This application is used to track bike share data within the greater San Fransisco Metropolitan Bay Area.  A bike shop of accessories is also available for users to purchase.  The data includes 70 stations throughout the Bay area, with over 600,000 trips between the stations.  Users can view analytics for stations, trips, and weather conditions. 
+This application is used to track bike share data within the greater San Fransisco Metropolitan Bay Area.  The data includes 70 stations throughout the Bay area, with over 600,000 trips between the stations.  Users can view analytics for stations, trips, and weather conditions.  Complex analytic queries were performed using Active Record.  The site offers seperate functionality for guests, users, and administrators.  Authentication of users is performed using bcrypt.  Guests have the ability to view station, trip, and conditions info, as well as add bike shop accessoires to their cart, however they cannot checkout without first registering as a user.  This application employs a session based cart.  Users can view analytics of bike share data and checkout items from the bike shop.  Administrators can add or delete station, trips, and condition information.  Administrators can also add and remove items from the bike shop, as well as view orders from users and mark the orders as paid, pending, or cancelled.    
 
-![schema](https://i.imgur.com/8wmBf2h.png)
+![schema](https://i.imgur.com/B03c8aY.png)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.  Visit the deployed site at: https://enigmatic-spire-10343.herokuapp.com/ 
 
-### Prerequisites
+### Installing
 
-Use the command below to make sure you have all the required gems installed.
+Follow these steps to install the bike share application locally and run the development environment. Clone the repository to your local computer using the command below:
+
+```
+git clone https://github.com/amj133/bike-share.git
+```
+
+Run bundle to make sure you have all the required gems installed.
 
 ```
 bundle
 ```
-
-
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
 
 * To configure the database run the following commands.
 
